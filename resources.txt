@@ -1,1 +1,0 @@
-How to set up webpack / babel / React: https://gist.github.com/therobinkim/7eeb85853709474f545ef137ea20e479

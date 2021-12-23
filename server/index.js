@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const api = require('./APICaller.js')
+const api = require('./APICaller');
 
 const app = express();
 const port = 3000;

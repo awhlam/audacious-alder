@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --config webpack.config.js -w",
     "live-server": "nodemon ./server/index.js"
   },
@@ -23,7 +23,6 @@
     "axios": "^0.24.0",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
-    "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -31,6 +30,8 @@
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.4.5",
     "babel-loader": "^8.2.3",
     "eslint": "^8.5.0",
     "eslint-config-airbnb": "^19.0.2",
@@ -38,8 +39,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "lodash": "^4.17.21",
-    "underscore": "^1.13.2",
+    "jest": "^27.4.5",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1"
   }

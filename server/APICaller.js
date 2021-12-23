@@ -43,7 +43,7 @@ const reviews = {
       .then()
       .catch();
   },
-  reviewsPOST: () => {
+  reviewsPOST: (review) => {
     axios.post('/reviews', { headers: options })
       .then()
       .catch();
@@ -71,12 +71,12 @@ const questions = {
       .then()
       .catch();
   },
-  questionPOST: () => {
+  questionPOST: (question) => {
     axios.post('/qa/questions', { headers: options })
       .then()
       .catch();
   },
-  answersPOST: (question_id) => {
+  answersPOST: (question_id, answer) => {
     axios.post(`/qa/questions/${question_id}/answers`, { headers: options })
       .then()
       .catch();
@@ -109,7 +109,7 @@ const cart = {
       .then()
       .catch();
   },
-  cartPOST: () => {
+  cartPOST: (item) => {
     axios.post('/cart', { headers: options })
       .then()
       .catch();
@@ -117,7 +117,7 @@ const cart = {
 };
 
 const interaction = {
-  logInteractionPOST: () => {
+  logInteractionPOST: (interaction) => {
     axios.post('/interactions', { headers: options })
       .then()
       .catch();

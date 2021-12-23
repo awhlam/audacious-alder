@@ -1,18 +1,15 @@
 import React from 'react';
+import Overview from './overview/Overview.jsx';
+import Related from './related/Related.jsx';
+import Reviews from './reviews/Reviews.jsx';
+import Questions from './questions/Questions.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  render() {
-    return (
-      <h1>FEC Testing</h1>
-    );
-  }
-}
-
-export default App;
+export const App = () => (
+  <div>
+    <h1>Hello world React!</h1>
+    <Overview />
+    <Related />
+    <Reviews />
+    <Questions />
+  </div>
+)

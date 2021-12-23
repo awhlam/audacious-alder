@@ -1,13 +1,18 @@
 const axios = require('axios');
-// const express = require('express');
+const path = require('path');
+const express = require('express');
+const config = require('../config.js');
+
+const options = {Authorization: config.token};
 
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo
 // sample product_id: 63617
+
 const products = {
   productsGET: () => {
-    axios.get('/products')
-      .then()
-      .catch();
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products', {headers: options})
+      .then((testData) => {console.log(testData.data)})
+      .catch((error) => {console.log(error, 'ERROR')});
   },
   productGET: () => {
     axios.get('/products/:product_id')

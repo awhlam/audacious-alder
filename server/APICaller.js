@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const axios = require('axios');
 // const path = require('path');
 // const express = require('express');
@@ -14,18 +15,18 @@ const products = {
       .then((testData) => { console.log(testData.data); })
       .catch((error) => { console.log(error, 'ERROR'); });
   },
-  productGET: () => {
-    axios.get('/products/:product_id')
+  productGET: (product_id) => {
+    axios.get(`/products/${product_id}`, { headers: options })
       .then()
       .catch();
   },
-  productStylesGET: () => {
-    axios.get('/products/:product_id/styles')
+  productStylesGET: (product_id) => {
+    axios.get(`/products/${product_id}/styles`, { headers: options })
       .then()
       .catch();
   },
-  productRelatedGET: () => {
-    axios.get('/products/:product_id/related')
+  productRelatedGET: (product_id) => {
+    axios.get(`/products/${product_id}/related`, { headers: options })
       .then()
       .catch();
   },
@@ -33,27 +34,27 @@ const products = {
 
 const reviews = {
   reviewsGET: () => {
-    axios.get('/reviews')
+    axios.get('/reviews', { headers: options })
       .then()
       .catch();
   },
   reviewsMetaGET: () => {
-    axios.get('/reviews/meta')
+    axios.get('/reviews/meta', { headers: options })
       .then()
       .catch();
   },
-  reviewsPOST: () => {
-    axios.post('/reviews')
+  reviewsPOST: (review) => {
+    axios.post('/reviews', { headers: options })
       .then()
       .catch();
   },
-  reviewsHelpfulPUT: () => {
-    axios.put('/reviews/:review_id/helpful')
+  reviewsHelpfulPUT: (review_id) => {
+    axios.put(`/reviews/${review_id}/helpful`, { headers: options })
       .then()
       .catch();
   },
-  reviewsReportPUT: () => {
-    axios.put('/reviews/:review_id/report')
+  reviewsReportPUT: (review_id) => {
+    axios.put(`/reviews/${review_id}/report`, { headers: options })
       .then()
       .catch();
   },
@@ -61,42 +62,42 @@ const reviews = {
 
 const questions = {
   questionsGET: () => {
-    axios.get('/qa/questions')
+    axios.get('/qa/questions', { headers: options })
       .then()
       .catch();
   },
-  answersGET: () => {
-    axios.get('/qa/questions/:question_id/answers')
+  answersGET: (question_id) => {
+    axios.get(`/qa/questions/${question_id}/answers`, { headers: options })
       .then()
       .catch();
   },
-  questionPOST: () => {
-    axios.post('/qa/questions')
+  questionPOST: (question) => {
+    axios.post('/qa/questions', { headers: options })
       .then()
       .catch();
   },
-  answersPOST: () => {
-    axios.post('/qa/questions/:question_id/answers')
+  answersPOST: (question_id, answer) => {
+    axios.post(`/qa/questions/${question_id}/answers`, { headers: options })
       .then()
       .catch();
   },
-  questionsHelpfulPUT: () => {
-    axios.put('/qa/questions/:question_id/helpful')
+  questionsHelpfulPUT: (question_id) => {
+    axios.put(`/qa/questions/${question_id}/helpful`, { headers: options })
       .then()
       .catch();
   },
-  questionsReportPUT: () => {
-    axios.put('/qa/questions/:question_id/report')
+  questionsReportPUT: (question_id) => {
+    axios.put(`/qa/questions/${question_id}/report`, { headers: options })
       .then()
       .catch();
   },
-  answersHelpfulPUT: () => {
-    axios.put('/qa/answers/:answer_id/helpful')
+  answersHelpfulPUT: (answer_id) => {
+    axios.put(`/qa/answers/${answer_id}/helpful`, { headers: options })
       .then()
       .catch();
   },
-  answersReportPUT: () => {
-    axios.put('/qa/answers/:answer_id/report')
+  answersReportPUT: (answer_id) => {
+    axios.put(`/qa/answers/${answer_id}/report`, { headers: options })
       .then()
       .catch();
   },
@@ -104,20 +105,20 @@ const questions = {
 
 const cart = {
   cartGET: () => {
-    axios.get('/cart')
+    axios.get('/cart', { headers: options })
       .then()
       .catch();
   },
-  cartPOST: () => {
-    axios.post('/cart')
+  cartPOST: (item) => {
+    axios.post('/cart', { headers: options })
       .then()
       .catch();
   },
 };
 
 const interaction = {
-  logInteractionPOST: () => {
-    axios.post('/interactions')
+  logInteractionPOST: (interaction) => {
+    axios.post('/interactions', { headers: options })
       .then()
       .catch();
   },

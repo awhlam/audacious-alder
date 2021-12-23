@@ -1,7 +1,7 @@
-const axios = require('axios')
-const express = require('express')
+const axios = require('axios');
+// const express = require('express');
 
-//https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo
 // sample product_id: 63617
 const products = {
   productsGET: (axios.get('/products')
@@ -16,7 +16,7 @@ const products = {
   productRelatedGET: (axios.get('/products/:product_id/related')
     .then()
     .catch()),
-}
+};
 
 const reviews = {
   reviewsGET: (axios.get('/reviews')
@@ -34,7 +34,7 @@ const reviews = {
   reviewsReportPUT: (axios.put('/reviews/:review_id/report')
     .then()
     .catch()),
-}
+};
 
 const questions = {
   questionsGET: (axios.get('/qa/questions')
@@ -54,14 +54,14 @@ const questions = {
     .catch()),
   questionsReportPUT: (axios.put('/qa/questions/:question_id/report')
     .then()
-    catch()),
+    .catch()),
   answersHelpfulPUT: (axios.put('/qa/answers/:answer_id/helpful')
     .then()
     .catch()),
   answersReportPUT: (axios.put('/qa/answers/:answer_id/report')
     .then()
-    .catch())
-}
+    .catch()),
+};
 
 const cart = {
   cartGET: (axios.get('/cart')
@@ -69,19 +69,19 @@ const cart = {
     .catch()),
   cartPOST: (axios.post('/cart')
     .then()
-    .catch())
-}
+    .catch()),
+};
 
 const interaction = {
   logInteractionPOST: (axios.post('/interactions')
     .then()
-    .catch())
-}
+    .catch()),
+};
 
 module.exports = {
-  products
-  reviews
-  questions
-  cart
-  interaction
-}
+  products,
+  reviews,
+  questions,
+  cart,
+  interaction,
+};

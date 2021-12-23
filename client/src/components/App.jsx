@@ -13,3 +13,5 @@ export const App = () => (
     <Questions />
   </div>
 )
+
+export default App;

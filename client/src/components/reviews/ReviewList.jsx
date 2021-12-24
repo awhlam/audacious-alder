@@ -34,7 +34,7 @@ const ReviewList = ({ product_id }) => {
   //******************************
   if (reviews) {
     return (
-      <div className="box">
+      <div className="box column">
         <h2>
           {reviews.results.length} reviews, sorted by <a href="#">relevance ↓</a>
         </h2>

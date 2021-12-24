@@ -8,8 +8,10 @@ function Reviews() {
   return (
     <div>
       <h1>Ratings & Reviews</h1>
-      <ReviewSummary product_id={product_id} />
-      <ReviewList product_id={product_id} />
+      <div className="reviews">
+        <ReviewSummary product_id={product_id} />
+        <ReviewList product_id={product_id} />
+      </div>
     </div>
   );
 };

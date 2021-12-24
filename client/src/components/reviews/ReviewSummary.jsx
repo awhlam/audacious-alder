@@ -28,7 +28,7 @@ function ReviewSummary( { product_id }) {
   //******************************
   if (reviewSummary) {
     return (
-      <div className="box">
+      <div className="box column">
         <div>
           <p>3.5 stars</p>
           <p>

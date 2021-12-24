@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import ProductInfo from './ProductInfo.jsx';
+import Style from './Style.jsx';
 import products from '../../sample-data/products';
-
 
 const Overview = () => {
   return (
     <div>
-      Product Name: {products[0].name}
-      <br></br>
-      Product Description: {products[0].description}
+      <h1>Overview</h1>
+        <ProductInfo/>
+        <Style/>
     </div>
   )
 }

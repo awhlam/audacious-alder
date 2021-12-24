@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 /**
- * Fix rendering before state is set
  * Calculate average star count
  * Style star count
  * Style characteristic bars
@@ -11,8 +10,10 @@ import axios from 'axios';
  * Enable filtering by # of stars
  */
 
-function ReviewSummary() {
-  const [product_id, setProductId] = useState(63609);
+function ReviewSummary( { product_id }) {
+  //******************************
+  // STATE
+  //******************************
   const [reviewSummary, setReviewsSummary] = useState(() => {
     axios.get('/reviews/meta', {params: { product_id: product_id }})
       .then(res => {
@@ -22,7 +23,9 @@ function ReviewSummary() {
         console.log(err);
       });
   });
-
+  //******************************
+  // RENDER
+  //******************************
   if (reviewSummary) {
     return (
       <div className="box">

@@ -12,6 +12,8 @@ app.get('/test', (req, res) => {
   api.products.productsGET();
 });
 
+// Reviews
+app.get('/reviews', api.reviews.reviewsGET);
 app.get('/reviews/meta', api.reviews.reviewsMetaGET);
 
 app.listen(port, () => {

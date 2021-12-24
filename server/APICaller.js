@@ -32,14 +32,17 @@ const products = {
 };
 
 const reviews = {
-  reviewsGET: () => {
-    axios.get(server + '/reviews', { headers: options })
-      .then()
-      .catch();
+  reviewsGET: (req, res) => {
+    axios.get(server + '/reviews', { headers: options, params: req.query })
+      .then((api) => {
+        res.send(api.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   reviewsMetaGET: (req, res) => {
-    let {product_id} = req.query;
-    axios.get(server + '/reviews/meta', { headers: options, params: { product_id: product_id } })
+    axios.get(server + '/reviews/meta', { headers: options, params: req.query })
       .then((api) => {
         res.send(api.data);
       })

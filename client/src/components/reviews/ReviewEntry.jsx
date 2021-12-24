@@ -10,7 +10,6 @@ const moment = require('moment');
 
 const ReviewEntry = ({review}) => {
   let date = moment(review.date);
-
   return (
     <div className="box">
       {review.rating} stars | {review.reviewer_name}, {date.format('MMMM Do, YYYY')}

@@ -3,9 +3,9 @@ import ReviewEntry from './ReviewEntry.jsx';
 import reviews from '../../sample-data/reviews.js';
 
 /**
- * Enable sorting reviews by relevance, date, etc
- * Enable "More Reviews" button to send a GET request to load more reviews
  * Create add a review form which sends a POST request
+ * Enable "More Reviews" button to send a GET request to load more reviews
+ * Enable sorting reviews by relevance, date, etc
  */
 
 const ReviewList = () => {

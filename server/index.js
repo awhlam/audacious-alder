@@ -12,6 +12,8 @@ app.get('/test', (req, res) => {
   api.products.productsGET();
 });
 
+app.get('/reviews/meta', api.reviews.reviewsMetaGET);
+
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`listening at http://localhost:${port}`);

@@ -5,8 +5,7 @@ const axios = require('axios');
 const config = require('../config');
 
 const options = { Authorization: config.token };
-
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo
+const server = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 // sample product_id: 63617
 
 const products = {
@@ -33,28 +32,36 @@ const products = {
 };
 
 const reviews = {
-  reviewsGET: () => {
-    axios.get('/reviews', { headers: options })
-      .then()
-      .catch();
+  reviewsGET: (req, res) => {
+    axios.get(server + '/reviews', { headers: options, params: req.query })
+      .then((api) => {
+        res.send(api.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
-  reviewsMetaGET: () => {
-    axios.get('/reviews/meta', { headers: options })
-      .then()
-      .catch();
+  reviewsMetaGET: (req, res) => {
+    axios.get(server + '/reviews/meta', { headers: options, params: req.query })
+      .then((api) => {
+        res.send(api.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   reviewsPOST: (review) => {
-    axios.post('/reviews', { headers: options })
+    axios.post(server + '/reviews', { headers: options })
       .then()
       .catch();
   },
   reviewsHelpfulPUT: (review_id) => {
-    axios.put(`/reviews/${review_id}/helpful`, { headers: options })
+    axios.put(server + `/reviews/${review_id}/helpful`, { headers: options })
       .then()
       .catch();
   },
   reviewsReportPUT: (review_id) => {
-    axios.put(`/reviews/${review_id}/report`, { headers: options })
+    axios.put(server + `/reviews/${review_id}/report`, { headers: options })
       .then()
       .catch();
   },

@@ -10,7 +10,6 @@ const ProductInfo = () => {
           <br></br>
           Product Description: {products[0].description}
       </div>
-      <br></br>
     </div>
   )
 }

@@ -10,3 +10,16 @@
   padding: 15px;
   margin: -1px;
 }
+
+.related {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items: flex start;
+}
+
+.card {
+  border: 1px solid;
+  padding: 5px;
+  margin: 1px;
+}

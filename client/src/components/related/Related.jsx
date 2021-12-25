@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import products from '../../sample-data/products.js';
 
-const Related = (props) => {
+const Related = () => {
   // state
   const [relatedProducts, setRelatedProducts] = useState(products);
 

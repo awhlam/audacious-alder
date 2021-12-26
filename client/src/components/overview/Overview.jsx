@@ -11,15 +11,21 @@ const Overview = () => {
   return (
     <div>
       <h1>Overview</h1>
-        <ImageGallery/>
-        <ProductInfo
-          product={products[0]}
-          reviewsMeta={reviewsMeta}
-        />
-        <Style
-          productStyle={productStyle}
-        />
-        <Cart/>
+        <div>
+          <ImageGallery
+            productStyle={productStyle}
+          />
+        </div>
+        <div>
+          <ProductInfo
+            product={products[0]}
+            reviewsMeta={reviewsMeta}
+          />
+          <Style
+            productStyle={productStyle}
+          />
+          <Cart/>
+        </div>
     </div>
   )
 }

@@ -36,3 +36,7 @@
   justify-content: space-around;
   list-style: none;
 }
+
+.imageGallery {
+  width: 300px;
+}

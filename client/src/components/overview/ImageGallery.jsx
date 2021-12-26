@@ -1,9 +1,11 @@
 import React from 'react';
 
-const ImageGallery = () => {
+const ImageGallery = (props) => {
   return (
-    <div className="box">
-      <h4>ImageGallery</h4>
+    <div>
+      <img
+        className="imageGallery"
+        src={props.productStyle.results[0].photos[0].url}/>
     </div>
   )
 }

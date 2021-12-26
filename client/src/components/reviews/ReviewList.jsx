@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ReviewEntry from './ReviewEntry.jsx';
+import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 /**
  * Create add a review form which sends a POST request
@@ -9,7 +10,7 @@ import ReviewEntry from './ReviewEntry.jsx';
  * Get all reviews instead of hardcoded number
  */
 
-const ReviewList = ({ product_id }) => {
+const ReviewList = ({ product_id, reviewMetaData }) => {
   //******************************
   // STATE
   //******************************
@@ -36,7 +37,7 @@ const ReviewList = ({ product_id }) => {
     return (
       <div className="box column">
         <h2>
-          Sorted by <a href="#">relevance ↓</a>
+        {calcAvgTotalReviews(reviewMetaData).reviews } reviews, sorted by <a href="#">relevance ↓</a>
         </h2>
         {reviews.results.slice(0, numReviews).map((review) => (
           <ReviewEntry review={review} />
@@ -49,9 +50,7 @@ const ReviewList = ({ product_id }) => {
       </div>
     );
   } else {
-    return (
-      <div></div>
-    );
+    return null;
   }
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import calcStarImg from '../shared/calcStarImg.jsx';
 const moment = require('moment');
 
 /**
@@ -9,9 +10,11 @@ const moment = require('moment');
 
 const ReviewEntry = ({review}) => {
   let date = moment(review.date);
+
   return (
     <div className="box">
-      {review.rating} stars | {review.reviewer_name}, {date.format('MMMM Do, YYYY')}
+      <span>{calcStarImg(review.rating)}</span>
+      <div className="reviewerNameDate">{review.reviewer_name}, {date.format('MMMM Do, YYYY')}</div>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
       <p>{review.recommend ? '✔ I recommend this product' : ''}</p>

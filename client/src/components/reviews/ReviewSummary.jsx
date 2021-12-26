@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import calcPctRecommend from '../shared/calcPctRecommend.js';
@@ -10,19 +9,7 @@ import calcPctRecommend from '../shared/calcPctRecommend.js';
  * Enable filtering by # of stars
  */
 
-function ReviewSummary( { product_id }) {
-  //******************************
-  // STATE
-  //******************************
-  const [reviewMetaData, setReviewMetaData] = useState(() => {
-    axios.get('/reviews/meta', {params: { product_id: product_id }})
-      .then(res => {
-        setReviewMetaData(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
+function ReviewSummary( { product_id, reviewMetaData }) {
   //******************************
   // RENDER
   //******************************
@@ -34,9 +21,8 @@ function ReviewSummary( { product_id }) {
             {calcAvgTotalReviews(reviewMetaData).avgStars} &nbsp;
             {calcStarImg(calcAvgTotalReviews(reviewMetaData).avgStars)}
           </h1>
-          <p>{calcAvgTotalReviews(reviewMetaData).reviews} reviews</p>
           <p>
-            {calcPctRecommend(reviewMetaData)} % of reviews recommend this product
+            {calcPctRecommend(reviewMetaData)}% of reviews recommend this product
           </p>
           <p>
             <a href='#'>5 stars</a> {reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews<br />
@@ -59,9 +45,7 @@ function ReviewSummary( { product_id }) {
       </div>
     );
   } else {
-    return (
-      <div></div>
-    );
+    return (null);
   }
 }
 

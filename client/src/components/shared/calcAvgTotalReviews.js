@@ -1,10 +1,10 @@
-const calcAvgTotalReviews= (reviewsMeta) => {
+const calcAvgTotalReviews = (reviewsMetaData) => {
   let stars = 0;
   let reviews = 0;
 
-  for (let key in reviewsMeta.ratings) {
-    stars += Number(reviewsMeta.ratings[key]) * Number(key)
-    reviews += Number(reviewsMeta.ratings[key])
+  for (let key in reviewsMetaData.ratings) {
+    stars += Number(reviewsMetaData.ratings[key]) * Number(key)
+    reviews += Number(reviewsMetaData.ratings[key])
   }
 
   return {

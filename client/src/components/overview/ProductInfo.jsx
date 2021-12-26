@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Style from './Style.jsx';
 
 const ProductInfo = (props) => {
-  console.log(props.reviewsMeta)
   let sum = 0;
   let reviews = 0;
   for (let key in props.reviewsMeta.ratings) {
@@ -11,9 +10,9 @@ const ProductInfo = (props) => {
   }
   return (
       <div className="box">
-        <h4>Product Info</h4>
-          Product Name: {props.product.name}
-          Product Description: {props.product.description}
+        <h3>Product Info</h3>
+        <h4>Product Name: {props.product.name}</h4>
+        <h4>Product Description: {props.product.description}</h4>
         <h4>Star Rating: {sum/reviews}</h4>
         <h4>Price: ${props.product.default_price}</h4>
         <h4>Product Category: {props.product.category}</h4>

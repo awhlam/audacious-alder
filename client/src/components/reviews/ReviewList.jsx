@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 /**
  * Create add a review form which sends a POST request
  * Enable "More Reviews" button to send a GET request to load more reviews
- * Enable sorting reviews by relevance, date, etc
  * Get all reviews instead of hardcoded number
  */
 
@@ -36,9 +36,7 @@ const ReviewList = ({ product_id, reviewMetaData }) => {
   if (reviews) {
     return (
       <div className="box column">
-        <h2>
-        {calcAvgTotalReviews(reviewMetaData).reviews } reviews, sorted by <a href="#">relevance ↓</a>
-        </h2>
+        <SortingBar reviewMetaData={reviewMetaData} />
         {reviews.results.slice(0, numReviews).map((review) => (
           <ReviewEntry review={review} />
         ))}

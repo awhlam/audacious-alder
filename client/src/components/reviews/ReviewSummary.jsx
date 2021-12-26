@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import calcPctRecommend from '../shared/calcPctRecommend.js';
@@ -10,9 +10,6 @@ import calcPctRecommend from '../shared/calcPctRecommend.js';
  */
 
 function ReviewSummary( { product_id, reviewMetaData }) {
-  //******************************
-  // RENDER
-  //******************************
   if (reviewMetaData) {
     return (
       <div className="box column">

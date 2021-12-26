@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 /**
- * Calculate average star count
  * Style star count
- * Style characteristic bars
- * Show characteristic text (e.g., "Too small / Perfect / Too large")
- * Calculate % recommended on the backend
+ * Style star bars
+ * Style characteristic bars (e.g., "Too small / Perfect / Too large")
  * Enable filtering by # of stars
  */
 
@@ -30,7 +29,7 @@ function ReviewSummary( { product_id }) {
     return (
       <div className="box column">
         <div>
-          <p>3.5 stars</p>
+          <h1>{calcAvgTotalReviews(reviewSummary).avgStars} stars | {calcAvgTotalReviews(reviewSummary).reviews} reviews</h1>
           <p>
             {Math.round((reviewSummary.recommended.true / (parseInt(reviewSummary.recommended.true) + parseInt(reviewSummary.recommended.false))) * 100)}
             % of reviews recommend this product

@@ -36,7 +36,7 @@ const ReviewList = ({ product_id }) => {
     return (
       <div className="box column">
         <h2>
-          {reviews.results.length} reviews, sorted by <a href="#">relevance ↓</a>
+          Sorted by <a href="#">relevance ↓</a>
         </h2>
         {reviews.results.slice(0, numReviews).map((review) => (
           <ReviewEntry review={review} />

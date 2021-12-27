@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
-import Style from './Style.jsx';
 
-const ProductInfo = function (props) {
+const ProductInfo = function ({ product, reviewsMeta }) {
   let sum = 0;
   let reviews = 0;
-  for (const key in props.reviewsMeta.ratings) {
-    sum += Number(props.reviewsMeta.ratings[key]) * Number(key);
-    reviews += Number(props.reviewsMeta.ratings[key]);
+  for (const key in reviewsMeta.ratings) {
+    sum += Number(reviewsMeta.ratings[key]) * Number(key);
+    reviews += Number(reviewsMeta.ratings[key]);
   }
   return (
     <div className="box">
       <h3>Product Info</h3>
       <h4>
         Product Name:
-        {props.product.name}
+        {product.name}
       </h4>
       <h4>
         Product Description:
-        {props.product.description}
+        {product.description}
       </h4>
       <h4>
         Star Rating:
@@ -25,11 +24,11 @@ const ProductInfo = function (props) {
       </h4>
       <h4>
         Price: $
-        {props.product.default_price}
+        {product.default_price}
       </h4>
       <h4>
         Product Category:
-        {props.product.category}
+        {product.category}
       </h4>
       <h4>Social Media</h4>
     </div>

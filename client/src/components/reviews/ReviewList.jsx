@@ -24,9 +24,13 @@ const ReviewList = ({ product_id, reviewMetaData }) => {
         console.log(err);
       });
   });
+  const [showModal, setShowModal] = useState(false);
   //******************************
   // HANDLERS
   //******************************
+  const openModal = () => {
+    setShowModal(prev => !prev);
+  }
   const handleMoreReviews = () => {
     setNumReviews(prevNum => prevNum + 2);
   }
@@ -43,7 +47,7 @@ const ReviewList = ({ product_id, reviewMetaData }) => {
         <p>
           <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
           &nbsp;
-          <button type="submit">Add A Review +</button>
+          <button type="submit" onClick={openModal}>Add A Review +</button>
         </p>
       </div>
     );

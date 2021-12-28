@@ -8,6 +8,9 @@ const options = { Authorization: config.token };
 const server = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 // sample product_id: 63617
 
+// Data fetching function
+const fetchURL = (url) => axios.get(url, { headers: options });
+
 const products = {
   productsGET: () => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products', { headers: options })
@@ -39,7 +42,6 @@ const products = {
     for (let i = 0; i < req.query.product_id.length; i += 1) {
       urlArray.push(`${server}/products/${req.query.product_id[i]}`);
     }
-    const fetchURL = (url) => axios.get(url, { headers: options });
     const promiseArray = urlArray.map(fetchURL);
     Promise.all(promiseArray)
       .then((response) => {
@@ -47,8 +49,25 @@ const products = {
         for (let j = 0; j < response.length; j += 1) {
           productsData.push(response[j].data);
         }
-        console.log(productsData);
         res.status(200).send(productsData);
+      })
+      .catch((error) => {
+        res.status(404).send(error);
+      });
+  },
+  mulitStylesGET: (req, res) => {
+    const urlArray = [];
+    for (let i = 0; i < req.query.product_id.length; i += 1) {
+      urlArray.push(`${server}/products/${req.query.product_id[i]}/styles`);
+    }
+    const promiseArray = urlArray.map(fetchURL);
+    Promise.all(promiseArray)
+      .then((response) => {
+        const stylesData = [];
+        for (let j = 0; j < response.length; j += 1) {
+          stylesData.push(response[j].data);
+        }
+        res.status(200).send(stylesData);
       })
       .catch((error) => {
         res.status(404).send(error);

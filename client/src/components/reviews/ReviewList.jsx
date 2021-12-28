@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
+import AddReview from './AddReview.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 /**
@@ -48,6 +49,10 @@ const ReviewList = ({ product_id, reviewMetaData }) => {
           <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
           &nbsp;
           <button type="submit" onClick={openModal}>Add A Review +</button>
+          <AddReview
+            showModal={showModal}
+            openModal={openModal}
+          />
         </p>
       </div>
     );

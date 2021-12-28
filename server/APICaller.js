@@ -24,12 +24,39 @@ const products = {
       .then()
       .catch();
   },
-  productRelatedGET: (product_id) => {
-    axios.get(`/products/${product_id}/related`, { headers: options })
-      .then()
-      .catch();
+  productRelatedGET: (req, res) => {
+    axios.get(`${server}/products/${req.query.product_id}/related`, { headers: options })
+      .then((data) => {
+        res.status(200).send(data.data);
+      })
+      .catch((error) => {
+        res.status(404).send(error);
+      });
   },
+  // Method for getting data for multiple products, need to take in an array of ID from the request.
+  multiProductGET: (req, res) => {
+    const urlArray = [];
+    for (let i = 0; i < req.query.product_id.length; i += 1) {
+      urlArray.push(`${server}/products/${req.query.product_id[i]}`);
+    }
+    const fetchURL = (url) => axios.get(url, { headers: options });
+    const promiseArray = urlArray.map(fetchURL);
+    Promise.all(promiseArray)
+      .then((response) => {
+        const productsData = [];
+        for (let j = 0; j < response.length; j += 1) {
+          productsData.push(response[j].data);
+        }
+        console.log(productsData);
+        res.status(200).send(productsData);
+      })
+      .catch((error) => {
+        res.status(404).send(error);
+      });
+  }
 };
+
+// `${server}/products/${req.query.product_id}/related`
 
 const reviews = {
   reviewsGET: (req, res) => {

@@ -1,14 +1,17 @@
 # FEC
 
-Tech Stack:
+## Setup
+
+1. Run `npm install`
+2. Copy `configExample.js`, rename it to `config.js`, and enter your Github API token
+3. Run `npm run live-server` to start Node
+4. Run `npm run build` to start Webpack
+
+## Tech Stack
 * React
 * Moment.js
 * Styled Components
 * Webpack / Babel
 * Node / Express
 * Jest / React Testing Library
-
-To prevent commiting Github personal access tokens, please follow steps below to avoid error when starting server:
-1) Please make a copy of configExample.js and rename it to config.js
-2) Paste in your Github personal access token into the file.
-3) Delete configExample.js and try live-server.
+* circleCI

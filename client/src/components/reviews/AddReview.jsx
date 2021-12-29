@@ -7,8 +7,8 @@ const MODAL_STYLES = {
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '50px',
-  zIndex: 1000
-}
+  zIndex: 1000,
+};
 
 const OVERLAY_STYLES = {
   position: 'fixed',
@@ -17,11 +17,11 @@ const OVERLAY_STYLES = {
   right: 0,
   bottom: 0,
   backgroundColor: 'rgba(0, 0, 0, .7)',
-  zIndex: 1000
-}
+  zIndex: 1000,
+};
 
 const AddReview = ({ showModal, openModal }) => {
-  if (!showModal) { return null }
+  if (!showModal) { return null; }
   return (
     <>
       <div style={OVERLAY_STYLES} />
@@ -44,14 +44,14 @@ const AddReview = ({ showModal, openModal }) => {
         </form>
         <p>Characteristics:</p>
         <p>Review Summary:</p>
-        <p><input type="text" placeholder="Example: Best purchase ever!"></input></p>
+        <p><input type="text" placeholder="Example: Best purchase ever!" /></p>
         <p>Review body:</p>
-        <p><input type="textarea" placeholder="Why did you like the product or not?"></input></p>
-        <p>Photos: <input type="file"></input></p>
+        <p><input type="textarea" placeholder="Why did you like the product or not?" /></p>
+        <p>Photos: <input type="file" /></p>
         <p>What is your nickname?</p>
-        <p><input type="text" placeholder="What is your nickname"></input></p>
+        <p><input type="text" placeholder="What is your nickname" /></p>
         <p>Your email:</p>
-        <p><input type="email" placeholder="Example: jackson11@email.com"></input></p>
+        <p><input type="email" placeholder="Example: jackson11@email.com" /></p>
         <p>For authentication reasons, you will not be emailed</p>
         <button>Submit Review</button>
       </div>

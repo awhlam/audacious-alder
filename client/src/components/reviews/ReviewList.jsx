@@ -19,11 +19,11 @@ const ReviewList = ({ reviews, reviewMetaData }) => {
   // HANDLERS
   //******************************
   const openModal = () => {
-    setShowModal(prev => !prev);
-  }
+    setShowModal((prev) => !prev);
+  };
   const handleMoreReviews = () => {
-    setNumReviews(prevNum => prevNum + 2);
-  }
+    setNumReviews((prevNum) => prevNum + 2);
+  };
   //******************************
   // RENDER
   //******************************
@@ -32,7 +32,7 @@ const ReviewList = ({ reviews, reviewMetaData }) => {
       <div className="box column">
         <SortingBar reviewMetaData={reviewMetaData} />
         {reviews.results.slice(0, numReviews).map((review, index) => (
-          <ReviewEntry review={review} key={index} />
+          <ReviewEntry review={review} key={review.review_id} />
         ))}
         <p>
           <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
@@ -45,9 +45,9 @@ const ReviewList = ({ reviews, reviewMetaData }) => {
         </p>
       </div>
     );
-  } else {
-    return null;
   }
+
+  return null;
 };
 
 export default ReviewList;

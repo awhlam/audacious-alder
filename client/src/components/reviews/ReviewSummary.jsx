@@ -9,7 +9,7 @@ import calcPctRecommend from '../shared/calcPctRecommend.js';
  * Enable filtering by # of stars
  */
 
-function ReviewSummary( { reviewMetaData }) {
+function ReviewSummary({ reviewMetaData }) {
   if (reviewMetaData) {
     return (
       <div className="box column">
@@ -30,9 +30,9 @@ function ReviewSummary( { reviewMetaData }) {
           </p>
         </div>
         <div>
-          {Object.keys(reviewMetaData.characteristics).map((key, index) => {
+          {Object.keys(reviewMetaData.characteristics).map((key) => {
             return (
-              <div key={index}>
+              <div key={reviewMetaData.characteristics[key].id}>
                 <h3>{key}</h3>
                 <span>{calcStarImg(reviewMetaData.characteristics[key].value)}</span>
               </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import calcStarImg from '../shared/calcStarImg.jsx';
+
 const moment = require('moment');
 
 /**
@@ -9,7 +10,7 @@ const moment = require('moment');
  */
 
 const ReviewEntry = ({ review }) => {
-  let date = moment(review.date);
+  const date = moment(review.date);
 
   return (
     <div className="box">

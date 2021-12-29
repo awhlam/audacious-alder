@@ -1,3 +1,7 @@
+#app {
+  font-family: 'Roboto', sans-serif;
+}
+
 .reviews {
   display: flex;
   flex-direction: row;

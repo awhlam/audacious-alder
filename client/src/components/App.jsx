@@ -6,7 +6,7 @@ import Questions from './questions/Questions.jsx';
 
 export const App = () => (
   <div>
-    <h1>Hello world React!</h1>
+    <h1>Audacious Alder Clothing</h1>
     <Overview />
     <Related />
     <Reviews />

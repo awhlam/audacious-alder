@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
+import AddReview from './AddReview.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 /**
@@ -24,9 +25,13 @@ const ReviewList = ({ product_id, reviewMetaData }) => {
         console.log(err);
       });
   });
+  const [showModal, setShowModal] = useState(false);
   //******************************
   // HANDLERS
   //******************************
+  const openModal = () => {
+    setShowModal(prev => !prev);
+  }
   const handleMoreReviews = () => {
     setNumReviews(prevNum => prevNum + 2);
   }
@@ -43,7 +48,11 @@ const ReviewList = ({ product_id, reviewMetaData }) => {
         <p>
           <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
           &nbsp;
-          <button type="submit">Add A Review +</button>
+          <button type="submit" onClick={openModal}>Add A Review +</button>
+          <AddReview
+            showModal={showModal}
+            openModal={openModal}
+          />
         </p>
       </div>
     );

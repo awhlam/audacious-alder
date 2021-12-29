@@ -41,7 +41,7 @@ const Cart = function ({ skus }) {
       <select>
         {renderQuantity()}
       </select>
-      <select>
+      <select onChange={(e) => { setSize(e.target.value); }}>
         {skusArray.map((sku) => (
           <option>
             {sku.key.size}

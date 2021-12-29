@@ -3,11 +3,11 @@ import { render } from "@testing-library/react";
 import { App } from "../client/src/components/App.jsx";
 
 describe("App Component", function () {
-  it("should have hello world message", function () {
+  it("should have a title", function () {
     let { getByText } = render(<App />);
-    expect(getByText("Hello world React!")).toMatchInlineSnapshot(`
+    expect(getByText("Audacious Alder Clothing")).toMatchInlineSnapshot(`
       <h1>
-        Hello world React!
+        Audacious Alder Clothing
       </h1>
     `);
   });

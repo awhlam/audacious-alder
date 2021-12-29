@@ -12,6 +12,11 @@ app.get('/test', (req, res) => {
   api.products.productsGET();
 });
 
+// Related
+app.get('/related', api.products.productRelatedGET);
+app.get('/related/products', api.products.multiProductGET);
+app.get('/related/products/styles', api.products.mulitStylesGET);
+
 // Reviews
 app.get('/reviews', api.reviews.reviewsGET);
 app.get('/reviews/meta', api.reviews.reviewsMetaGET);

@@ -8,7 +8,7 @@ import products from '../sample-data/products.js';
 export var App = function () {
   return (
     <div>
-      <h1>Hello world React!</h1>
+      <h1>Audacious Alder Clothing</h1>
       <Overview product={products[0]} />
       <Related />
       <Reviews />

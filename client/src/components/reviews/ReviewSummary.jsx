@@ -4,12 +4,12 @@ import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import calcPctRecommend from '../shared/calcPctRecommend.js';
 
 /**
- * Style star bars
+ * Style star bars (5 stars, 4 stars, ... 1 star)
  * Style characteristic bars (e.g., "Too small / Perfect / Too large")
  * Enable filtering by # of stars
  */
 
-function ReviewSummary( { product_id, reviewMetaData }) {
+function ReviewSummary( { reviewMetaData }) {
   if (reviewMetaData) {
     return (
       <div className="box column">
@@ -30,9 +30,9 @@ function ReviewSummary( { product_id, reviewMetaData }) {
           </p>
         </div>
         <div>
-          {Object.keys(reviewMetaData.characteristics).map((key) => {
+          {Object.keys(reviewMetaData.characteristics).map((key, index) => {
             return (
-              <div>
+              <div key={index}>
                 <h3>{key}</h3>
                 <span>{calcStarImg(reviewMetaData.characteristics[key].value)}</span>
               </div>
@@ -42,7 +42,7 @@ function ReviewSummary( { product_id, reviewMetaData }) {
       </div>
     );
   } else {
-    return (null);
+    return null;
   }
 }
 

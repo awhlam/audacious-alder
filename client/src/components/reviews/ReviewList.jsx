@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import AddReview from './AddReview.jsx';
-import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 /**
  * Create add a review form which sends a POST request
@@ -11,20 +9,11 @@ import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
  * Get all reviews instead of hardcoded number
  */
 
-const ReviewList = ({ product_id, reviewMetaData }) => {
+const ReviewList = ({ reviews, reviewMetaData }) => {
   //******************************
   // STATE
   //******************************
   const [numReviews, setNumReviews] = useState(2);
-  const [reviews, setReviews] = useState(() => {
-    axios.get('/reviews', {params: { product_id: product_id, count: 100 }})
-      .then(res => {
-        setReviews(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
   const [showModal, setShowModal] = useState(false);
   //******************************
   // HANDLERS
@@ -42,8 +31,8 @@ const ReviewList = ({ product_id, reviewMetaData }) => {
     return (
       <div className="box column">
         <SortingBar reviewMetaData={reviewMetaData} />
-        {reviews.results.slice(0, numReviews).map((review) => (
-          <ReviewEntry review={review} />
+        {reviews.results.slice(0, numReviews).map((review, index) => (
+          <ReviewEntry review={review} key={index} />
         ))}
         <p>
           <button type="submit" onClick={handleMoreReviews}>More Reviews</button>

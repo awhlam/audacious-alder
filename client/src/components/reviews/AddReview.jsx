@@ -38,9 +38,9 @@ const AddReview = ({ showModal, openModal }) => {
         <p>Do you recommend this product?</p>
         <form>
           <input type="radio" name="recommend" value="yes" />
-          <label for="yes">Yes</label>
+          <label htmlFor="yes">Yes</label>
           <input type="radio" name="recommend" value="no" />
-          <label for="no">No</label>
+          <label htmlFor="no">No</label>
         </form>
         <p>Characteristics:</p>
         <p>Review Summary:</p>

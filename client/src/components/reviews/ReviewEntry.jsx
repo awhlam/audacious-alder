@@ -8,7 +8,7 @@ const moment = require('moment');
  * Enable report link to send PUT request to /reviews/:review_id/report
  */
 
-const ReviewEntry = ({review}) => {
+const ReviewEntry = ({ review }) => {
   let date = moment(review.date);
 
   return (

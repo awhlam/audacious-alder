@@ -10,12 +10,6 @@ const Related = () => {
   //**************
   let [relatedProductsId, setProductsId] = useState([]);
   let [relatedProductsDetail, setDetail] = useState([]);
-  let [relatedProductsStyles, setStyles] = useState([]);
-
-  // Axios GET
-  // const axiosGET = (url, data) => {
-  //   return new Promise axios.get(url, data)
-  // };
 
   // *************
   // Initial Renders of Data
@@ -36,7 +30,18 @@ const Related = () => {
       const axiosStyles = axios.get('/related/products/styles', axiosParam);
       Promise.all([axiosProduct, axiosStyles])
       .then((results) => {
-        console.log('this should be results: ', results);
+        // console.log('this should be results: ', results);
+        const apiDetail = results[0].data;
+        const apiStyles = results[1].data;
+        for(let i = 0; i < apiDetail.length; i += 1) {
+          for(let j = 0; j < apiStyles.length; j += 1) {
+            if (apiDetail[i].id.toString() === apiStyles[j].product_id) {
+              apiDetail[i].styles = apiStyles[j].results;
+              break;
+            }
+          }
+        }
+        setDetail(apiDetail);
       })
       .catch((error) => {
         console.log('This is an error: ', error);
@@ -48,8 +53,7 @@ const Related = () => {
     <div>
       <h1>Related</h1>
       <RelatedProductsList
-      relatedProducts={relatedProductsDetail}
-      relatedStyles={relatedProductsStyles}/>
+      relatedProducts={relatedProductsDetail}/>
     </div>
   )
 };

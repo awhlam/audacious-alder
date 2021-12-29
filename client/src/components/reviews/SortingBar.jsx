@@ -2,7 +2,7 @@ import React from 'react';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 /**
-* Enable sorting reviews by relevance, date, etc
+* Enable sorting reviews by relevance, helpful, newest
 **/
 
 const SortingBar = ({ reviewMetaData }) => {

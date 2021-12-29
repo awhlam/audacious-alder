@@ -12,37 +12,36 @@ const Related = () => {
   let [relatedProductsDetail, setDetail] = useState([]);
   let [relatedProductsStyles, setStyles] = useState([]);
 
+  // Axios GET
+  // const axiosGET = (url, data) => {
+  //   return new Promise axios.get(url, data)
+  // };
+
   // *************
   // Initial Renders of Data
   // *************
   useEffect(() => {
-    // First axios GET for related products ID
     axios.get('/related', {params: {
-      product_id: 63609
-    }
-  })
-  .then((res) => {
-    setProductsId(relatedProductsId = res.data);
-    // Second axios GET for related products info using ID
-    axios.get('/related/products', {params: {
-      product_id: relatedProductsId
-        }
-      })
-      .then((details) => {
-        setDetail(relatedProductsDetail = details.data);
-        // Third axios GET for styling data using ID
-        axios.get('/related/products/styles', {params: {
+        product_id: 63609
+      }
+    })
+    .then((res) => {
+      setProductsId(relatedProductsId = res.data);
+      const axiosParam = {
+        params: {
           product_id: relatedProductsId
-          }
-        })
-        .then((styles) => {
-          setStyles(relatedProductsStyles = styles.data);
-        })
+        }
+      }
+      const axiosProduct = axios.get('/related/products', axiosParam);
+      const axiosStyles = axios.get('/related/products/styles', axiosParam);
+      Promise.all([axiosProduct, axiosStyles])
+      .then((results) => {
+        console.log('this should be results: ', results);
       })
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+      .catch((error) => {
+        console.log('This is an error: ', error);
+      })
+    })
   }, [])
 
   return (

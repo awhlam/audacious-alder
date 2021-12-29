@@ -1,5 +1,6 @@
 import React from 'react';
 import calcStarImg from '../shared/calcStarImg.jsx';
+
 const moment = require('moment');
 
 /**
@@ -8,8 +9,8 @@ const moment = require('moment');
  * Enable report link to send PUT request to /reviews/:review_id/report
  */
 
-const ReviewEntry = ({review}) => {
-  let date = moment(review.date);
+const ReviewEntry = ({ review }) => {
+  const date = moment(review.date);
 
   return (
     <div className="box">

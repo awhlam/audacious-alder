@@ -27,8 +27,8 @@ const calcStarImg = (numStars) => {
 
   return (
     <span>
-      {starImg.map(img => (
-        <img src={img}></img>
+      {starImg.map((img, index) => (
+        <img src={img} key={index}></img>
       ))}
     </span>
   )

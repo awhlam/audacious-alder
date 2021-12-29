@@ -3,25 +3,32 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import Style from './Style.jsx';
 import Cart from './Cart.jsx';
-import products from '../../sample-data/products';
 import reviewsMeta from '../../sample-data/reviewsMeta';
 import productStyle from '../../sample-data/productStyle';
 
-const Overview = () => {
+const Overview = function ({ product }) {
   return (
     <div>
       <h1>Overview</h1>
-        <ImageGallery/>
+      <div>
+        <ImageGallery
+          productStyle={productStyle.results[0]}
+        />
+      </div>
+      <div>
         <ProductInfo
-          product={products[0]}
+          product={product}
           reviewsMeta={reviewsMeta}
         />
         <Style
           productStyle={productStyle}
         />
-        <Cart/>
+        <Cart
+          skus={productStyle.results[0].skus}
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Overview;

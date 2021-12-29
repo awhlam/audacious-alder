@@ -1,42 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Cart = () => {
+const Cart = function ({ skus }) {
+  const [size, setSize] = useState(null);
+
+  const skusArray = [];
+  const hash = {};
+
+  for (const key in skus) {
+    skusArray.push({ key: skus[key] });
+  }
+
+  for (const key in skus) {
+    if (!hash[skus[key].size]) {
+      hash[skus[key].size] = skus[key].quantity;
+    }
+  }
+
+  const renderQuantity = () => {
+    const quantArray = [];
+    if (!size) {
+      return (
+        <option>
+          Select Size
+        </option>
+      );
+    }
+    for (let i = 0; i < hash[size]; i++) {
+      quantArray.push(
+        <option>
+          {i}
+        </option>,
+      );
+    }
+    return quantArray;
+  };
+
   return (
     <div className="box">
       <h4>Cart</h4>
       <select>
-        <option value="one">
-          1
-        </option>
-        <option value="two">
-          2
-        </option>
-        <option value="three">
-          3
-        </option>
+        {renderQuantity()}
       </select>
-      <select>
-        <option value="extra-small">
-          XS
-        </option>
-        <option value="small">
-          S
-        </option>
-        <option value="medium">
-          M
-        </option>
-        <option value="large">
-          L
-        </option>
-        <option value="extra-large">
-          XL
-        </option>
+      <select onChange={(e) => { setSize(e.target.value); }}>
+        {skusArray.map((sku) => (
+          <option>
+            {sku.key.size}
+          </option>
+        ))}
       </select>
       <button>
         Add to Cart
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default Cart;

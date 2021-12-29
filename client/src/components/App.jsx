@@ -3,6 +3,7 @@ import Overview from './overview/Overview.jsx';
 import Related from './related/Related.jsx';
 import Reviews from './reviews/Reviews.jsx';
 import Questions from './questions/Questions.jsx';
+import products from '../sample-data/products.js';
 import axios from 'axios';
 
 export const App = () => {
@@ -35,7 +36,9 @@ export const App = () => {
   return (
     <div>
       <h1>Audacious Alder Clothing</h1>
-      <Overview />
+      <Overview
+        product={products[0]}
+      />
       <Related />
       <Reviews
         reviews={reviews}

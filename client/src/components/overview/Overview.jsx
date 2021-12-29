@@ -5,6 +5,7 @@ import Style from './Style.jsx';
 import Cart from './Cart.jsx';
 import products from '../../sample-data/products';
 import reviewsMeta from '../../sample-data/reviewsMeta';
+import productStyle from '../../sample-data/productStyle';
 
 const Overview = () => {
   return (
@@ -15,7 +16,9 @@ const Overview = () => {
           product={products[0]}
           reviewsMeta={reviewsMeta}
         />
-        <Style/>
+        <Style
+          productStyle={productStyle}
+        />
         <Cart/>
     </div>
   )

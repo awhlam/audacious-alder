@@ -1,41 +1,49 @@
 import React from 'react';
-import reviewsMeta from '../../sample-data/reviewsMeta.js';
+import calcStarImg from '../shared/calcStarImg.jsx';
+import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
+import calcPctRecommend from '../shared/calcPctRecommend.js';
 
 /**
- * Update to use sample data
- * Update to use send request to GET /reviews/meta
+ * Style star bars
+ * Style characteristic bars (e.g., "Too small / Perfect / Too large")
  * Enable filtering by # of stars
  */
 
-const ReviewSummary = () => {
-  return (
-    <div className="box">
-      <div>
-        <p>3.5 stars</p>
-        <p>
-          {Math.round((reviewsMeta.recommended.true / (parseInt(reviewsMeta.recommended.true) + parseInt(reviewsMeta.recommended.false))) * 100)}
-          % of reviews recommend this product
-        </p>
-        <p>
-          5 stars: {reviewsMeta.ratings["5"] ? reviewsMeta.ratings["5"] : "0"} reviews<br />
-          4 stars: {reviewsMeta.ratings["4"] ? reviewsMeta.ratings["4"] : "0"} reviews<br />
-          3 stars: {reviewsMeta.ratings["3"] ? reviewsMeta.ratings["3"] : "0"} reviews<br />
-          2 stars: {reviewsMeta.ratings["2"] ? reviewsMeta.ratings["2"] : "0"} reviews<br />
-          1 stars: {reviewsMeta.ratings["1"] ? reviewsMeta.ratings["1"] : "0"} reviews<br />
-        </p>
+function ReviewSummary( { product_id, reviewMetaData }) {
+  if (reviewMetaData) {
+    return (
+      <div className="box column">
+        <div>
+          <h1>
+            {calcAvgTotalReviews(reviewMetaData).avgStars} &nbsp;
+            {calcStarImg(calcAvgTotalReviews(reviewMetaData).avgStars)}
+          </h1>
+          <p>
+            {calcPctRecommend(reviewMetaData)}% of reviews recommend this product
+          </p>
+          <p>
+            <a href='#'>5 stars</a> {reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews<br />
+            <a href='#'>4 stars</a> {reviewMetaData.ratings['4'] ? reviewMetaData.ratings['4'] : '0'} reviews<br />
+            <a href='#'>3 stars</a> {reviewMetaData.ratings['3'] ? reviewMetaData.ratings['3'] : '0'} reviews<br />
+            <a href='#'>2 stars</a> {reviewMetaData.ratings['2'] ? reviewMetaData.ratings['2'] : '0'} reviews<br />
+            <a href='#'>1 stars</a> {reviewMetaData.ratings['1'] ? reviewMetaData.ratings['1'] : '0'} reviews<br />
+          </p>
+        </div>
+        <div>
+          {Object.keys(reviewMetaData.characteristics).map((key) => {
+            return (
+              <div>
+                <h3>{key}</h3>
+                <span>{calcStarImg(reviewMetaData.characteristics[key].value)}</span>
+              </div>
+            )
+          })}
+        </div>
       </div>
-      <div>
-        <h3>Size</h3>
-        {parseFloat(reviewsMeta.characteristics.Fit.value)} out of 5<br />
-        Too small / Perfect / Too large
-      </div>
-      <div>
-        <h3>Comfort</h3>
-        {parseFloat(reviewsMeta.characteristics.Comfort.value)} out of 5<br />
-        Poor / Perfect
-      </div>
-    </div>
-  );
-};
+    );
+  } else {
+    return (null);
+  }
+}
 
 export default ReviewSummary;

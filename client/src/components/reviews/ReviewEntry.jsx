@@ -1,11 +1,11 @@
 import React from 'react';
+import calcStarImg from '../shared/calcStarImg.jsx';
 const moment = require('moment');
 
 /**
- * Update to send request to GET /reviews/
+ * Style response box
  * Enable Helpful link to send PUT request to /reviews/:review_id/helpful
  * Enable report link to send PUT request to /reviews/:review_id/report
- * Style response box
  */
 
 const ReviewEntry = ({review}) => {
@@ -13,7 +13,8 @@ const ReviewEntry = ({review}) => {
 
   return (
     <div className="box">
-      {review.rating} stars | {review.reviewer_name}, {date.format('MMMM Do, YYYY')}
+      <span>{calcStarImg(review.rating)}</span>
+      <div className="reviewerNameDate">{review.reviewer_name}, {date.format('MMMM Do, YYYY')}</div>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
       <p>{review.recommend ? '✔ I recommend this product' : ''}</p>

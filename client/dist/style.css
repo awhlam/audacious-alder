@@ -1,5 +1,48 @@
+#app {
+  font-family: 'Roboto', sans-serif;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .box {
   border: 1px solid;
+  padding: 15px;
+  margin: 5px;
+  flex-grow: 1;
+}
+
+.related {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.card {
+  border: 1px solid;
   padding: 5px;
-  margin: -1px;
+  margin: 1px;
+}
+
+.thumbnail {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.styleList {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  flex-grow: 1;
+}
+
+.reviewerNameDate {
+  float: right;
 }

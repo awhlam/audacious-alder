@@ -96,8 +96,8 @@ const reviews = {
   },
   reviewsPOST: (review) => {
     console.log('in reviewsPOST with review: ', review.body);
-    /*
-    axios.post(server + '/reviews', {
+
+    axios.post(`${server}/reviews`, {
       headers: options,
       data: review.body
     })
@@ -107,7 +107,6 @@ const reviews = {
       .catch((err) => {
         console.log(err);
       });
-    */
   },
   reviewsHelpfulPUT: (review_id) => {
     axios.put(server + `/reviews/${review_id}/helpful`, { headers: options })

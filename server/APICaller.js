@@ -15,15 +15,23 @@ const products = {
       .then((testData) => { console.log(testData.data); })
       .catch((error) => { console.log(error, 'ERROR'); });
   },
-  productGET: (product_id) => {
-    axios.get(`/products/${product_id}`, { headers: options })
-      .then()
-      .catch();
+  productGET: (req, res) => {
+    axios.get(`${server}/products/${req.query.product_id}`, { headers: options })
+      .then((response) => {
+        res.status(200).send(response.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
   },
-  productStylesGET: (product_id) => {
-    axios.get(`/products/${product_id}/styles`, { headers: options })
-      .then()
-      .catch();
+  productStylesGET: (req, res) => {
+    axios.get(`${server}/products/${req.query.product_id}/styles`, { headers: options })
+      .then((response) => {
+        res.status(200).send(response.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
   },
   productRelatedGET: (req, res) => {
     axios.get(`${server}/products/${req.query.product_id}/related`, { headers: options })
@@ -70,14 +78,14 @@ const products = {
       .catch((error) => {
         res.status(404).send(error);
       });
-  }
+  },
 };
 
 // `${server}/products/${req.query.product_id}/related`
 
 const reviews = {
   reviewsGET: (req, res) => {
-    axios.get(server + '/reviews', { headers: options, params: req.query })
+    axios.get(`${server}/reviews`, { headers: options, params: req.query })
       .then((api) => {
         res.send(api.data);
       })
@@ -86,7 +94,7 @@ const reviews = {
       });
   },
   reviewsMetaGET: (req, res) => {
-    axios.get(server + '/reviews/meta', { headers: options, params: req.query })
+    axios.get(`${server}/reviews/meta`, { headers: options, params: req.query })
       .then((api) => {
         res.send(api.data);
       })
@@ -109,12 +117,12 @@ const reviews = {
       });
   },
   reviewsHelpfulPUT: (review_id) => {
-    axios.put(server + `/reviews/${review_id}/helpful`, { headers: options })
+    axios.put(`${server}/reviews/${review_id}/helpful`, { headers: options })
       .then()
       .catch();
   },
   reviewsReportPUT: (review_id) => {
-    axios.put(server + `/reviews/${review_id}/report`, { headers: options })
+    axios.put(`${server}/reviews/${review_id}/report`, { headers: options })
       .then()
       .catch();
   },

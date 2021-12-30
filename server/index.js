@@ -12,6 +12,10 @@ app.get('/test', (req, res) => {
   api.products.productsGET();
 });
 
+// Overview
+app.get('/products', api.products.productGET);
+app.get('/products/styles', api.products.productStylesGET);
+
 // Related
 app.get('/related', api.products.productRelatedGET);
 app.get('/related/products', api.products.multiProductGET);

@@ -28,7 +28,7 @@ export const App = () => {
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
       .then(() => { setIsLoading(false); })
-      .catch((err) => { console.log(err) });
+      .catch((err) => {'Something went wrong: ', console.log(err) });
   }
 
   useEffect(() => {
@@ -37,6 +37,7 @@ export const App = () => {
     fetchData(id);
     console.log('fetching data');
   }, [])
+
   //******************************
   // Render
   //******************************

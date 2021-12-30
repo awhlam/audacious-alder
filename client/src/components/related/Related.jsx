@@ -53,7 +53,8 @@ const Related = (props) => {
     <div>
       <h1>Related</h1>
       <RelatedProductsList
-      relatedProducts={relatedProductsDetail}/>
+      relatedProducts={relatedProductsDetail}
+      setProductId={props.setProductId}/>
     </div>
   )
 };

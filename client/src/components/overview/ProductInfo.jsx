@@ -21,7 +21,7 @@ const ProductInfo = function ({ product, reviewMetaData }) {
       </h4>
       <h4>
         Star Rating: &nbsp;
-        {calcStarImg(sum / reviews)} idk why this has 6 stars ):
+        {calcStarImg(sum / reviews)}
       </h4>
       <h4>
         Price: &nbsp;$

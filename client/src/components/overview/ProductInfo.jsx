@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import calcStarImg from '../shared/calcStarImg.jsx';
+import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 const ProductInfo = function ({ product, reviewMetaData }) {
-  let sum = 0;
-  let reviews = 0;
-  for (const key in reviewMetaData.ratings) {
-    sum += Number(reviewMetaData.ratings[key]) * Number(key);
-    reviews += Number(reviewMetaData.ratings[key]);
-  }
   return (
     <div className="box">
       <h3>Product Info</h3>
@@ -21,7 +16,8 @@ const ProductInfo = function ({ product, reviewMetaData }) {
       </h4>
       <h4>
         Star Rating: &nbsp;
-        {calcStarImg(sum / reviews)}
+        {calcAvgTotalReviews(reviewMetaData).avgStars} &nbsp;
+        {calcStarImg(calcAvgTotalReviews(reviewMetaData).avgStars)}
       </h4>
       <h4>
         Price: &nbsp;$

@@ -19,30 +19,17 @@ export const App = () => {
   const fetchData = () => {
     const getProducts = axios.get('/products', {params: {product_id: product_id}})
       .then((res) => { setProductId(res.data); })
-      .catch((err) => { console.log(err); })
-
     const getStyles = axios.get('/products/styles', { params: { product_id: product_id}})
       .then((response) => { setProductStyle(response.data); } )
-      .catch((error) => { console.log(error); })
-
     const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: product_id }})
       .then(res => { setReviewMetaData(res.data); })
-      .catch(err => { console.log(err); });
-
-    const getReviews = axios.get('/reviews', {params: { product_id: product_id, count: 100 }})
+    const getReviews = axios.get('/reviews', {params: { product_id: product_id, count: 10000 }})
       .then(res => { setReviews(res.data); })
-      .catch(err => { console.log(err); });
-
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err)
-      });
+      .then(() => { setIsLoading(false); })
+      .catch((err) => { console.log(err) });
   }
-
 
   useEffect(() => {
     fetchData();

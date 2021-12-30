@@ -10,17 +10,18 @@ const moment = require('moment');
  * Enable report link to send PUT request to /reviews/:review_id/report
  */
 
+const ReviewerNameDate = styled.span`
+  float: right;
+`
+
 const ReviewEntry = ({ review }) => {
   const date = moment(review.date);
-  const ReviewerNameDate = styled.span`
-    float: right;
-  `
 
   return (
     <div className="box">
       <span>{calcStarImg(review.rating)}</span>
       <ReviewerNameDate>
-        <span>{review.reviewer_name}, {date.format('MMMM Do, YYYY')}</span>
+        {review.reviewer_name}, {date.format('MMMM Do, YYYY')}
       </ReviewerNameDate>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>

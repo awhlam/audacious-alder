@@ -4,7 +4,7 @@ import RelatedProductsList from './RelatedProductsList.jsx';
 import products from '../../sample-data/products.js';
 import axios from 'axios';
 
-const Related = () => {
+const Related = (props) => {
   // *************
   // State
   //**************
@@ -16,7 +16,7 @@ const Related = () => {
   // *************
   useEffect(() => {
     axios.get('/related', {params: {
-        product_id: 63609
+        product_id: props.product.id
       }
     })
     .then((res) => {

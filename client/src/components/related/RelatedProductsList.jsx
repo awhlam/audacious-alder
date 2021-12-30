@@ -12,6 +12,7 @@ const RelatedProductsList = (props) => (
           relatedProductName={product.name}
           relatedProductCategory={product.category}
           relatedProductPrice={product.default_price}
+          relatedProductThumbnail={product.styles[0].photos[0].thumbnail_url}
           />
       })}
     </div>

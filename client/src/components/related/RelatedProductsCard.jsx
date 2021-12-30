@@ -12,7 +12,7 @@ const RelatedProductsCard = (props) => {
   return (
     <div className='card'>
       <div>
-        IMG GET here
+        <img src={props.relatedProductThumbnail} width='150' height='250'/>
       </div>
         <div>
           <a onClick={clickMe}>{props.relatedProductName}</a>

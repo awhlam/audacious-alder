@@ -16,14 +16,14 @@ export const App = () => {
   const [reviews, setReviews] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = () => {
-    const getProducts = axios.get('/products', {params: {product_id: product_id}})
+  const fetchData = (id = 63609) => {
+    const getProducts = axios.get('/products', {params: {product_id: id}})
       .then((res) => { setProductId(res.data); })
-    const getStyles = axios.get('/products/styles', { params: { product_id: product_id}})
+    const getStyles = axios.get('/products/styles', { params: { product_id: id}})
       .then((response) => { setProductStyle(response.data); } )
-    const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: product_id }})
+    const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
       .then(res => { setReviewMetaData(res.data); })
-    const getReviews = axios.get('/reviews', {params: { product_id: product_id, count: 10000 }})
+    const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000 }})
       .then(res => { setReviews(res.data); })
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
@@ -32,7 +32,9 @@ export const App = () => {
   }
 
   useEffect(() => {
-    fetchData();
+    const url = new URL (document.URL)
+    const id = url.search.split('=')[1]
+    fetchData(id);
     console.log('fetching data');
   }, [])
   //******************************

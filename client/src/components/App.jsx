@@ -14,22 +14,22 @@ export const App = () => {
   const [productStyle, setProductStyle] = useState(63609)
   const [reviewMetaData, setReviewMetaData] = useState();
   const [reviews, setReviews] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = () => {
-    axios.get('/products', {params: {product_id: product_id}})
-    .then((res) => { setProductId(res.data);})
-    .catch((err) => { console.log(err); })
-    axios.get('/products/styles', { params: { product_id: product_id}})
+    const getProducts = axios.get('/products', {params: {product_id: product_id}})
+      .then((res) => { setProductId(res.data); })
+    const getStyles = axios.get('/products/styles', { params: { product_id: product_id}})
       .then((response) => { setProductStyle(response.data); } )
-      .catch((error) => { console.log(error); })
-    axios.get('/reviews/meta', {params: { product_id: product_id }})
+    const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: product_id }})
       .then(res => { setReviewMetaData(res.data); })
-      .catch(err => { console.log(err); });
-    axios.get('/reviews', {params: { product_id: product_id, count: 100 }})
+    const getReviews = axios.get('/reviews', {params: { product_id: product_id, count: 10000 }})
       .then(res => { setReviews(res.data); })
-      .catch(err => { console.log(err); });
+    const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
+    Promise.all(promises)
+      .then(() => { setIsLoading(false); })
+      .catch((err) => { console.log(err) });
   }
-
 
   useEffect(() => {
     fetchData();
@@ -38,9 +38,7 @@ export const App = () => {
   //******************************
   // Render
   //******************************
-  if (!reviewMetaData || !reviews) {
-    return null
-  }
+  if (isLoading) { return null }
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>
@@ -51,6 +49,7 @@ export const App = () => {
       />
       <Related />
       <Reviews
+        product_id={product_id}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
       />

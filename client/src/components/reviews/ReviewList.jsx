@@ -9,7 +9,7 @@ import AddReview from './AddReview.jsx';
  * Get all reviews instead of hardcoded number
  */
 
-const ReviewList = ({ reviews, reviewMetaData }) => {
+const ReviewList = ({ product_id, reviews, reviewMetaData }) => {
   //******************************
   // STATE
   //******************************
@@ -34,15 +34,16 @@ const ReviewList = ({ reviews, reviewMetaData }) => {
         {reviews.results.slice(0, numReviews).map((review, index) => (
           <ReviewEntry review={review} key={review.review_id} />
         ))}
-        <p>
+        <div>
           <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
           &nbsp;
           <button type="submit" onClick={openModal}>Add A Review +</button>
           <AddReview
+            product_id={product_id}
             showModal={showModal}
             openModal={openModal}
           />
-        </p>
+        </div>
       </div>
     );
   }

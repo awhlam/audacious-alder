@@ -1,7 +1,5 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
-// const path = require('path');
-// const express = require('express');
 const config = require('../config');
 
 const options = { Authorization: config.token };
@@ -105,9 +103,20 @@ const reviews = {
       });
   },
   reviewsPOST: (review) => {
-    axios.post(`${server}/reviews`, { headers: options })
-      .then()
-      .catch();
+    console.log('in reviewsPOST with review: ', review.body);
+
+    /*
+    axios.post(`${server}/reviews`, {
+      headers: options,
+      data: review.body
+    })
+      .then((api) => {
+        res.send(api.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    */
   },
   reviewsHelpfulPUT: (review_id) => {
     axios.put(`${server}/reviews/${review_id}/helpful`, { headers: options })

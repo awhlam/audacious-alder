@@ -37,7 +37,6 @@ const Cart = function ({ skus }) {
 
   return (
     <div className="box">
-      <h4>Cart</h4>
       <select>
         {renderQuantity()}
       </select>

@@ -4,9 +4,10 @@ import React from 'react';
 
 const StyleEntry = function ({ style, getStyleInfo }) {
   return (
-    <div onClick={(e) => {getStyleInfo(style.style_id)}}>
+    <div>
       <li>{style.name}</li>
       <img
+        onClick={(e) => {getStyleInfo(style.style_id)}}
         className="thumbnail"
         src={style.photos[0].thumbnail_url}
       />

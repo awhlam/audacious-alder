@@ -43,7 +43,7 @@ export const App = () => {
   }
   return (
     <div>
-      <h1>Audacious Alder Clothing</h1>
+      <h1 className="title">Audacious Alder</h1>
       <Overview
         product={product_id}
         productStyle={productStyle}

@@ -5,7 +5,6 @@ import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 const ProductInfo = function ({ product, reviewMetaData }) {
   return (
     <div className="box">
-      <h3>Product Info</h3>
       <h4>
         Product Name: &nbsp;
         {product.name}

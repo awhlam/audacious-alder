@@ -17,14 +17,13 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
   }
 
   return (
-    <div>
-      <h1>Overview</h1>
+    <div className="container">
       <div>
         <ImageGallery
           productStyle={styleInfo}
         />
       </div>
-      <div>
+      <div className="row">
         <ProductInfo
           product={product}
           reviewMetaData={reviewMetaData}

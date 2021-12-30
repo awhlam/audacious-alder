@@ -6,7 +6,6 @@ import StyleEntry from './StyleEntry.jsx';
 const Style = function ({ productStyle, getStyleInfo }) {
   return (
     <div className="box">
-      <h4>Style Toggle</h4>
       <div>
         <ul className="styleList">
           {productStyle.results.map((style, idx) => (

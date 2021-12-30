@@ -10,53 +10,50 @@ const Related = () => {
   //**************
   let [relatedProductsId, setProductsId] = useState([]);
   let [relatedProductsDetail, setDetail] = useState([]);
-  let [relatedProductsStyles, setStyles] = useState([]);
 
   // *************
   // Initial Renders of Data
   // *************
   useEffect(() => {
-    // First axios GET for related products ID
     axios.get('/related', {params: {
-      product_id: 63609
-    }
-  })
-  .then((res) => {
-    setProductsId(relatedProductsId = res.data);
-    // Second axios GET for related products info using ID
-    axios.get('/related/products', {params: {
-      product_id: relatedProductsId
-        }
-      })
-      .then((details) => {
-        setDetail(relatedProductsDetail = details.data);
-        // Third axios GET for styling data using ID
-        axios.get('/related/products/styles', {params: {
+        product_id: 63609
+      }
+    })
+    .then((res) => {
+      setProductsId(relatedProductsId = res.data);
+      const axiosParam = {
+        params: {
           product_id: relatedProductsId
+        }
+      }
+      const axiosProduct = axios.get('/related/products', axiosParam);
+      const axiosStyles = axios.get('/related/products/styles', axiosParam);
+      Promise.all([axiosProduct, axiosStyles])
+      .then((results) => {
+        // console.log('this should be results: ', results);
+        const apiDetail = results[0].data;
+        const apiStyles = results[1].data;
+        for(let i = 0; i < apiDetail.length; i += 1) {
+          for(let j = 0; j < apiStyles.length; j += 1) {
+            if (apiDetail[i].id.toString() === apiStyles[j].product_id) {
+              apiDetail[i].styles = apiStyles[j].results;
+              break;
+            }
           }
-        })
-        .then((styles) => {
-          setStyles(relatedProductsStyles = styles.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+        }
+        setDetail(apiDetail);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log('This is an error: ', error);
       })
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+    })
   }, [])
 
   return (
     <div>
       <h1>Related</h1>
       <RelatedProductsList
-      relatedProducts={relatedProductsDetail}
-      relatedStyles={relatedProductsStyles}/>
+      relatedProducts={relatedProductsDetail}/>
     </div>
   )
 };

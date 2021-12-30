@@ -1,30 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import Style from './Style.jsx';
 import Cart from './Cart.jsx';
-import reviewsMeta from '../../sample-data/reviewsMeta';
-import productStyle from '../../sample-data/productStyle';
 
-const Overview = function ({ product }) {
+const Overview = function ({ product, productStyle, reviewMetaData }) {
+
+  const [styleInfo, setStyleInfo] = useState(productStyle.results[0])
+
+  const getStyleInfo = (styleId) => {
+    for (let i = 0; i < productStyle.results.length; i++) {
+      if (productStyle.results[i].style_id === styleId) {
+        setStyleInfo(productStyle.results[i])
+      }
+    }
+  }
+
   return (
     <div>
       <h1>Overview</h1>
       <div>
         <ImageGallery
-          productStyle={productStyle.results[0]}
+          productStyle={styleInfo}
         />
       </div>
       <div>
         <ProductInfo
           product={product}
-          reviewsMeta={reviewsMeta}
+          reviewMetaData={reviewMetaData}
         />
         <Style
+          getStyleInfo={getStyleInfo}
           productStyle={productStyle}
         />
         <Cart
-          skus={productStyle.results[0].skus}
+          skus={styleInfo.skus}
         />
       </div>
     </div>

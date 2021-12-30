@@ -3,7 +3,7 @@ import StyleEntry from './StyleEntry.jsx';
 
 // style thumbnail bar that shows thumbnail url pics and on click will render product img url to overview
 
-const Style = function ({ productStyle }) {
+const Style = function ({ productStyle, getStyleInfo }) {
   return (
     <div className="box">
       <h4>Style Toggle</h4>
@@ -13,6 +13,7 @@ const Style = function ({ productStyle }) {
             <StyleEntry
               key={idx}
               style={style}
+              getStyleInfo={getStyleInfo}
             />
           ))}
         </ul>

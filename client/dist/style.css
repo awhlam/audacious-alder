@@ -34,6 +34,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .styleList {
@@ -44,5 +45,32 @@
 }
 
 .imageGallery {
-  width: 300px;
+  top: 50px;
+  width: 600px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding: 0;
+  font-family: 'Gidugu', sans-serif;
+  font-size: 100px;
+  text-align: center;
+  line-height: 100px;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  background-color: white;
+  position: fixed;
+  z-index: 1;
 }

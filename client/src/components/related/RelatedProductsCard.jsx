@@ -1,5 +1,11 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+// Card Styling via Styled Components
+const GrayCategoryTitle = styled.a`
+color: gray
+`;
 
 const RelatedProductsCard = (props) => {
   // State
@@ -28,7 +34,9 @@ const RelatedProductsCard = (props) => {
         <img onClick={relatedProductClick} src={backupImgRender(props.relatedProductThumbnail)} width='200' height='250'/>
       </div>
       <div>
-        <a className='related-category'>{props.relatedProductCategory}</a>
+      <GrayCategoryTitle>
+        {props.relatedProductCategory}
+      </GrayCategoryTitle>
       </div>
       <div>
         <a onClick={relatedProductClick}>{props.relatedProductName}</a>
@@ -44,3 +52,5 @@ const RelatedProductsCard = (props) => {
 };
 
 export default RelatedProductsCard;
+
+// <a>{props.relatedProductCategory}</a>

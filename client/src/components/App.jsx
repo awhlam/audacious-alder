@@ -38,27 +38,24 @@ export const App = () => {
   //******************************
   // Render
   //******************************
-  if (isLoading) {
-    return null
-  } else {
-    return (
-      <div>
-        <h1 className="title">Audacious Alder</h1>
-        <Overview
-          product={product_id}
-          productStyle={productStyle}
-          reviewMetaData={reviewMetaData}
-        />
-        <Related />
-        <Reviews
-          product_id={product_id}
-          reviews={reviews}
-          reviewMetaData={reviewMetaData}
-        />
-        <Questions />
-      </div>
-    )
-  }
+  if (isLoading) { return null }
+  return (
+    <div>
+      <h1 className="title">Audacious Alder</h1>
+      <Overview
+        product={product_id}
+        productStyle={productStyle}
+        reviewMetaData={reviewMetaData}
+      />
+      <Related />
+      <Reviews
+        product_id={product_id}
+        reviews={reviews}
+        reviewMetaData={reviewMetaData}
+      />
+      <Questions />
+    </div>
+  )
 }
 
 export default App;

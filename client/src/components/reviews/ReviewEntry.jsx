@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components'
 import calcStarImg from '../shared/calcStarImg.jsx';
 
 const moment = require('moment');
@@ -11,11 +12,16 @@ const moment = require('moment');
 
 const ReviewEntry = ({ review }) => {
   const date = moment(review.date);
+  const ReviewerNameDate = styled.span`
+    float: right;
+  `
 
   return (
     <div className="box">
       <span>{calcStarImg(review.rating)}</span>
-      <div className="reviewerNameDate">{review.reviewer_name}, {date.format('MMMM Do, YYYY')}</div>
+      <ReviewerNameDate>
+        <span>{review.reviewer_name}, {date.format('MMMM Do, YYYY')}</span>
+      </ReviewerNameDate>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
       <p>{review.recommend ? '✔ I recommend this product' : ''}</p>

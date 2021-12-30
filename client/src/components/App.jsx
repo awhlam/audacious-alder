@@ -41,6 +41,7 @@ export const App = () => {
       />
       <Related />
       <Reviews
+        product_id={product_id}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
       />

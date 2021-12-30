@@ -20,6 +20,7 @@ app.get('/related/products/styles', api.products.mulitStylesGET);
 // Reviews
 app.get('/reviews', api.reviews.reviewsGET);
 app.get('/reviews/meta', api.reviews.reviewsMetaGET);
+app.post('/reviews', api.reviews.reviewsPOST);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

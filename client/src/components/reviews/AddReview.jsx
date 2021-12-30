@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import axios from 'axios';
 
 const CloseButton = styled.button`
   float: right;
@@ -36,8 +37,8 @@ const AddReview = ({ product_id, showModal, openModal }) => {
   }
 
   const handleSubmit = (e) => {
-    console.log('name: ', e.target.name);
-    console.log('value: ', e.target.value);
+    console.log('clicked submit');
+    axios.post('/reviews', review);
   }
 
   if (!showModal) { return null; }

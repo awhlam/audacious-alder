@@ -10,7 +10,7 @@ export const App = () => {
   //******************************
   // STATE
   //******************************
-  const [productId, setProductId] = useState();
+  const [productId, setProductId] = useState(63609);
   const [product, setProduct] = useState({});
   const [productStyle, setProductStyle] = useState({})
   const [reviewMetaData, setReviewMetaData] = useState({});
@@ -40,7 +40,11 @@ export const App = () => {
   useEffect(() => {
     const url = new URL (document.URL)
     const id = parseInt(url.search.split('=')[1]);
-    fetchData(id);
+    if (id) {
+      fetchData(id);
+    } else {
+      fetchData(productId);
+    }
     console.log('fetching data for product_id: ', productId);
   }, [productId])
   //******************************

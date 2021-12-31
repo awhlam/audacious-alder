@@ -1,11 +1,19 @@
 import React from 'react';
+import styled from 'styled-components'
 import ReviewSummary from './ReviewSummary.jsx';
 import ReviewList from './ReviewList.jsx';
+
+const ReviewsStyle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
 
 const Reviews = ({ productId, reviewMetaData, reviews, fetchData }) => (
   <div>
     <h1>Ratings & Reviews</h1>
-    <div className="reviews">
+    <ReviewsStyle>
       <ReviewSummary
         reviewMetaData={reviewMetaData}
       />
@@ -15,7 +23,7 @@ const Reviews = ({ productId, reviewMetaData, reviews, fetchData }) => (
         reviewMetaData={reviewMetaData}
         fetchData={fetchData}
       />
-    </div>
+    </ReviewsStyle>
   </div>
 )
 

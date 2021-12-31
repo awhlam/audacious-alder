@@ -60,7 +60,7 @@ export const App = () => {
         reviewMetaData={reviewMetaData}
       />
       <Related
-        product={product_id}
+        productId={productId}
         setProductId={setProductId}
       />
       <Reviews

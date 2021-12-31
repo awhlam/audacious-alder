@@ -16,7 +16,7 @@ const Related = (props) => {
   // *************
   useEffect(() => {
     axios.get('/related', {params: {
-        product_id: props.product.id
+        product_id: props.productId
       }
     })
     .then((res) => {

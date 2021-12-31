@@ -8,10 +8,6 @@ const publicPath = path.join(__dirname, '../client/dist');
 app.use(express.static(publicPath));
 app.use(express.json());
 
-app.get('/test', (req, res) => {
-  api.products.productsGET();
-});
-
 // Overview
 app.get('/products', api.products.productGET);
 app.get('/products/styles', api.products.productStylesGET);

@@ -10,50 +10,61 @@ export const App = () => {
   //******************************
   // STATE
   //******************************
-  const [product_id, setProductId] = useState(63609);
-  const [productStyle, setProductStyle] = useState(63609)
-  const [reviewMetaData, setReviewMetaData] = useState();
-  const [reviews, setReviews] = useState();
+  const [productId, setProductId] = useState(63609);
+  const [product, setProduct] = useState({});
+  const [productStyle, setProductStyle] = useState({})
+  const [reviewMetaData, setReviewMetaData] = useState({});
+  const [reviews, setReviews] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  //******************************
+  // Data fetching
+  //******************************
   const fetchData = (id = 63609) => {
     const getProducts = axios.get('/products', {params: {product_id: id}})
-      .then((res) => { setProductId(res.data); })
+      .then((res) => { setProduct(res.data); })
     const getStyles = axios.get('/products/styles', { params: { product_id: id}})
-      .then((response) => { setProductStyle(response.data); } )
+      .then((res) => { setProductStyle(res.data); } )
     const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
       .then(res => { setReviewMetaData(res.data); })
-    const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000 }})
+    const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000, sort: 'newest' }})
       .then(res => { setReviews(res.data); })
+
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
       .then(() => { setIsLoading(false); })
+      .then(() => { setProductId(id); })
       .catch((err) => { console.log(err) });
   }
 
   useEffect(() => {
     const url = new URL (document.URL)
-    const id = url.search.split('=')[1]
-    fetchData(id);
-    console.log('fetching data');
-  }, [])
+    const id = parseInt(url.search.split('=')[1]);
+    if (id) {
+      fetchData(id);
+    } else {
+      fetchData(productId);
+    }
+    console.log('fetching data for product_id: ', productId);
+  }, [productId])
   //******************************
   // Render
   //******************************
-  if (isLoading) { return null }
+  if (isLoading) { return 'Loading' }
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>
       <Overview
-        product={product_id}
+        product={product}
         productStyle={productStyle}
         reviewMetaData={reviewMetaData}
       />
       <Related />
       <Reviews
-        product_id={product_id}
+        productId={productId}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
+        fetchData={fetchData}
       />
       <Questions />
     </div>

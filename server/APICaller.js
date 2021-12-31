@@ -104,47 +104,30 @@ const products = {
 const reviews = {
   reviewsGET: (req, res) => {
     axios.get(`${server}/reviews`, { headers: options, params: req.query })
-      .then((api) => {
-        res.send(api.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
   reviewsMetaGET: (req, res) => {
     axios.get(`${server}/reviews/meta`, { headers: options, params: req.query })
-      .then((api) => {
-        res.send(api.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
-  reviewsPOST: (review) => {
-    console.log('in reviewsPOST with review: ', review.body);
-
-    /*
-    axios.post(`${server}/reviews`, {
-      headers: options,
-      data: review.body
-    })
-      .then((api) => {
-        res.send(api.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    */
+  reviewsPOST: (req, res) => {
+    axios.post(`${server}/reviews`, req.body, { headers: options })
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
-  reviewsHelpfulPUT: (review_id) => {
+  reviewsHelpfulPUT: (req, res) => {
+    let { review_id } = req.query
     axios.put(`${server}/reviews/${review_id}/helpful`, { headers: options })
-      .then()
-      .catch();
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
-  reviewsReportPUT: (review_id) => {
+  reviewsReportPUT: (req, res) => {
+    let { review_id } = req.query
     axios.put(`${server}/reviews/${review_id}/report`, { headers: options })
-      .then()
-      .catch();
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
 };
 

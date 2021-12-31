@@ -50,10 +50,9 @@ const AddReview = ({ product_id, showModal, openModal, fetchData }) => {
   const handleSubmit = (e) => {
     axios.post('/reviews', review)
       .then((res) => {
-        console.log(res)
-        alert('Review submitted');
+        alert('Your review has been submitted');
         openModal();
-        fetchData(product_id)
+        fetchData(product_id);
       })
       .catch((err) => { console.log(err) });
   }

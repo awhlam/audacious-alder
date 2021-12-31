@@ -10,12 +10,24 @@ export const App = () => {
   //******************************
   // STATE
   //******************************
+
+  /* TODO
+  - The product_id and productStyle are currently initialized to the integer ID (63609).
+  - However, these are subsequently overwritten by the data object that is fetched from the API.
+  - The reviews module expected product_id to just be the integer ID.
+  We should:
+    1) Make product_id only hold the integer ID (or use URL encoding to store the ID)
+    2) Create a separate product data variable OR put all fetched data into one object
+  */
   const [product_id, setProductId] = useState(63609);
   const [productStyle, setProductStyle] = useState(63609)
   const [reviewMetaData, setReviewMetaData] = useState();
   const [reviews, setReviews] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
+  //******************************
+  // Data fetching
+  //******************************
   const fetchData = (id = 63609) => {
     const getProducts = axios.get('/products', {params: {product_id: id}})
       .then((res) => { setProductId(res.data); })
@@ -23,6 +35,8 @@ export const App = () => {
       .then((response) => { setProductStyle(response.data); } )
     const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
       .then(res => { setReviewMetaData(res.data); })
+    // TODO - Allow reviews data to be refreshed indepently when a new review is submitted.
+    // TODO - Allow reviews to be fetched based on order of sorting dropdown menu (newest, relevance, helpful)
     const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000, sort: 'newest' }})
       .then(res => { setReviews(res.data); })
 
@@ -52,7 +66,7 @@ export const App = () => {
       />
       <Related />
       <Reviews
-        product_id={product_id.id}
+        product_id={product_id.id} // Need to pull out the integer ID since it was overwritten by the object
         reviews={reviews}
         reviewMetaData={reviewMetaData}
         fetchData={fetchData}

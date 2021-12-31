@@ -27,8 +27,6 @@ export const App = () => {
       .then((res) => { setProductStyle(res.data); } )
     const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
       .then(res => { setReviewMetaData(res.data); })
-    // TODO - Allow reviews data to be refreshed indepently when a new review is submitted.
-    // TODO - Allow reviews to be fetched based on order of sorting dropdown menu (newest, relevance, helpful)
     const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000, sort: 'newest' }})
       .then(res => { setReviews(res.data); })
 

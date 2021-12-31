@@ -35,7 +35,6 @@ export const App = () => {
     const url = new URL (document.URL)
     const id = url.search.split('=')[1]
     fetchData(id);
-    console.log('fetching data');
   }, [])
 
   //******************************

@@ -7,12 +7,13 @@ const RelatedProductsList = (props) => (
     <div className='related'>
       {props.relatedProducts.map((product) => {
         return <RelatedProductsCard
-          key={product.id}
+          key={product.details.id}
           product_id={product.id}
-          relatedProductName={product.name}
-          relatedProductCategory={product.category}
-          relatedProductPrice={product.default_price}
-          relatedProductThumbnail={product.styles[0].photos[0].thumbnail_url}
+          relatedProductName={product.details.name}
+          relatedProductCategory={product.details.category}
+          relatedProductPrice={product.details.default_price}
+          relatedProductThumbnail={product.styles.results[0].photos[0].thumbnail_url}
+          relatedReviewsMeta={product.reviewsMeta}
           setProductId={props.setProductId}/>
       })}
     </div>

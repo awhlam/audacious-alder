@@ -9,7 +9,7 @@ const Related = (props) => {
   // State
   //**************
   let [relatedProductsId, setProductsId] = useState([]);
-  let [relatedProductsDetail, setDetail] = useState([]);
+  let [relatedProducts, setDetail] = useState([]);
 
   // *************
   // Initial Renders of Data
@@ -31,27 +31,18 @@ const Related = (props) => {
       const axiosReviews = axios.get('/related/products/reviews/meta', axiosParam);
       Promise.all([axiosProduct, axiosStyles, axiosReviews])
       .then((results) => {
-        // console.log('this should be results: ', results);
         const apiDetail = results[0].data;
         const apiStyles = results[1].data;
         const apiReviewMeta = results[2].data;
         const productData = [];
-        console.log(apiDetail);
-        console.log(apiStyles);
-        console.log(apiReviewMeta);
-        // for (let i = 0; i < apiDetail.length; i+=1) {
-        //   let hash = {};
-        //   productData.details =
-        // }
-        for(let i = 0; i < apiDetail.length; i += 1) {
-          for(let j = 0; j < apiStyles.length; j += 1) {
-            if (apiDetail[i].id.toString() === apiStyles[j].product_id) {
-              apiDetail[i].styles = apiStyles[j].results;
-              break;
-            }
-          }
+        for (let i = 0; i < apiDetail.length; i+=1) {
+          let hash = {};
+          hash.details = apiDetail[i];
+          hash.styles = apiStyles[i];
+          hash.reviewsMeta = apiReviewMeta[i];
+          productData.push(hash);
         }
-        setDetail(apiDetail);
+        setDetail(productData);
       })
       .catch((error) => {
         console.log('This is an error: ', error);
@@ -63,7 +54,7 @@ const Related = (props) => {
     <div>
       <h1>Related Products</h1>
       <RelatedProductsList
-      relatedProducts={relatedProductsDetail}
+      relatedProducts={relatedProducts}
       setProductId={props.setProductId}/>
     </div>
   )

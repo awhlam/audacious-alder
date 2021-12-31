@@ -1,39 +1,58 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import calcStarImg from '../shared/calcStarImg.jsx';
+import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 // Color styling for category words
 const GrayCategoryTitle = styled.a`
 color: gray
 `;
 
-// Card styling 
+// Card styling
 
 const RelatedProductsCard = (props) => {
+  // ***********
   // State
+  // ***********
   const [backupImage, setBackupImage] = useState(false);
 
+  // Calculate avg review
+  let averageReview = calcAvgTotalReviews(props.relatedReviewsMeta).avgStars;
+
+  // ***********
   // Func for rendering back up image
+  // ***********
   const backupImgRender = (img) => {
     if (!img) {
-      return '../../../images/small/placeHolder.png'
+      return '../../../images/small/placeHolder.png';
     } else {
-      return img
+      return img;
+    }
+  }
+
+  // ***********
+  // Func for rendering back up image
+  // ***********
+  const backupStarRender = (avgReview) => {
+    if (isNaN(avgReview)) {
+      return 3.25;
+    } else {
+      return avgReview;
     }
   }
 
   // Alter the product id at App level
-  const relatedProductClick = (event) => {
-    event.preventDefault();
-    console.log('clicked');
-    console.log(props.product_id);
-    props.setProductId(props.product_id);
-  }
+  // const relatedProductClick = (event) => {
+  //   event.preventDefault();
+  //   console.log('clicked');
+  //   props.setProductId(props.product_id);
+  // }
 
   return (
     <div className='card'>
       <div>
-        <img onClick={relatedProductClick} src={backupImgRender(props.relatedProductThumbnail)} width='200' height='250'/>
+        <img src={backupImgRender(props.relatedProductThumbnail)} width='200' height='250'/>
       </div>
       <div>
       <GrayCategoryTitle>
@@ -41,13 +60,13 @@ const RelatedProductsCard = (props) => {
       </GrayCategoryTitle>
       </div>
       <div>
-        <a onClick={relatedProductClick}>{props.relatedProductName}</a>
+        <a>{props.relatedProductName}</a>
       </div>
       <div>
-        <a onClick={relatedProductClick}>${props.relatedProductPrice}</a>
+        <a>${props.relatedProductPrice}</a>
       </div>
       <div>
-        REVIEW 'GET' HERE
+        {calcStarImg(backupStarRender(averageReview))}
       </div>
     </div>
   )

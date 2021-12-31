@@ -19,13 +19,14 @@
 .related {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-start;
 }
 
 .card {
   border: 1px solid;
-  padding: 5px;
+  border-radius: 5%;
+  padding: 10px;
   margin: 1px;
 }
 

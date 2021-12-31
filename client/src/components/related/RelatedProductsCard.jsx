@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-// Card Styling via Styled Components
+// Color styling for category words
 const GrayCategoryTitle = styled.a`
 color: gray
 `;
+
+// Card styling 
 
 const RelatedProductsCard = (props) => {
   // State

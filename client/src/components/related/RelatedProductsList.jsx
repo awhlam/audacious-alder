@@ -4,7 +4,6 @@ import RelatedProductsCard from './RelatedProductsCard.jsx';
 
 const RelatedProductsList = (props) => (
   <div>
-    <h3>Related Products</h3>
     <div className='related'>
       {props.relatedProducts.map((product) => {
         return <RelatedProductsCard

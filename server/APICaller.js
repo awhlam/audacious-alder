@@ -79,9 +79,27 @@ const products = {
         res.status(404).send(error);
       });
   },
+  multiReviewsMetaGET: (req, res) => {
+    const urlArray = [];
+    for (let i = 0; i < req.query.product_id.length; i += 1) {
+      urlArray.push(`${server}/reviews/meta/?product_id=${req.query.product_id[i]}`);
+    }
+    const promiseArray = urlArray.map(fetchURL);
+    Promise.all(promiseArray)
+      .then((response) => {
+        const reviewMetaData = [];
+        for (let j = 0; j < response.length; j += 1) {
+          reviewMetaData.push(response[j].data);
+        }
+        res.status(200).send(reviewMetaData);
+      })
+      .catch((error) => {
+        res.status(404).send(error);
+      });
+  },
 };
 
-// `${server}/products/${req.query.product_id}/related`
+// `${server}/reviews/meta/?product_id=${req.query.product_id[i]}`
 
 const reviews = {
   reviewsGET: (req, res) => {

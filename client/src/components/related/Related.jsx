@@ -28,11 +28,21 @@ const Related = (props) => {
       }
       const axiosProduct = axios.get('/related/products', axiosParam);
       const axiosStyles = axios.get('/related/products/styles', axiosParam);
-      Promise.all([axiosProduct, axiosStyles])
+      const axiosReviews = axios.get('/related/products/reviews/meta', axiosParam);
+      Promise.all([axiosProduct, axiosStyles, axiosReviews])
       .then((results) => {
         // console.log('this should be results: ', results);
         const apiDetail = results[0].data;
         const apiStyles = results[1].data;
+        const apiReviewMeta = results[2].data;
+        const productData = [];
+        console.log(apiDetail);
+        console.log(apiStyles);
+        console.log(apiReviewMeta);
+        // for (let i = 0; i < apiDetail.length; i+=1) {
+        //   let hash = {};
+        //   productData.details =
+        // }
         for(let i = 0; i < apiDetail.length; i += 1) {
           for(let j = 0; j < apiStyles.length; j += 1) {
             if (apiDetail[i].id.toString() === apiStyles[j].product_id) {
@@ -51,7 +61,7 @@ const Related = (props) => {
 
   return (
     <div>
-      <h1>Related</h1>
+      <h1>Related Products</h1>
       <RelatedProductsList
       relatedProducts={relatedProductsDetail}
       setProductId={props.setProductId}/>

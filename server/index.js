@@ -20,6 +20,7 @@ app.get('/products/styles', api.products.productStylesGET);
 app.get('/related', api.products.productRelatedGET);
 app.get('/related/products', api.products.multiProductGET);
 app.get('/related/products/styles', api.products.mulitStylesGET);
+app.get('/related/products/reviews/meta', api.products.multiReviewsMetaGET);
 
 // Reviews
 app.get('/reviews', api.reviews.reviewsGET);

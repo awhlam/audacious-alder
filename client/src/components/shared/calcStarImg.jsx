@@ -5,6 +5,7 @@ const calcStarImg = (numStars) => {
   let wholeStars = Math.floor(numStars);
   let fractionStar = numStars - Math.floor(numStars);
   let emptyStars = 5 - Math.ceil(numStars);
+  if (fractionStar > 0 && fractionStar < 0.25) { emptyStars++; }
 
   // whole stars
   for(let i = 1; i <= wholeStars; i++) {

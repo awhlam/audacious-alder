@@ -2,7 +2,7 @@ import React from 'react';
 import ReviewSummary from './ReviewSummary.jsx';
 import ReviewList from './ReviewList.jsx';
 
-function Reviews({ product_id, reviewMetaData, reviews, fetchData }) {
+function Reviews({ productId, reviewMetaData, reviews, fetchData }) {
   return (
     <div>
       <h1>Ratings & Reviews</h1>
@@ -11,7 +11,7 @@ function Reviews({ product_id, reviewMetaData, reviews, fetchData }) {
           reviewMetaData={reviewMetaData}
         />
         <ReviewList
-          product_id={product_id}
+          productId={productId}
           reviews={reviews}
           reviewMetaData={reviewMetaData}
           fetchData={fetchData}

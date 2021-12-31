@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -26,13 +26,15 @@ const OVERLAY_STYLES = {
   zIndex: 1000,
 };
 
-const AddReview = ({ product_id, showModal, openModal, fetchData }) => {
+const AddReview = ({ productId, showModal, openModal, fetchData }) => {
   const [review, setReview] = useState({
-    product_id: product_id,
-    rating: 5,
     photos: [],
     characteristics: {}
   });
+
+  useEffect(() => {
+    setReview((oldState) => ({ ...oldState, product_id: productId }));
+  }, [productId]);
 
   const handleChange = (e) => {
     let field = e.target.name;
@@ -52,7 +54,7 @@ const AddReview = ({ product_id, showModal, openModal, fetchData }) => {
       .then((res) => {
         alert('Your review has been submitted');
         openModal();
-        fetchData(product_id);
+        fetchData(productId);
       })
       .catch((err) => { console.log(err) });
   }

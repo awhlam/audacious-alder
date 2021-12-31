@@ -9,7 +9,7 @@ import AddReview from './AddReview.jsx';
  * Get all reviews instead of hardcoded number
  */
 
-const ReviewList = ({ product_id, reviews, reviewMetaData, fetchData }) => {
+const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
   //******************************
   // STATE
   //******************************
@@ -36,7 +36,7 @@ const ReviewList = ({ product_id, reviews, reviewMetaData, fetchData }) => {
           <button type="submit" onClick={openModal}>Add A Review +</button>
         </p>
         <AddReview
-          product_id={product_id}
+          productId={productId}
           showModal={showModal}
           openModal={openModal}
           fetchData={fetchData}

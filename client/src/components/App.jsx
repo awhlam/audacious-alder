@@ -35,17 +35,14 @@ export const App = () => {
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
       .then(() => { setIsLoading(false); })
+      .then(() => { setProductId(id); })
       .catch((err) => { console.log(err) });
   }
 
-  const updateProductId = () => {
-    const url = new URL (document.URL)
-    setProductId(url.search.split('=')[1]);
-  }
-
   useEffect(() => {
-    updateProductId();
-    fetchData(productId);
+    const url = new URL (document.URL)
+    const id = parseInt(url.search.split('=')[1]);
+    fetchData(id);
     console.log('fetching data for product_id: ', productId);
   }, [productId])
   //******************************
@@ -62,7 +59,7 @@ export const App = () => {
       />
       <Related />
       <Reviews
-        product={product}
+        productId={productId}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
         fetchData={fetchData}

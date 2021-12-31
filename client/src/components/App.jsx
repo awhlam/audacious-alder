@@ -59,7 +59,10 @@ export const App = () => {
         productStyle={productStyle}
         reviewMetaData={reviewMetaData}
       />
-      <Related />
+      <Related
+        product={product_id}
+        setProductId={setProductId}
+      />
       <Reviews
         productId={productId}
         reviews={reviews}

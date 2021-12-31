@@ -9,7 +9,7 @@ import AddReview from './AddReview.jsx';
  * Get all reviews instead of hardcoded number
  */
 
-const ReviewList = ({ product_id, reviews, reviewMetaData }) => {
+const ReviewList = ({ product_id, reviews, reviewMetaData, fetchData }) => {
   //******************************
   // STATE
   //******************************
@@ -18,12 +18,8 @@ const ReviewList = ({ product_id, reviews, reviewMetaData }) => {
   //******************************
   // HANDLERS
   //******************************
-  const openModal = () => {
-    setShowModal((prev) => !prev);
-  };
-  const handleMoreReviews = () => {
-    setNumReviews((prevNum) => prevNum + 2);
-  };
+  const openModal = () => { setShowModal((prev) => !prev); };
+  const handleMoreReviews = () => { setNumReviews((prevNum) => prevNum + 2); };
   //******************************
   // RENDER
   //******************************
@@ -34,16 +30,17 @@ const ReviewList = ({ product_id, reviews, reviewMetaData }) => {
         {reviews.results.slice(0, numReviews).map((review, index) => (
           <ReviewEntry review={review} key={review.review_id} />
         ))}
-        <div>
+        <p>
           <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
           &nbsp;
           <button type="submit" onClick={openModal}>Add A Review +</button>
-          <AddReview
-            product_id={product_id}
-            showModal={showModal}
-            openModal={openModal}
-          />
-        </div>
+        </p>
+        <AddReview
+          product_id={product_id}
+          showModal={showModal}
+          openModal={openModal}
+          fetchData={fetchData}
+        />
       </div>
     );
   }

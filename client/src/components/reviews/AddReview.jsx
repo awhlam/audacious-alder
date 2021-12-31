@@ -26,19 +26,36 @@ const OVERLAY_STYLES = {
   zIndex: 1000,
 };
 
-const AddReview = ({ product_id, showModal, openModal }) => {
+const AddReview = ({ product_id, showModal, openModal, fetchData }) => {
   const [review, setReview] = useState({
     product_id: product_id,
-    rating: "5"
+    rating: 5,
+    photos: [],
+    characteristics: {}
   });
 
   const handleChange = (e) => {
-    setReview((oldState) => ({ ...oldState, [e.target.name]: e.target.value}));
+    let field = e.target.name;
+    let value = e.target.value;
+
+    if (field === 'rating') {
+      value = parseInt(value);
+    } else if (field === 'recommend') {
+      value = value === 'true';
+    }
+
+    setReview((oldState) => ({ ...oldState, [field]: value }));
   }
 
   const handleSubmit = (e) => {
-    console.log('clicked submit');
-    axios.post('/reviews', review);
+    axios.post('/reviews', review)
+      .then((res) => {
+        console.log(res)
+        alert('Review submitted');
+        openModal();
+        fetchData(product_id)
+      })
+      .catch((err) => { console.log(err) });
   }
 
   if (!showModal) { return null; }
@@ -51,30 +68,31 @@ const AddReview = ({ product_id, showModal, openModal }) => {
             Close ❌
           </CloseButton>
         </h1>
-        <p>Overall Rating:</p>
+        <p>Overall Rating*</p>
         <select name="rating" onChange={handleChange}>
-          <option value="5">5 stars</option>
-          <option value="4">4 stars</option>
-          <option value="3">3 stars</option>
-          <option value="2">2 stars</option>
-          <option value="1">1 stars</option>
+          <option>Select a Rating</option>
+          <option value="5">5 Stars - Great</option>
+          <option value="4">4 Stars - Good</option>
+          <option value="3">3 Stars - Average</option>
+          <option value="2">2 Stars - Fair</option>
+          <option value="1">1 Star - Poor</option>
         </select>
-        <p>Do you recommend this product?</p>
+        <p>Do you recommend this product?*</p>
         <form onChange={handleChange}>
           <input type="radio" name="recommend" value="true" />
           <label htmlFor="yes">Yes</label>
           <input type="radio" name="recommend" value="false" />
           <label htmlFor="no">No</label>
         </form>
-        <p>Characteristics:</p>
+        <p>Characteristics*</p>
         <p>Review Summary:</p>
         <p><input type="text" name="summary" placeholder="Example: Best purchase ever!" onChange={handleChange} /></p>
-        <p>Review body:</p>
+        <p>Review Body*</p>
         <p><input type="textarea" name="body" placeholder="Why did you like the product or not?" onChange={handleChange} /></p>
         <p>Photos: <input type="file" /></p>
-        <p>What is your nickname?</p>
+        <p>What is your nickname?*</p>
         <p><input type="text" name="name" placeholder="What is your nickname" onChange={handleChange} /></p>
-        <p>Your email:</p>
+        <p>Your email*</p>
         <p><input type="email" name="email" placeholder="Example: jackson11@email.com" onChange={handleChange} /></p>
         <p>For authentication reasons, you will not be emailed</p>
         <button onClick={handleSubmit}>Submit Review</button>

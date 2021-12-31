@@ -23,8 +23,9 @@ export const App = () => {
       .then((response) => { setProductStyle(response.data); } )
     const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
       .then(res => { setReviewMetaData(res.data); })
-    const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000 }})
+    const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000, sort: 'newest' }})
       .then(res => { setReviews(res.data); })
+
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
       .then(() => { setIsLoading(false); })
@@ -51,9 +52,10 @@ export const App = () => {
       />
       <Related />
       <Reviews
-        product_id={product_id}
+        product_id={product_id.id}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
+        fetchData={fetchData}
       />
       <Questions />
     </div>

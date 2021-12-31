@@ -11,9 +11,9 @@ const SortingBar = ({ reviewMetaData }) => {
       <h2>
         {calcAvgTotalReviews(reviewMetaData).reviews} reviews, sorted by &nbsp;
         <select>
+          <option>newest</option>
           <option>relevance</option>
           <option>helpful</option>
-          <option>newest</option>
         </select> ↓
       </h2>
     );

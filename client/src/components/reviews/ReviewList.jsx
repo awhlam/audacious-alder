@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
+import styled from 'styled-components'
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import AddReview from './AddReview.jsx';
-
-/**
- * Create add a review form which sends a POST request
- * Enable "More Reviews" button to send a GET request to load more reviews
- * Get all reviews instead of hardcoded number
- */
+import { ColumnContainer } from './Reviews.jsx';
 
 const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
   //******************************
@@ -24,7 +20,7 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
   // RENDER
   //******************************
   return (
-    <div className="box column">
+    <ColumnContainer>
       <SortingBar reviewMetaData={reviewMetaData} />
       {reviews.results.slice(0, numReviews).map((review, index) => (
         <ReviewEntry review={review} key={review.review_id} />
@@ -40,7 +36,7 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
         openModal={openModal}
         fetchData={fetchData}
       />
-    </div>
+    </ColumnContainer>
   );
 };
 

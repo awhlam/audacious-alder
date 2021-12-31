@@ -1,7 +1,9 @@
 import React from 'react';
+import styled from 'styled-components'
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import calcPctRecommend from '../shared/calcPctRecommend.js';
+import { ColumnContainer } from './Reviews.jsx';
 
 /**
  * Style star bars (5 stars, 4 stars, ... 1 star)
@@ -10,7 +12,7 @@ import calcPctRecommend from '../shared/calcPctRecommend.js';
  */
 
 const ReviewSummary = ({ reviewMetaData }) => (
-  <div className="box column">
+  <ColumnContainer>
     <div>
       <h1>
         {calcAvgTotalReviews(reviewMetaData).avgStars} &nbsp;
@@ -37,7 +39,7 @@ const ReviewSummary = ({ reviewMetaData }) => (
         )
       })}
     </div>
-  </div>
+  </ColumnContainer>
 )
 
 export default ReviewSummary;

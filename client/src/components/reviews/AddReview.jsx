@@ -14,6 +14,7 @@ const MODAL_STYLES = {
   backgroundColor: '#FFF',
   padding: '50px',
   zIndex: 1000,
+  width: '50%',
 };
 
 const OVERLAY_STYLES = {
@@ -87,9 +88,9 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
         </form>
         <p>Characteristics*</p>
         <p>Review Summary:</p>
-        <p><input type="text" name="summary" placeholder="Example: Best purchase ever!" onChange={handleChange} /></p>
+        <p><input type="text" name="summary" size="58" placeholder="Example: Best purchase ever!" onChange={handleChange} /></p>
         <p>Review Body*</p>
-        <p><input type="textarea" name="body" placeholder="Why did you like the product or not?" onChange={handleChange} /></p>
+        <p><textarea name="body" rows="4" cols="50" placeholder="Why did you like the product or not?" onChange={handleChange} /></p>
         <p>Photos: <input type="file" /></p>
         <p>What is your nickname?*</p>
         <p><input type="text" name="name" placeholder="What is your nickname" onChange={handleChange} /></p>

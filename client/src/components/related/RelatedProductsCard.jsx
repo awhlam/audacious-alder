@@ -45,8 +45,6 @@ const RelatedProductsCard = (props) => {
   // Alter the product id at App level
   const relatedProductClick = (event) => {
     event.preventDefault();
-    console.log('clicked');
-    console.log(props.relatedId);
     props.setProductId(props.relatedId);
   }
 

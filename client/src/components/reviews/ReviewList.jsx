@@ -23,29 +23,25 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
   //******************************
   // RENDER
   //******************************
-  if (reviews) {
-    return (
-      <div className="box column">
-        <SortingBar reviewMetaData={reviewMetaData} />
-        {reviews.results.slice(0, numReviews).map((review, index) => (
-          <ReviewEntry review={review} key={review.review_id} />
-        ))}
-        <p>
-          <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
-          &nbsp;
-          <button type="submit" onClick={openModal}>Add A Review +</button>
-        </p>
-        <AddReview
-          productId={productId}
-          showModal={showModal}
-          openModal={openModal}
-          fetchData={fetchData}
-        />
-      </div>
-    );
-  }
-
-  return null;
+  return (
+    <div className="box column">
+      <SortingBar reviewMetaData={reviewMetaData} />
+      {reviews.results.slice(0, numReviews).map((review, index) => (
+        <ReviewEntry review={review} key={review.review_id} />
+      ))}
+      <p>
+        <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
+        &nbsp;
+        <button type="submit" onClick={openModal}>Add A Review +</button>
+      </p>
+      <AddReview
+        productId={productId}
+        showModal={showModal}
+        openModal={openModal}
+        fetchData={fetchData}
+      />
+    </div>
+  );
 };
 
 export default ReviewList;

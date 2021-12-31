@@ -50,7 +50,7 @@ export const App = () => {
   //******************************
   // Render
   //******************************
-  if (isLoading) { return null }
+  if (isLoading) { return 'Loading' }
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>

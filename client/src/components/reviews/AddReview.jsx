@@ -61,7 +61,7 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
 
   if (!showModal) { return null; }
   return (
-    <>
+    <div>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <h1>Write Your Review
@@ -98,7 +98,7 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
         <p>For authentication reasons, you will not be emailed</p>
         <button onClick={handleSubmit}>Submit Review</button>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const calcStarImg = (numStars) => {
   } else if (fractionStar >= 0.5) {
     starImg.push('./images/small/halfstar.png');
   } else if (fractionStar >= 0.25) {
-    starImg.push('./images/small/quarter.png');
+    starImg.push('./images/small/quarterstar.png');
   }
 
   // empty stars

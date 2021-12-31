@@ -48,14 +48,15 @@ const Related = (props) => {
         console.log('This is an error: ', error);
       })
     })
-  }, [])
+  }, [props.productId])
 
   return (
     <div>
       <h1>Related Products</h1>
       <RelatedProductsList
       relatedProducts={relatedProducts}
-      setProductId={props.setProductId}/>
+      setProductId={props.setProductId}
+      />
     </div>
   )
 };

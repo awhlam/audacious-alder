@@ -43,16 +43,15 @@ const RelatedProductsCard = (props) => {
   }
 
   // Alter the product id at App level
-  // const relatedProductClick = (event) => {
-  //   event.preventDefault();
-  //   console.log('clicked');
-  //   props.setProductId(props.product_id);
-  // }
+  const relatedProductClick = (event) => {
+    event.preventDefault();
+    props.setProductId(props.relatedId);
+  }
 
   return (
     <div className='card'>
       <div>
-        <img src={backupImgRender(props.relatedProductThumbnail)} width='200' height='250'/>
+        <img onClick={relatedProductClick} src={backupImgRender(props.relatedProductThumbnail)} width='200' height='250'/>
       </div>
       <div>
       <GrayCategoryTitle>

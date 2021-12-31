@@ -8,7 +8,7 @@ const RelatedProductsList = (props) => (
       {props.relatedProducts.map((product) => {
         return <RelatedProductsCard
           key={product.details.id}
-          product_id={product.id}
+          relatedId={product.details.id}
           relatedProductName={product.details.name}
           relatedProductCategory={product.details.category}
           relatedProductPrice={product.details.default_price}

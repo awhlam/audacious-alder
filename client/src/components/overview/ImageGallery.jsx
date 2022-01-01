@@ -6,7 +6,7 @@ const ImageGallery = function ({ product, productPhoto }) {
     <div>
       <img
         className="imageGallery"
-        src={productPhoto}
+        src={productPhoto.photos[0].url}
       />
     </div>
   );

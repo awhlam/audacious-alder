@@ -71,3 +71,7 @@
 /* .related-category {
   color: gray;
 } */
+
+.salesPrice {
+  text-decoration: line-through;
+}

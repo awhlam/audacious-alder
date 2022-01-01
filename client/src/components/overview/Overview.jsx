@@ -7,19 +7,21 @@ import axios from 'axios';
 
 const Overview = function ({ product, productStyle, reviewMetaData }) {
 
-  const [styleInfo, setStyleInfo] = useState(productStyle.results[0].photos[0].url)
+  const [styleInfo, setStyleInfo] = useState(productStyle.results[0])
 
   const getStyleInfo = (styleId) => {
     for (let i = 0; i < productStyle.results.length; i++) {
       if (productStyle.results[i].style_id === styleId) {
-        setStyleInfo(productStyle.results[i].photos[0].url)
+        setStyleInfo(productStyle.results[i])
       }
     }
   }
 
   useEffect(() => {
-    setStyleInfo(productStyle.results[0].photos[0].url)
+    setStyleInfo(productStyle.results[0])
   }, [productStyle])
+
+  console.log(styleInfo)
 
   return (
     <div className="container">
@@ -31,6 +33,7 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
       <div className="row">
         <ProductInfo
           product={product}
+          styleInfo={styleInfo}
           reviewMetaData={reviewMetaData}
         />
         <Style

@@ -21,8 +21,6 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
     setStyleInfo(productStyle.results[0])
   }, [productStyle])
 
-  console.log(styleInfo)
-
   return (
     <div className="container">
       <div>

@@ -9,7 +9,7 @@ const ProductInfo = function ({ product, styleInfo, reviewMetaData }) {
       return (
         <div>
           <div className="salesPrice">
-            ${product.default_price}
+            ${styleInfo.original_price == product.default_price ? product.default_price : styleInfo.original_price}
           </div>
           <div>
             ${styleInfo.sale_price}
@@ -18,7 +18,7 @@ const ProductInfo = function ({ product, styleInfo, reviewMetaData }) {
       )
     } else {
       return (
-        <div>${product.default_price}</div>
+        <div>${styleInfo.original_price == product.default_price ? product.default_price : styleInfo.original_price}</div>
       )
     }
   }

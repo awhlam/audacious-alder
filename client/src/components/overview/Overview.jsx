@@ -3,24 +3,29 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import Style from './Style.jsx';
 import Cart from './Cart.jsx';
+import axios from 'axios';
 
 const Overview = function ({ product, productStyle, reviewMetaData }) {
 
-  const [styleInfo, setStyleInfo] = useState(productStyle.results[0])
+  const [styleInfo, setStyleInfo] = useState(productStyle.results[0].photos[0].url)
 
   const getStyleInfo = (styleId) => {
     for (let i = 0; i < productStyle.results.length; i++) {
       if (productStyle.results[i].style_id === styleId) {
-        setStyleInfo(productStyle.results[i])
+        setStyleInfo(productStyle.results[i].photos[0].url)
       }
     }
   }
+
+  useEffect(() => {
+    setStyleInfo(productStyle.results[0].photos[0].url)
+  }, [productStyle])
 
   return (
     <div className="container">
       <div>
         <ImageGallery
-          productStyle={styleInfo}
+          productPhoto={styleInfo}
         />
       </div>
       <div className="row">

@@ -1,11 +1,12 @@
 import React from 'react';
 
-const ImageGallery = function ({ productStyle }) {
+const ImageGallery = function ({ product, productPhoto }) {
+
   return (
     <div>
       <img
         className="imageGallery"
-        src={productStyle.photos[0].url}
+        src={productPhoto}
       />
     </div>
   );

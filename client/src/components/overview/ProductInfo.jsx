@@ -8,10 +8,10 @@ const ProductInfo = function ({ product, styleInfo, reviewMetaData }) {
     if (styleInfo.sale_price) {
       return (
         <div>
-          <div className="salesPrice">
+          <div className="originalPrice">
             ${styleInfo.original_price == product.default_price ? product.default_price : styleInfo.original_price}
           </div>
-          <div>
+          <div className="salesPrice">
             ${styleInfo.sale_price}
           </div>
         </div>

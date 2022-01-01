@@ -72,6 +72,10 @@
   color: gray;
 } */
 
-.salesPrice {
+.originalPrice {
   text-decoration: line-through;
+}
+
+.salesPrice {
+  color: red;
 }

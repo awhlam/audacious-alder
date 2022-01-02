@@ -49,7 +49,7 @@
   align-items: center;
 }
 
-.row {
+.column {
   display: flex;
   flex-direction: column;
 }
@@ -78,4 +78,19 @@
 
 .salesPrice {
   color: red;
+}
+
+.imageGalleryList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.imageGalleryThumbnail {
+  width: 50px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }

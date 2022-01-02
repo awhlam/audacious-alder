@@ -28,7 +28,7 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
           productPhoto={styleInfo}
         />
       </div>
-      <div className="row">
+      <div className="column">
         <ProductInfo
           product={product}
           styleInfo={styleInfo}

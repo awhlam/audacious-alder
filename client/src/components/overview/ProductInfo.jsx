@@ -4,12 +4,24 @@ import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
 const ProductInfo = function ({ product, styleInfo, reviewMetaData }) {
 
+  const itemPrice = () => {
+    if (styleInfo.original_price == product.default_price) {
+      return (
+        product.default_price
+      )
+    } else {
+      return (
+        styleInfo.original_price
+      )
+    }
+  }
+
   const salePrice = () => {
     if (styleInfo.sale_price) {
       return (
         <div>
           <div className="originalPrice">
-            ${styleInfo.original_price == product.default_price ? product.default_price : styleInfo.original_price}
+            ${itemPrice()}
           </div>
           <div className="salesPrice">
             ${styleInfo.sale_price}
@@ -18,7 +30,7 @@ const ProductInfo = function ({ product, styleInfo, reviewMetaData }) {
       )
     } else {
       return (
-        <div>${styleInfo.original_price == product.default_price ? product.default_price : styleInfo.original_price}</div>
+        <div>${itemPrice()}</div>
       )
     }
   }

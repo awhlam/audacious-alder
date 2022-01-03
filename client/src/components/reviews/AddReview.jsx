@@ -53,6 +53,7 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     axios.post('/reviews', review)
       .then((res) => {
         alert('Your review has been submitted');
@@ -75,7 +76,7 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
             Close ❌
           </CloseButton>
         </h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <p>Overall Rating*</p>
           <select name="rating" onChange={handleChange}>
             <option>Select a Rating</option>
@@ -102,7 +103,7 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
           <p>Your email*</p>
           <p><input type="email" name="email" required placeholder="Example: jackson11@email.com" onChange={handleChange} /></p>
           <p>For authentication reasons, you will not be emailed</p>
-          <button onClick={handleSubmit}>Submit Review</button>
+          <button type="submit">Submit Review</button>
         </form>
       </div>
     </div>

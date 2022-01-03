@@ -2,7 +2,38 @@ import React, { useState } from 'react';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
-const ProductInfo = function ({ product, reviewMetaData }) {
+const ProductInfo = function ({ product, styleInfo, reviewMetaData }) {
+
+  const itemPrice = () => {
+    if (styleInfo.original_price == product.default_price) {
+      return (
+        product.default_price
+      )
+    } else {
+      return (
+        styleInfo.original_price
+      )
+    }
+  }
+
+  const salePrice = () => {
+    if (styleInfo.sale_price) {
+      return (
+        <div>
+          <div className="originalPrice">
+            ${itemPrice()}
+          </div>
+          <div className="salesPrice">
+            ${styleInfo.sale_price}
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div>${itemPrice()}</div>
+      )
+    }
+  }
   return (
     <div className="box">
       <h4>
@@ -19,8 +50,8 @@ const ProductInfo = function ({ product, reviewMetaData }) {
         {calcStarImg(calcAvgTotalReviews(reviewMetaData).avgStars)}
       </h4>
       <h4>
-        Price: &nbsp;$
-        {product.default_price}
+        Price: &nbsp;
+        {salePrice()}
       </h4>
       <h4>
         Product Category: &nbsp;

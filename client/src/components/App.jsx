@@ -10,39 +10,64 @@ export const App = () => {
   //******************************
   // STATE
   //******************************
-  const [product_id, setProductId] = useState(63609);
-  const [reviewMetaData, setReviewMetaData] = useState();
-  const [reviews, setReviews] = useState();
+  const [productId, setProductId] = useState(63609);
+  const [product, setProduct] = useState({});
+  const [productStyle, setProductStyle] = useState({})
+  const [reviewMetaData, setReviewMetaData] = useState({});
+  const [reviews, setReviews] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = () => {
-    axios.get('/reviews/meta', {params: { product_id: product_id }})
+  //******************************
+  // Data fetching
+  //******************************
+  const fetchData = (id = 63609) => {
+    const getProducts = axios.get('/products', {params: {product_id: id}})
+      .then((res) => { setProduct(res.data); })
+    const getStyles = axios.get('/products/styles', { params: { product_id: id}})
+      .then((res) => { setProductStyle(res.data); } )
+    const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
       .then(res => { setReviewMetaData(res.data); })
-      .catch(err => { console.log(err); });
-    axios.get('/reviews', {params: { product_id: product_id, count: 100 }})
+    const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000, sort: 'newest' }})
       .then(res => { setReviews(res.data); })
-      .catch(err => { console.log(err); });
+
+    const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
+    Promise.all(promises)
+      .then(() => { setIsLoading(false); })
+      .then(() => { setProductId(id); })
+      .catch((err) => { console.log(err) });
   }
 
   useEffect(() => {
-    fetchData();
-    console.log('fetching data');
-  }, [])
+    const url = new URL (document.URL)
+    const id = parseInt(url.search.split('=')[1]);
+    if (id) {
+      fetchData(id);
+    } else {
+      fetchData(productId);
+    }
+    console.log('fetching data for product_id: ', productId);
+  }, [productId])
   //******************************
   // Render
   //******************************
-  if (!reviewMetaData || !reviews) {
-    return null
-  }
+  if (isLoading) { return 'Loading' }
   return (
     <div>
-      <h1>Audacious Alder Clothing</h1>
+      <h1 className="title">Audacious Alder</h1>
       <Overview
-        product={products[0]}
+        product={product}
+        productStyle={productStyle}
+        reviewMetaData={reviewMetaData}
       />
-      <Related />
+      <Related
+        productId={productId}
+        setProductId={setProductId}
+      />
       <Reviews
+        productId={productId}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
+        fetchData={fetchData}
       />
       <Questions />
     </div>

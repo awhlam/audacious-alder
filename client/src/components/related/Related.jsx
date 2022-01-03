@@ -4,59 +4,59 @@ import RelatedProductsList from './RelatedProductsList.jsx';
 import products from '../../sample-data/products.js';
 import axios from 'axios';
 
-const Related = () => {
+const Related = (props) => {
   // *************
   // State
   //**************
   let [relatedProductsId, setProductsId] = useState([]);
-  let [relatedProductsDetail, setDetail] = useState([]);
-  let [relatedProductsStyles, setStyles] = useState([]);
+  let [relatedProducts, setDetail] = useState([]);
 
   // *************
   // Initial Renders of Data
   // *************
   useEffect(() => {
-    // First axios GET for related products ID
     axios.get('/related', {params: {
-      product_id: 63609
-    }
-  })
-  .then((res) => {
-    setProductsId(relatedProductsId = res.data);
-    // Second axios GET for related products info using ID
-    axios.get('/related/products', {params: {
-      product_id: relatedProductsId
-        }
-      })
-      .then((details) => {
-        setDetail(relatedProductsDetail = details.data);
-        // Third axios GET for styling data using ID
-        axios.get('/related/products/styles', {params: {
+        product_id: props.productId
+      }
+    })
+    .then((res) => {
+      setProductsId(relatedProductsId = res.data);
+      const axiosParam = {
+        params: {
           product_id: relatedProductsId
-          }
-        })
-        .then((styles) => {
-          setStyles(relatedProductsStyles = styles.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+        }
+      }
+      const axiosProduct = axios.get('/related/products', axiosParam);
+      const axiosStyles = axios.get('/related/products/styles', axiosParam);
+      const axiosReviews = axios.get('/related/products/reviews/meta', axiosParam);
+      Promise.all([axiosProduct, axiosStyles, axiosReviews])
+      .then((results) => {
+        const apiDetail = results[0].data;
+        const apiStyles = results[1].data;
+        const apiReviewMeta = results[2].data;
+        const productData = [];
+        for (let i = 0; i < apiDetail.length; i+=1) {
+          let hash = {};
+          hash.details = apiDetail[i];
+          hash.styles = apiStyles[i];
+          hash.reviewsMeta = apiReviewMeta[i];
+          productData.push(hash);
+        }
+        setDetail(productData);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log('This is an error: ', error);
       })
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  }, [])
+    })
+  }, [props.productId])
 
   return (
     <div>
-      <h1>Related</h1>
+      <h1>Related Products</h1>
       <RelatedProductsList
-      relatedProducts={relatedProductsDetail}
-      relatedStyles={relatedProductsStyles}/>
+      relatedProducts={relatedProducts}
+      setProductId={props.setProductId}
+      />
     </div>
   )
 };

@@ -4,7 +4,8 @@ const calcStarImg = (numStars) => {
   let starImg = [];
   let wholeStars = Math.floor(numStars);
   let fractionStar = numStars - Math.floor(numStars);
-  let emptyStars = 5 - wholeStars;
+  let emptyStars = 5 - Math.ceil(numStars);
+  if (fractionStar > 0 && fractionStar < 0.25) { emptyStars++; }
 
   // whole stars
   for(let i = 1; i <= wholeStars; i++) {
@@ -17,7 +18,7 @@ const calcStarImg = (numStars) => {
   } else if (fractionStar >= 0.5) {
     starImg.push('./images/small/halfstar.png');
   } else if (fractionStar >= 0.25) {
-    starImg.push('./images/small/quarter.png');
+    starImg.push('./images/small/quarterstar.png');
   }
 
   // empty stars

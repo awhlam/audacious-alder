@@ -1,7 +1,5 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
-// const path = require('path');
-// const express = require('express');
 const config = require('../config');
 
 const options = { Authorization: config.token };
@@ -17,15 +15,23 @@ const products = {
       .then((testData) => { console.log(testData.data); })
       .catch((error) => { console.log(error, 'ERROR'); });
   },
-  productGET: (product_id) => {
-    axios.get(`/products/${product_id}`, { headers: options })
-      .then()
-      .catch();
+  productGET: (req, res) => {
+    axios.get(`${server}/products/${req.query.product_id}`, { headers: options })
+      .then((response) => {
+        res.status(200).send(response.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
   },
-  productStylesGET: (product_id) => {
-    axios.get(`/products/${product_id}/styles`, { headers: options })
-      .then()
-      .catch();
+  productStylesGET: (req, res) => {
+    axios.get(`${server}/products/${req.query.product_id}/styles`, { headers: options })
+      .then((response) => {
+        res.status(200).send(response.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
   },
   productRelatedGET: (req, res) => {
     axios.get(`${server}/products/${req.query.product_id}/related`, { headers: options })
@@ -72,44 +78,56 @@ const products = {
       .catch((error) => {
         res.status(404).send(error);
       });
-  }
+  },
+  multiReviewsMetaGET: (req, res) => {
+    const urlArray = [];
+    for (let i = 0; i < req.query.product_id.length; i += 1) {
+      urlArray.push(`${server}/reviews/meta/?product_id=${req.query.product_id[i]}`);
+    }
+    const promiseArray = urlArray.map(fetchURL);
+    Promise.all(promiseArray)
+      .then((response) => {
+        const reviewMetaData = [];
+        for (let j = 0; j < response.length; j += 1) {
+          reviewMetaData.push(response[j].data);
+        }
+        res.status(200).send(reviewMetaData);
+      })
+      .catch((error) => {
+        res.status(404).send(error);
+      });
+  },
 };
 
-// `${server}/products/${req.query.product_id}/related`
+// `${server}/reviews/meta/?product_id=${req.query.product_id[i]}`
 
 const reviews = {
   reviewsGET: (req, res) => {
-    axios.get(server + '/reviews', { headers: options, params: req.query })
-      .then((api) => {
-        res.send(api.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get(`${server}/reviews`, { headers: options, params: req.query })
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
   reviewsMetaGET: (req, res) => {
-    axios.get(server + '/reviews/meta', { headers: options, params: req.query })
-      .then((api) => {
-        res.send(api.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get(`${server}/reviews/meta`, { headers: options, params: req.query })
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
-  reviewsPOST: (review) => {
-    axios.post(server + '/reviews', { headers: options })
-      .then()
-      .catch();
+  reviewsPOST: (req, res) => {
+    axios.post(`${server}/reviews`, req.body, { headers: options })
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
-  reviewsHelpfulPUT: (review_id) => {
-    axios.put(server + `/reviews/${review_id}/helpful`, { headers: options })
-      .then()
-      .catch();
+  reviewsHelpfulPUT: (req, res) => {
+    let { review_id } = req.query
+    axios.put(`${server}/reviews/${review_id}/helpful`, { headers: options })
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
-  reviewsReportPUT: (review_id) => {
-    axios.put(server + `/reviews/${review_id}/report`, { headers: options })
-      .then()
-      .catch();
+  reviewsReportPUT: (req, res) => {
+    let { review_id } = req.query
+    axios.put(`${server}/reviews/${review_id}/report`, { headers: options })
+      .then((api) => { res.send(api.data); })
+      .catch((err) => { console.log(err); });
   },
 };
 

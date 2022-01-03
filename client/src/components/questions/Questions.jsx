@@ -3,17 +3,16 @@ import axios from 'axios'
 import QuestionRender from './QuestionRender.jsx'
 import SubmitQuestionForm from './SubmitQuestionForm.jsx'
 
-const Questions = () => {
+const Questions = ({productId}) => {
 
-  const [product_id, updateID] = useState(63609)
   const [questions, updateQuestions] = useState({results: []})
   const [questionDisplay, updateQuestionDisplay] = useState(false)
 
   useEffect(() => {
-    axios.get('/questions', {params: {id: product_id}})
+    axios.get('/questions', {params: {id: productId}})
       .then((response) => {updateQuestions(response.data)})
       .catch((error) => {console.log(error)})
-  }, [product_id])
+  }, [productId])
 
   if (questionDisplay) {
     return (
@@ -25,7 +24,7 @@ const Questions = () => {
           {questions.results.map((question) => <QuestionRender question={question}/>)}
         </div>
         <div className='box'>
-          <SubmitQuestionForm id={product_id}/>
+          <SubmitQuestionForm id={productId}/>
         </div>
       </div>
     )
@@ -45,7 +44,7 @@ const Questions = () => {
         <button onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</button>
         </div>
         <div className='box'>
-          <SubmitQuestionForm id={product_id}/>
+          <SubmitQuestionForm id={productId}/>
         </div>
       </div>
     )

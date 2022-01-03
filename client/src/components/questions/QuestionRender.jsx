@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import AnswerRender from './AnswerRender.jsx'
+import SubmitAnswerForm from './SubmitAnswerForm.jsx'
 
 const QuestionRender = ({question}) => {
   if (question) {
@@ -30,6 +31,9 @@ const QuestionRender = ({question}) => {
           <div>
             A: {answers.results.map((answer) => <AnswerRender answer={answer} />)}
           </div>
+          <div>
+            <SubmitAnswerForm />
+          </div>
         </div>
       )
     } else {
@@ -48,6 +52,9 @@ const QuestionRender = ({question}) => {
             A:
             <AnswerRender answer={answers.results[0]} />
             <AnswerRender answer={answers.results[1]} />
+          </div>
+          <div>
+            <SubmitAnswerForm />
           </div>
           <div>
             <button onClick={(event) => {updateAnswerDisplay(true)}}>Show more answers</button>

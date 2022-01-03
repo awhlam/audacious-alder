@@ -69,7 +69,9 @@ export const App = () => {
         reviewMetaData={reviewMetaData}
         fetchData={fetchData}
       />
-      <Questions />
+      <Questions
+        productId={productId}
+      />
     </div>
   )
 }

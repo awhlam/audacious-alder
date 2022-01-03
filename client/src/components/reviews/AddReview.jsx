@@ -104,7 +104,7 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
           <p>Review Summary ({60 - review.summary.length} characters remaining):</p>
           <p><input type="text" name="summary" size="58" maxlength="60" placeholder="Example: Best purchase ever!" value={review.summary} onChange={handleChange} /></p>
           <p>Review Body ({1000 - review.body.length} characters remaining)*</p>
-          <p><textarea name="body" rows="4" cols="50" required maxlength="1000" placeholder="Why did you like the product or not?" value={review.body} onChange={handleChange} /></p>
+          <p><textarea name="body" rows="4" cols="50" required minlength="50" maxlength="1000" placeholder="Why did you like the product or not?" value={review.body} onChange={handleChange} /></p>
           <p>Photos: <input type="file" /></p>
           <p>What is your nickname?*</p>
           <p><input type="text" name="name" required placeholder="What is your nickname" value={review.name} onChange={handleChange} /></p>

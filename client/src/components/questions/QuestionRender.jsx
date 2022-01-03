@@ -14,10 +14,6 @@ const QuestionRender = ({question}) => {
         .catch((error) => {console.log(error)})
     }, [])
 
-    const showMoreAnswers = () => {
-      updateAnswerDisplay(true)
-    }
-
     let date = moment(question.question_date);
     if (answerDisplay) {
       return (
@@ -54,7 +50,7 @@ const QuestionRender = ({question}) => {
             <AnswerRender answer={answers.results[1]} />
           </div>
           <div>
-            <button onClick={showMoreAnswers}>Show more answers</button>
+            <button onClick={(event) => {updateAnswerDisplay(true)}}>Show more answers</button>
           </div>
         </div>
       )

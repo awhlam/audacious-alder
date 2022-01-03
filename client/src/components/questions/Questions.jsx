@@ -15,10 +15,6 @@ const Questions = () => {
       .catch((error) => {console.log(error)})
   }, [product_id])
 
-  const showMoreQuestions = () => {
-    updateQuestionDisplay(true)
-  }
-
   if (questionDisplay) {
     return (
       <div className="box">
@@ -46,7 +42,7 @@ const Questions = () => {
           <QuestionRender question={questions.results[3]}/>
         </div>
         <div>
-        <button onClick={showMoreQuestions}>Show more questions</button>
+        <button onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</button>
         </div>
         <div className='box'>
           <SubmitQuestionForm id={product_id}/>

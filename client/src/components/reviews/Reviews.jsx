@@ -8,27 +8,25 @@ const ReviewsContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  background: #45a679;
 `
 
-export const ColumnContainer = styled.div`
-  border: 1px solid;
-  padding: 15px;
-  margin: 5px;
-  flex-grow: 1;
-`
-
-const Reviews = ({ productId, reviewMetaData, reviews, fetchData }) => (
+const Reviews = ({ productId, reviewMetaData, reviewsFilter, setReviewsFilter, reviews, setReviews, reviewsSort, setReviewsSort }) => (
   <div>
     <h1>Ratings & Reviews</h1>
     <ReviewsContainer>
       <ReviewSummary
         reviewMetaData={reviewMetaData}
+        reviewsFilter={reviewsFilter}
+        setReviewsFilter={setReviewsFilter}
       />
       <ReviewList
         productId={productId}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
-        fetchData={fetchData}
+        setReviews={setReviews}
+        reviewsSort={reviewsSort}
+        setReviewsSort={setReviewsSort}
       />
     </ReviewsContainer>
   </div>

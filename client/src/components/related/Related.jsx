@@ -12,6 +12,10 @@ const Related = (props) => {
   let [relatedProducts, setDetail] = useState([]);
 
   // *************
+  // Functions
+  //**************
+
+  // *************
   // Initial Renders of Data
   // *************
   useEffect(() => {
@@ -50,15 +54,17 @@ const Related = (props) => {
     })
   }, [props.productId])
 
-  return (
-    <div>
-      <h1>Related Products</h1>
-      <RelatedProductsList
-      relatedProducts={relatedProducts}
-      setProductId={props.setProductId}
-      />
-    </div>
-  )
+    return (
+      <div>
+        <h1>Related Products</h1>
+        <RelatedProductsList
+          currentProduct={props.currentProduct}
+          relatedProducts={relatedProducts}
+          setProductId={props.setProductId}
+          // handleModalOpen={handleModalOpen}
+        />
+      </div>
+    )
 };
 
 export default Related;

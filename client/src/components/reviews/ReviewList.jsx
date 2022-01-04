@@ -3,9 +3,17 @@ import styled from 'styled-components'
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import AddReview from './AddReview.jsx';
-import { ColumnContainer } from './Reviews.jsx';
 
-const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
+const ColumnContainer = styled.div`
+  border: 2px solid;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 15px;
+  flex: 4;
+  background: white;
+`
+
+const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSort, setReviewsSort }) => {
   //******************************
   // STATE
   //******************************
@@ -21,9 +29,20 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
   //******************************
   return (
     <ColumnContainer>
-      <SortingBar reviewMetaData={reviewMetaData} />
-      {reviews.results.slice(0, numReviews).map((review, index) => (
-        <ReviewEntry review={review} key={review.review_id} />
+      <SortingBar
+        setReviews={setReviews}
+        reviewMetaData={reviewMetaData}
+        productId={productId}
+        setReviewsSort={setReviewsSort}
+      />
+      {reviews.slice(0, numReviews).map((review, index) => (
+        <ReviewEntry
+          review={review}
+          key={review.review_id}
+          productId={productId}
+          reviewsSort={reviewsSort}
+          setReviews={setReviews}
+        />
       ))}
       <p>
         <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
@@ -34,7 +53,8 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
         productId={productId}
         showModal={showModal}
         openModal={openModal}
-        fetchData={fetchData}
+        reviewsSort={reviewsSort}
+        setReviews={setReviews}
       />
     </ColumnContainer>
   );

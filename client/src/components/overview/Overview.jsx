@@ -3,6 +3,7 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import Style from './Style.jsx';
 import Cart from './Cart.jsx';
+import axios from 'axios';
 
 const Overview = function ({ product, productStyle, reviewMetaData }) {
 
@@ -16,16 +17,21 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
     }
   }
 
+  useEffect(() => {
+    setStyleInfo(productStyle.results[0])
+  }, [productStyle])
+
   return (
-    <div className="container">
-      <div>
+    <div className="overview">
+      <div className="overLeft">
         <ImageGallery
-          productStyle={styleInfo}
+          productPhoto={styleInfo}
         />
       </div>
-      <div className="row">
+      <div className="overviewRight">
         <ProductInfo
           product={product}
+          styleInfo={styleInfo}
           reviewMetaData={reviewMetaData}
         />
         <Style

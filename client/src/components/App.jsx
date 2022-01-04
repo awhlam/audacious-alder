@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Overview from './overview/Overview.jsx';
 import Related from './related/Related.jsx';
 import Reviews from './reviews/Reviews.jsx';
 import Questions from './questions/Questions.jsx';
-import products from '../sample-data/products.js';
-import axios from 'axios';
+import fetchReviews from './shared/fetchReviews.js';
+import filterReviews from './shared/filterReviews.js';
 
 export const App = () => {
   //******************************
@@ -15,8 +16,9 @@ export const App = () => {
   const [productStyle, setProductStyle] = useState({})
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [reviews, setReviews] = useState({});
+  const [reviewsSort, setReviewsSort] = useState('helpful');
+  const [reviewsFilter, setReviewsFilter] = useState('none');
   const [isLoading, setIsLoading] = useState(true);
-
   //******************************
   // Data fetching
   //******************************
@@ -26,9 +28,9 @@ export const App = () => {
     const getStyles = axios.get('/products/styles', { params: { product_id: id}})
       .then((res) => { setProductStyle(res.data); } )
     const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
-      .then(res => { setReviewMetaData(res.data); })
-    const getReviews = axios.get('/reviews', {params: { product_id: id, count: 10000, sort: 'newest' }})
-      .then(res => { setReviews(res.data); })
+      .then((res) => { setReviewMetaData(res.data); })
+    const getReviews = fetchReviews(id, reviewsSort)
+      .then((res) => { setReviews(res.data.results); })
 
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
@@ -36,7 +38,7 @@ export const App = () => {
       .then(() => { setProductId(id); })
       .catch((err) => { console.log(err) });
   }
-
+  // If productId changes, fetch all data for new product
   useEffect(() => {
     const url = new URL (document.URL)
     const id = parseInt(url.search.split('=')[1]);
@@ -47,6 +49,11 @@ export const App = () => {
     }
     console.log('fetching data for product_id: ', productId);
   }, [productId])
+  // If review sorting/filtering method changes, fetch reviews
+  useEffect(() => {
+    fetchReviews(productId, reviewsSort)
+      .then((res) => { setReviews(filterReviews(res.data.results, reviewsFilter)) });
+  }, [reviewsSort, reviewsFilter])
   //******************************
   // Render
   //******************************
@@ -54,6 +61,7 @@ export const App = () => {
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>
+      <a name="top"></a>
       <Overview
         product={product}
         productStyle={productStyle}
@@ -62,14 +70,21 @@ export const App = () => {
       <Related
         productId={productId}
         setProductId={setProductId}
+        currentProduct={product}
       />
       <Reviews
         productId={productId}
-        reviews={reviews}
         reviewMetaData={reviewMetaData}
-        fetchData={fetchData}
+        reviews={reviews}
+        setReviews={setReviews}
+        reviewsSort={reviewsSort}
+        setReviewsSort={setReviewsSort}
+        reviewsFilter={reviewsFilter}
+        setReviewsFilter={setReviewsFilter}
       />
-      <Questions />
+      <Questions
+        productId={productId}
+      />
     </div>
   )
 }

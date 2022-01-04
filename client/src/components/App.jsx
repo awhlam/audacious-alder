@@ -78,7 +78,9 @@ export const App = () => {
         reviewsSort={reviewsSort}
         setReviewsSort={setReviewsSort}
       />
-      <Questions />
+      <Questions
+        productId={productId}
+      />
     </div>
   )
 }

@@ -13,7 +13,7 @@ const ReviewSummary = ({ reviewMetaData, reviewsFilter, setReviewsFilter }) => {
   const handleClick = (e) => {
     e.preventDefault();
     let clickedFilter = parseInt(e.target.innerHTML[0]);
-    if (reviewsFilter !== 'none') { clickedFilter = 'none'; }
+    if (reviewsFilter === clickedFilter) { clickedFilter = 'none'; }
     setReviewsFilter(clickedFilter);
   };
 
@@ -60,6 +60,7 @@ const ReviewSummary = ({ reviewMetaData, reviewsFilter, setReviewsFilter }) => {
           <br />
         </p>
       </div>
+      <p>Current Filter: {reviewsFilter}</p>
       <div>
         {Object.keys(reviewMetaData.characteristics).map((key) => {
           return (

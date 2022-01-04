@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import products from '../../sample-data/products.js';
 import axios from 'axios';
+import RelatedModal from './RelatedModal.jsx';
 
 const Related = (props) => {
   // *************
@@ -10,6 +11,23 @@ const Related = (props) => {
   //**************
   let [relatedProductsId, setProductsId] = useState([]);
   let [relatedProducts, setDetail] = useState([]);
+  let [modalOpen, setModal] = useState(false);
+
+  // *************
+  // Functions
+  //**************
+  const handleModalOpen = () => {
+    if (!modalOpen) {
+      setModal(true);
+      console.log(modalOpen);
+    }
+  };
+
+  const handleModalClose = () => {
+    if (modalOpen) {
+      setModal(false);
+    }
+  }
 
   // *************
   // Initial Renders of Data
@@ -50,15 +68,32 @@ const Related = (props) => {
     })
   }, [props.productId])
 
-  return (
-    <div>
-      <h1>Related Products</h1>
-      <RelatedProductsList
-      relatedProducts={relatedProducts}
-      setProductId={props.setProductId}
-      />
-    </div>
-  )
+  if (!modalOpen) {
+    return (
+      <div>
+        <h1>Related Products</h1>
+        <RelatedProductsList
+          relatedProducts={relatedProducts}
+          setProductId={props.setProductId}
+          handleModalOpen={handleModalOpen}
+        />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>Related Products</h1>
+        <RelatedModal
+          handleModalClose={handleModalClose}
+        />
+        <RelatedProductsList
+          relatedProducts={relatedProducts}
+          setProductId={props.setProductId}
+          handleModalOpen={handleModalOpen}
+        />
+      </div>
+    )
+  }
 };
 
 export default Related;

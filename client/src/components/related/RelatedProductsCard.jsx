@@ -9,8 +9,6 @@ const GrayCategoryTitle = styled.a`
 color: gray
 `;
 
-// Card styling
-
 const RelatedProductsCard = (props) => {
   // ***********
   // State
@@ -42,10 +40,20 @@ const RelatedProductsCard = (props) => {
     }
   }
 
+  // ***********
   // Alter the product id at App level
+  // ***********
   const relatedProductClick = (event) => {
     event.preventDefault();
     props.setProductId(props.relatedId);
+  }
+
+  // ***********
+  // Handle modal open button click
+  // ***********
+  const handleModalOpenClick = (event) => {
+    event.preventDefault();
+    props.handleModalOpen();
   }
 
   return (
@@ -53,16 +61,17 @@ const RelatedProductsCard = (props) => {
       <div>
         <img onClick={relatedProductClick} src={backupImgRender(props.relatedProductThumbnail)} width='200' height='250'/>
       </div>
+      <button onClick={handleModalOpenClick} className='modal-button'>♡</button>
       <div>
       <GrayCategoryTitle>
         {props.relatedProductCategory}
       </GrayCategoryTitle>
       </div>
       <div>
-        <a>{props.relatedProductName}</a>
+        <a href="#top" onClick={relatedProductClick} >{props.relatedProductName}</a>
       </div>
       <div>
-        <a>${props.relatedProductPrice}</a>
+        <a href="#top" onClick={relatedProductClick}>${props.relatedProductPrice}</a>
       </div>
       <div>
         {calcStarImg(backupStarRender(averageReview))}

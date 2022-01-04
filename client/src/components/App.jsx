@@ -54,6 +54,7 @@ export const App = () => {
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>
+      <a name="top"></a>
       <Overview
         product={product}
         productStyle={productStyle}

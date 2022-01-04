@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import fetchReviews from '../shared/fetchReviews.js';
 import {CloseButton, MODAL_STYLES, OVERLAY_STYLES} from './AddReview.styles.js';
 

@@ -1,33 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Cart = function ({ skus }) {
   const [size, setSize] = useState(null);
 
   const skusArray = [];
   const hash = {};
+  const selectSize = 'Select Size';
+
+  useEffect(() => {
+    setSize(null)
+  }, [skus])
+
 
   for (const key in skus) {
-    skusArray.push({ key: skus[key] });
-  }
-
-  for (const key in skus) {
-    if (!hash[skus[key].size]) {
-      hash[skus[key].size] = skus[key].quantity;
+    if (key == 2275494) {
+      skusArray.push({ key: {quantity: skus[key].quantity, size: 'XXL'}})
+    } else {
+      skusArray.push({ key: skus[key] });
     }
   }
+
+  for (let i = 0; i < skusArray.length; i++) {
+    if (!hash[skusArray[i].key.size]) {
+      hash[skusArray[i].key.size] = skusArray[i].key.quantity;
+    }
+  }
+
 
   const renderQuantity = () => {
     const quantArray = [];
+    const sizeQuant = hash[size] > 15 ? 15 : hash[size]
     if (!size) {
       return (
-        <option>
-          Select Size
+        <option
+          disabled>
+          -
         </option>
       );
-    }
-    for (let i = 0; i < hash[size]; i++) {
-      quantArray.push(
+    } else if (!hash) {
+      return (
         <option>
+          OUT OF STOCK
+        </option>
+      )
+    }
+    for (let i = 1; i <= sizeQuant; i++) {
+      quantArray.push(
+        <option
+          key={i}>
           {i}
         </option>,
       );
@@ -35,12 +55,23 @@ const Cart = function ({ skus }) {
     return quantArray;
   };
 
+
+
   return (
     <div className="box">
       <select>
         {renderQuantity()}
       </select>
-      <select onChange={(e) => { setSize(e.target.value); }}>
+      <select
+        value={size ? size : selectSize}
+        onChange={(e) => {
+          setSize(e.target.value);
+        }}>
+        <option
+          key={selectSize}
+          value={selectSize}>
+          {selectSize}
+        </option>
         {skusArray.map((sku, idx) => (
           <option
             key={idx}>

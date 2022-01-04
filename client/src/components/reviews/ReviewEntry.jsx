@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
+import { ReviewerNameDate, ReviewEntryStyle } from './ReviewEntry.styles.js';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import fetchReviews from '../shared/fetchReviews.js';
 
@@ -9,10 +9,6 @@ const moment = require('moment');
 /**
  * TODO: Style response box
  */
-
-const ReviewerNameDate = styled.span`
-  float: right;
-`
 
 const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
   const date = moment(review.date);
@@ -33,7 +29,7 @@ const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
   // RENDER
   //******************************
   return (
-    <div className="box">
+    <ReviewEntryStyle>
       <span>{calcStarImg(review.rating)}</span>
       <ReviewerNameDate>
         {review.reviewer_name}, {date.format('MMMM Do, YYYY')}
@@ -44,7 +40,7 @@ const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
       <p>{review.response ? review.response : ''}</p>
       Helpful? <a href='#' onClick={ (e) => handleClick(e, review.review_id, 'helpful') }>Yes</a> ({review.helpfulness})&nbsp;
       | <a href="#" onClick={ (e) => handleClick(e, review.review_id, 'report') }>Report</a>
-    </div>
+    </ReviewEntryStyle>
   );
 };
 

@@ -8,13 +8,7 @@ const ReviewsContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-`
-
-export const ColumnContainer = styled.div`
-  border: 1px solid;
-  padding: 15px;
-  margin: 5px;
-  flex-grow: 1;
+  background: #45a679;
 `
 
 const Reviews = ({ productId, reviewMetaData, reviews, setReviews, reviewsSort, setReviewsSort }) => (

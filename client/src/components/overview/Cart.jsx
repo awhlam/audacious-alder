@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const Cart = function ({ skus }) {
   const [size, setSize] = useState(null);
-  const [addCart, setAddCart] = useState(null);
 
   const skusArray = [];
   const hash = {};
@@ -10,7 +9,6 @@ const Cart = function ({ skus }) {
 
   useEffect(() => {
     setSize(null)
-    setAddCart()
   }, [skus])
 
 
@@ -57,11 +55,6 @@ const Cart = function ({ skus }) {
     return quantArray;
   };
 
-  const pleaseSelectSize = () => {
-    return (
-      <div>Please select size</div>
-    )
-  }
 
 
   return (

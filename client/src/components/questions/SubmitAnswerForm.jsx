@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
+import {popup_box, popup_data, close} from './StyleModule.jsx'
 
 export const SubmitAnswerForm = ({id}) => {
   const [addAnswerState, updateAddAnswer] = useState(false)
@@ -24,29 +25,32 @@ export const SubmitAnswerForm = ({id}) => {
 
     if (!submitted) {
       return (
-        <div>
-        <h2>Add An Answer</h2>
-        <form onSubmit={addAnswer}>
-          <div>
-            <label>Name:  </label>
-            <input onChange={(event) => {updateName(event.target.value)}}></input>
-          </div>
-          <div>
-            <label>Answer:  </label>
+        <div style={popup_box}>
+          <div style={popup_data}>
+          <span style={close} onClick={() => {updateAddAnswer(false)}}>X</span>
+          <h2>Add An Answer</h2>
+          <form onSubmit={addAnswer}>
             <div>
-              <textarea maxLength='1000' onChange={(event) => {updateAnswer(event.target.value)}}></textarea>
+              <label>Name:  </label>
+              <input onChange={(event) => {updateName(event.target.value)}}></input>
             </div>
+            <div>
+              <label>Answer:  </label>
+              <div>
+                <textarea maxLength='1000' onChange={(event) => {updateAnswer(event.target.value)}}></textarea>
+              </div>
+            </div>
+            <div>
+              <label>Photos:  </label>
+              <input type='file' onChange={(event) => {updatePhotos([event.target.value])}}></input>
+            </div>
+            <div>
+              <label>Email:  </label>
+              <input onChange={(event) => {updateEmail(event.target.value)}}></input>
+            </div>
+            <button>Submit Answer</button>
+          </form>
           </div>
-          <div>
-            <label>Photos:  </label>
-            <input type='file' onChange={(event) => {updatePhotos([event.target.value])}}></input>
-          </div>
-          <div>
-            <label>Email:  </label>
-            <input onChange={(event) => {updateEmail(event.target.value)}}></input>
-          </div>
-          <button>Submit Answer</button>
-        </form>
         </div>
       )
     } else {

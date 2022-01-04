@@ -47,6 +47,7 @@ export const App = () => {
     }
     console.log('fetching data for product_id: ', productId);
   }, [productId])
+  
   //******************************
   // Render
   //******************************
@@ -63,6 +64,7 @@ export const App = () => {
       <Related
         productId={productId}
         setProductId={setProductId}
+        currentProduct={product}
       />
       <Reviews
         productId={productId}

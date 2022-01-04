@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
+import RelatedModal from './RelatedModal.jsx';
 
 // Color styling for category words
 const GrayCategoryTitle = styled.a`
@@ -14,9 +15,10 @@ const RelatedProductsCard = (props) => {
   // State
   // ***********
   const [backupImage, setBackupImage] = useState(false);
+  const [modalOpen, setModal] = useState(false);
 
   // Calculate avg review
-  let averageReview = calcAvgTotalReviews(props.relatedReviewsMeta).avgStars;
+  let averageReview = calcAvgTotalReviews(props.related.reviewsMeta).avgStars;
 
   // ***********
   // Func for rendering back up image
@@ -49,33 +51,54 @@ const RelatedProductsCard = (props) => {
   }
 
   // ***********
+  // Func for opening and closing modals
+  // ***********
+  const handleModalOpen = () => {
+    if (!modalOpen) {
+      setModal(true);
+      console.log(modalOpen);
+    }
+  };
+
+  const handleModalClose = () => {
+    if (modalOpen) {
+      setModal(false);
+    }
+  }
+
+  // ***********
   // Handle modal open button click
   // ***********
   const handleModalOpenClick = (event) => {
     event.preventDefault();
-    props.handleModalOpen();
+    handleModalOpen();
   }
 
   return (
     <div className='card'>
       <div>
-        <img onClick={relatedProductClick} src={backupImgRender(props.relatedProductThumbnail)} width='200' height='250'/>
+        <img onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200' height='250'/>
       </div>
       <button onClick={handleModalOpenClick} className='modal-button'>♡</button>
       <div>
       <GrayCategoryTitle>
-        {props.relatedProductCategory}
+        {props.related.details.category}
       </GrayCategoryTitle>
       </div>
       <div>
-        <a href="#top" onClick={relatedProductClick} >{props.relatedProductName}</a>
+        <a href="#top" onClick={relatedProductClick} >{props.related.details.name}</a>
       </div>
       <div>
-        <a href="#top" onClick={relatedProductClick}>${props.relatedProductPrice}</a>
+        <a href="#top" onClick={relatedProductClick}>${props.related.details.default_price}</a>
       </div>
       <div>
         {calcStarImg(backupStarRender(averageReview))}
       </div>
+      {!modalOpen ? '' : <RelatedModal
+          handleModalClose={handleModalClose}
+          currentProduct={props.currentProduct}
+          relatedFeature={props.related.details}
+        />}
     </div>
   )
 };

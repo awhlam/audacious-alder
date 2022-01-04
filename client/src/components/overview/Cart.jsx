@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Cart = function ({ skus }) {
   const [size, setSize] = useState(null);
+  const [quant, setQuant] = useState(1);
+  const [skuId, setSkuId] = useState(null);
 
   const skusArray = [];
   const hash = {};
@@ -14,9 +17,9 @@ const Cart = function ({ skus }) {
 
   for (const key in skus) {
     if (key == 2275494) {
-      skusArray.push({ key: {quantity: skus[key].quantity, size: 'XXL'}})
+      skusArray.push({ key: {quantity: skus[key].quantity, size: 'XXL', sku_id: key}})
     } else {
-      skusArray.push({ key: skus[key] });
+      skusArray.push({ key: {...skus[key], sku_id: key} });
     }
   }
 
@@ -25,7 +28,6 @@ const Cart = function ({ skus }) {
       hash[skusArray[i].key.size] = skusArray[i].key.quantity;
     }
   }
-
 
   const renderQuantity = () => {
     const quantArray = [];
@@ -55,6 +57,24 @@ const Cart = function ({ skus }) {
     return quantArray;
   };
 
+  //need to fix efficiency, can't set sku_id properly in time
+  const getSkuId = () => {
+    for (let i = 0; i < skusArray.length; i++) {
+      if (skusArray[i].key.size === size) {
+        return skusArray[i].key.sku_id
+      }
+    }
+  }
+
+  const addToCart = () => {
+    let params = {
+      sku_id: skuId,
+      count: quant
+    }
+    axios.post('/cart', params)
+      .then((res) => {console.log('Add to cart (:')})
+      .catch((err) => {console.log('Failed to add to card ):')})
+  }
 
 
   return (
@@ -66,6 +86,7 @@ const Cart = function ({ skus }) {
         value={size ? size : selectSize}
         onChange={(e) => {
           setSize(e.target.value);
+          setSkuId(getSkuId(size));
         }}>
         <option
           key={selectSize}
@@ -74,7 +95,7 @@ const Cart = function ({ skus }) {
         </option>
         {skusArray.map((sku, idx) => (
           <option
-            key={idx}>
+            key={sku.sku_id}>
             {sku.key.size}
           </option>
         ))}

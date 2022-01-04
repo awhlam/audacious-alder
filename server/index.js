@@ -32,6 +32,10 @@ app.post('/reviews', api.reviews.reviewsPOST);
 app.put('/reviews/helpful', api.reviews.reviewsHelpfulPUT);
 app.put('/reviews/report', api.reviews.reviewsReportPUT);
 
+// Cart
+app.get('/cart', api.cart.cartGET);
+app.post('/cart', api.cart.cartPOST);
+
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`listening at http://localhost:${port}`);

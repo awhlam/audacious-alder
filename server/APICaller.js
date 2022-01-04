@@ -152,26 +152,28 @@ const questions = {
       .catch((error) => { console.log(error); });
   },
   answersPOST: (req, res) => {
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.query.id}/answers`,
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.body.id}/answers`,
     { body: req.body.body, name: req.body.name, email: req.body.email, photos: req.body.photos },
     { headers: options })
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });
   },
-  questionsHelpfulPUT: (question_id) => {
-    axios.put(`/qa/questions/${question_id}/helpful`, { headers: options })
-      .then()
-      .catch();
+  questionsHelpfulPUT: (req, res) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.body.id}/helpful`,
+    {}, { headers: options })
+      .then((response) => { res.send(response.data); })
+      .catch((error) => { console.log(error); });
   },
   questionsReportPUT: (question_id) => {
     axios.put(`/qa/questions/${question_id}/report`, { headers: options })
       .then()
       .catch();
   },
-  answersHelpfulPUT: (answer_id) => {
-    axios.put(`/qa/answers/${answer_id}/helpful`, { headers: options })
-      .then()
-      .catch();
+  answersHelpfulPUT: (req, res) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/answers/${req.body.id}/helpful`,
+    {}, { headers: options })
+      .then((response) => { res.send(response.data); })
+      .catch((error) => { console.log(error); });
   },
   answersReportPUT: (answer_id) => {
     axios.put(`/qa/answers/${answer_id}/report`, { headers: options })

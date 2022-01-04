@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const SubmitQuestionForm = ({id}) => {
+export const SubmitQuestionForm = ({id}) => {
   const [name, updateName] = useState(null)
   const [question, updateQuestion] = useState(null)
   const [email, updateEmail] = useState(null)
@@ -18,16 +18,6 @@ const SubmitQuestionForm = ({id}) => {
     }
   }
 
-  const nameChange = (event) => {
-      updateName(event.target.value)
-    }
-  const questionChange = (event) => {
-      updateQuestion(event.target.value)
-    }
-  const emailChange = (event) => {
-      updateEmail(event.target.value)
-    }
-
   if (!submitted) {
     return (
       <div>
@@ -35,17 +25,17 @@ const SubmitQuestionForm = ({id}) => {
       <form onSubmit={addQuestion}>
         <div>
           <label>Name:  </label>
-          <input onChange={nameChange}></input>
+          <input onChange={(event) => {updateName(event.target.value)}}></input>
         </div>
         <div>
           <label>Question:  </label>
           <div>
-            <textarea maxLength='1000' onChange={questionChange}></textarea>
+            <textarea maxLength='1000' onChange={(event) => {updateQuestion(event.target.value)}}></textarea>
           </div>
         </div>
         <div>
           <label>Email:  </label>
-          <input onChange={emailChange}></input>
+          <input onChange={(event) => {updateEmail(event.target.value)}}></input>
         </div>
         <button>Submit Question</button>
       </form>
@@ -60,5 +50,3 @@ const SubmitQuestionForm = ({id}) => {
     )
   }
 }
-
-export default SubmitQuestionForm

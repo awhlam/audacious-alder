@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import QuestionRender from './QuestionRender.jsx'
-import SubmitQuestionForm from './SubmitQuestionForm.jsx'
+import {SubmitQuestionForm} from './SubmitQuestionForm.jsx'
 
 const Questions = ({productId}) => {
 

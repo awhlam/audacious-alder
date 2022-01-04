@@ -11,6 +11,11 @@ import { ColumnContainer } from './Reviews.jsx';
  * Enable filtering by # of stars
  */
 
+const handleClick = (e, ) => {
+  e.preventDefault();
+  console.log('clicked: ', e.target.innerHTML[0])
+}
+
 const ReviewSummary = ({ reviewMetaData }) => (
   <ColumnContainer>
     <div>
@@ -22,11 +27,11 @@ const ReviewSummary = ({ reviewMetaData }) => (
         {calcPctRecommend(reviewMetaData)}% of reviews recommend this product
       </p>
       <p>
-        <a href='#'>5 stars</a> {reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews<br />
-        <a href='#'>4 stars</a> {reviewMetaData.ratings['4'] ? reviewMetaData.ratings['4'] : '0'} reviews<br />
-        <a href='#'>3 stars</a> {reviewMetaData.ratings['3'] ? reviewMetaData.ratings['3'] : '0'} reviews<br />
-        <a href='#'>2 stars</a> {reviewMetaData.ratings['2'] ? reviewMetaData.ratings['2'] : '0'} reviews<br />
-        <a href='#'>1 star</a> {reviewMetaData.ratings['1'] ? reviewMetaData.ratings['1'] : '0'} reviews<br />
+        <a href='#' onClick={handleClick}>5 stars</a> {reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews<br />
+        <a href='#' onClick={handleClick}>4 stars</a> {reviewMetaData.ratings['4'] ? reviewMetaData.ratings['4'] : '0'} reviews<br />
+        <a href='#' onClick={handleClick}>3 stars</a> {reviewMetaData.ratings['3'] ? reviewMetaData.ratings['3'] : '0'} reviews<br />
+        <a href='#' onClick={handleClick}>2 stars</a> {reviewMetaData.ratings['2'] ? reviewMetaData.ratings['2'] : '0'} reviews<br />
+        <a href='#' onClick={handleClick}>1 star</a> {reviewMetaData.ratings['1'] ? reviewMetaData.ratings['1'] : '0'} reviews<br />
       </p>
     </div>
     <div>

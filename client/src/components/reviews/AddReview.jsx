@@ -5,6 +5,9 @@ import fetchReviews from '../shared/fetchReviews.js';
 import {CloseButton, MODAL_STYLES, OVERLAY_STYLES} from './AddReview.styles.js';
 
 const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews }) => {
+  //******************************
+  // STATE
+  //******************************
   const [review, setReview] = useState({
     summary: '',
     body: '',
@@ -24,7 +27,9 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
       email: ''
     }));
   }, [productId]);
-
+  //******************************
+  // HANDLERS
+  //******************************
   const handleChange = (e) => {
     let field = e.target.name;
     let value = e.target.value;
@@ -47,7 +52,9 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
         alert('Your review is incomplete. Please complete all required form fields.');
       });
   }
-
+  //******************************
+  // RENDER
+  //******************************
   if (!showModal) { return null; }
   return (
     <div>

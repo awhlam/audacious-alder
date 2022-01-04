@@ -16,7 +16,9 @@ const ReviewerNameDate = styled.span`
 
 const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
   const date = moment(review.date);
-
+  //******************************
+  // HANDLERS
+  //******************************
   const handleClick = (e, review_id, type) => {
     e.preventDefault();
     axios.put(`/reviews/${type}`, { review_id: review_id })
@@ -25,11 +27,11 @@ const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
         fetchReviews(productId, reviewsSort)
         .then((res) => { setReviews(res.data); });
       })
-      .catch((err) => {
-        console.log(err)
-      });
+      .catch((err) => { console.log(err) });
   }
-
+  //******************************
+  // RENDER
+  //******************************
   return (
     <div className="box">
       <span>{calcStarImg(review.rating)}</span>

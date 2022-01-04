@@ -17,7 +17,7 @@ export const ColumnContainer = styled.div`
   flex-grow: 1;
 `
 
-const Reviews = ({ productId, reviewMetaData, reviews, fetchData }) => (
+const Reviews = ({ productId, reviewMetaData, reviews, setReviews }) => (
   <div>
     <h1>Ratings & Reviews</h1>
     <ReviewsContainer>
@@ -28,7 +28,7 @@ const Reviews = ({ productId, reviewMetaData, reviews, fetchData }) => (
         productId={productId}
         reviews={reviews}
         reviewMetaData={reviewMetaData}
-        fetchData={fetchData}
+        setReviews={setReviews}
       />
     </ReviewsContainer>
   </div>

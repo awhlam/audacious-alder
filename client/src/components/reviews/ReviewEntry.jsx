@@ -2,20 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import calcStarImg from '../shared/calcStarImg.jsx';
+import fetchReviews from '../shared/fetchReviews.js';
 
 const moment = require('moment');
 
 /**
- * Style response box
- * Enable Helpful link to send PUT request to /reviews/:review_id/helpful
- * Enable report link to send PUT request to /reviews/:review_id/report
+ * TODO: Style response box
  */
 
 const ReviewerNameDate = styled.span`
   float: right;
 `
 
-const ReviewEntry = ({ review, fetchData, productId }) => {
+const ReviewEntry = ({ review, productId }) => {
   const date = moment(review.date);
 
   const handleClick = (e, review_id, type) => {
@@ -23,7 +22,7 @@ const ReviewEntry = ({ review, fetchData, productId }) => {
     axios.put(`/reviews/${type}`, { review_id: review_id })
       .then((res) => {
         alert(`You marked this review as ${type}`);
-        fetchData(productId);
+        fetchReviews(productId);
       })
       .catch((err) => {
         console.log(err)

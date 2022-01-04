@@ -47,7 +47,8 @@ export const App = () => {
     }
     console.log('fetching data for product_id: ', productId);
   }, [productId])
-  
+
+
   //******************************
   // Render
   //******************************

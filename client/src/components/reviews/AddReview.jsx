@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
+import styled from 'styled-components';
+import fetchReviews from '../shared/fetchReviews.js';
+import {CloseButton, MODAL_STYLES, OVERLAY_STYLES} from './AddReview.styles.js';
 
-const CloseButton = styled.button`
-  float: right;
-`
-
-const MODAL_STYLES = {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  backgroundColor: '#FFF',
-  padding: '50px',
-  zIndex: 1000,
-};
-
-const OVERLAY_STYLES = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, .7)',
-  zIndex: 1000,
-};
-
-const AddReview = ({ productId, showModal, openModal, fetchData }) => {
+const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews }) => {
+  //******************************
+  // STATE
+  //******************************
   const [review, setReview] = useState({
     summary: '',
     body: '',
@@ -46,17 +27,14 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
       email: ''
     }));
   }, [productId]);
-
+  //******************************
+  // HANDLERS
+  //******************************
   const handleChange = (e) => {
     let field = e.target.name;
     let value = e.target.value;
-
-    if (field === 'rating') {
-      value = parseInt(value);
-    } else if (field === 'recommend') {
-      value = value === 'true';
-    }
-
+    if (field === 'rating') { value = parseInt(value); }
+    else if (field === 'recommend') { value = value === 'true'; }
     setReview((oldState) => ({ ...oldState, [field]: value }));
   }
 
@@ -66,14 +44,17 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
       .then((res) => {
         alert('Your review has been submitted');
         openModal();
-        fetchData(productId);
+        fetchReviews(productId, reviewsSort)
+          .then((res) => { setReviews(res.data); });
       })
       .catch((err) => {
         console.log(err)
         alert('Your review is incomplete. Please complete all required form fields.');
       });
   }
-
+  //******************************
+  // RENDER
+  //******************************
   if (!showModal) { return null; }
   return (
     <div>
@@ -95,16 +76,14 @@ const AddReview = ({ productId, showModal, openModal, fetchData }) => {
             <option value="1">1 Star - Poor</option>
           </select>
           <p>Do you recommend this product?*</p>
-          <form onChange={handleChange}>
-            <input type="radio" name="recommend" value="true" />
-            <label htmlFor="yes">Yes</label>
-            <input type="radio" name="recommend" value="false" />
-            <label htmlFor="no">No</label>
-          </form>
+          <input type="radio" name="recommend" value="true" onChange={handleChange} />
+          <label htmlFor="yes">Yes</label>
+          <input type="radio" name="recommend" value="false" onChange={handleChange} />
+          <label htmlFor="no">No</label>
           <p>Review Summary ({60 - review.summary.length} characters remaining):</p>
-          <p><input type="text" name="summary" size="58" maxlength="60" placeholder="Example: Best purchase ever!" value={review.summary} onChange={handleChange} /></p>
+          <p><input type="text" name="summary" size="58" maxLength="60" placeholder="Example: Best purchase ever!" value={review.summary} onChange={handleChange} /></p>
           <p>Review Body ({1000 - review.body.length} characters remaining)*</p>
-          <p><textarea name="body" rows="4" cols="50" required minlength="50" maxlength="1000" placeholder="Why did you like the product or not?" value={review.body} onChange={handleChange} /></p>
+          <p><textarea name="body" rows="4" cols="50" required minLength="50" maxLength="1000" placeholder="Why did you like the product or not?" value={review.body} onChange={handleChange} /></p>
           <p>Photos: <input type="file" /></p>
           <p>What is your nickname?*</p>
           <p><input type="text" name="name" required placeholder="What is your nickname" value={review.name} onChange={handleChange} /></p>

@@ -5,7 +5,7 @@ import ReviewEntry from './ReviewEntry.jsx';
 import AddReview from './AddReview.jsx';
 import { ColumnContainer } from './Reviews.jsx';
 
-const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
+const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSort, setReviewsSort }) => {
   //******************************
   // STATE
   //******************************
@@ -21,13 +21,19 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
   //******************************
   return (
     <ColumnContainer>
-      <SortingBar reviewMetaData={reviewMetaData} />
+      <SortingBar
+        setReviews={setReviews}
+        reviewMetaData={reviewMetaData}
+        productId={productId}
+        setReviewsSort={setReviewsSort}
+      />
       {reviews.results.slice(0, numReviews).map((review, index) => (
         <ReviewEntry
           review={review}
           key={review.review_id}
           productId={productId}
-          fetchData={fetchData}
+          reviewsSort={reviewsSort}
+          setReviews={setReviews}
         />
       ))}
       <p>
@@ -39,7 +45,8 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
         productId={productId}
         showModal={showModal}
         openModal={openModal}
-        fetchData={fetchData}
+        reviewsSort={reviewsSort}
+        setReviews={setReviews}
       />
     </ColumnContainer>
   );

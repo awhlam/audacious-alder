@@ -58,11 +58,11 @@ const Cart = function ({ skus }) {
 
 
   return (
-    <div className="box">
-      <select>
+    <div className="cartContainer">
+      <select className="quantDrop">
         {renderQuantity()}
       </select>
-      <select
+      <select className="sizeDrop"
         value={size ? size : selectSize}
         onChange={(e) => {
           setSize(e.target.value);
@@ -79,7 +79,7 @@ const Cart = function ({ skus }) {
           </option>
         ))}
       </select>
-      <button>
+      <button className="cartButton">
         Add to Cart
       </button>
     </div>

@@ -23,9 +23,7 @@ const Questions = ({productId}) => {
         <div>
           {questions.results.map((question) => <QuestionRender question={question}/>)}
         </div>
-        <div className='box'>
-          <SubmitQuestionForm id={productId}/>
-        </div>
+        <SubmitQuestionForm id={productId}/>
       </div>
     )
   } else {
@@ -40,12 +38,8 @@ const Questions = ({productId}) => {
           <QuestionRender question={questions.results[2]}/>
           <QuestionRender question={questions.results[3]}/>
         </div>
-        <div>
         <button onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</button>
-        </div>
-        <div className='box'>
-          <SubmitQuestionForm id={productId}/>
-        </div>
+        <SubmitQuestionForm id={productId}/>
       </div>
     )
   }

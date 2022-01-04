@@ -4,7 +4,7 @@ import moment from 'moment'
 import AnswerRender from './AnswerRender.jsx'
 import {SubmitAnswerForm} from './SubmitAnswerForm.jsx'
 
-const QuestionRender = ({question, productId}) => {
+const QuestionRender = ({question}) => {
   if (question) {
     const [answers, updateAnswers] = useState({results: []})
     const [answerDisplay, updateAnswerDisplay] = useState(false)
@@ -68,12 +68,8 @@ const QuestionRender = ({question, productId}) => {
             <span onClick={markHelpful}>  Yes  </span>
             <span>({question.question_helpfulness})</span>
           </div>
-          <div>
-            <SubmitAnswerForm id={question.question_id}/>
-          </div>
-          <div>
             <button onClick={(event) => {updateAnswerDisplay(true)}}>Show more answers</button>
-          </div>
+            <SubmitAnswerForm id={question.question_id}/>
         </div>
       )
     }

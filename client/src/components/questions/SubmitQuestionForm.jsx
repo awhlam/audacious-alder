@@ -50,9 +50,12 @@ export const SubmitQuestionForm = ({id}) => {
       )
     } else {
       return (
-        <div>
-        <h2>Ask Your Question</h2>
-        <h3>Question submitted!</h3>
+        <div style={popup_box}>
+          <div style={popup_data}>
+            <span style={close} onClick={() => {updateAddQuestion(false)}}>X</span>
+            <h2>Ask Your Question</h2>
+            <h3>Question submitted!</h3>
+            </div>
         </div>
       )
     }

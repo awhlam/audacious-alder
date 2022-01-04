@@ -45,7 +45,7 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
         alert('Your review has been submitted');
         openModal();
         fetchReviews(productId, reviewsSort)
-          .then((res) => { setReviews(res.data); });
+          .then((res) => { setReviews(res.data.results); });
       })
       .catch((err) => {
         console.log(err)

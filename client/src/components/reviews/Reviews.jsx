@@ -17,12 +17,14 @@ export const ColumnContainer = styled.div`
   flex-grow: 1;
 `
 
-const Reviews = ({ productId, reviewMetaData, reviews, setReviews, reviewsSort, setReviewsSort }) => (
+const Reviews = ({ productId, reviewMetaData, reviewsFilter, setReviewsFilter, reviews, setReviews, reviewsSort, setReviewsSort }) => (
   <div>
     <h1>Ratings & Reviews</h1>
     <ReviewsContainer>
       <ReviewSummary
         reviewMetaData={reviewMetaData}
+        reviewsFilter={reviewsFilter}
+        setReviewsFilter={setReviewsFilter}
       />
       <ReviewList
         productId={productId}

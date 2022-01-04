@@ -27,7 +27,7 @@ const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSor
         productId={productId}
         setReviewsSort={setReviewsSort}
       />
-      {reviews.results.slice(0, numReviews).map((review, index) => (
+      {reviews.slice(0, numReviews).map((review, index) => (
         <ReviewEntry
           review={review}
           key={review.review_id}

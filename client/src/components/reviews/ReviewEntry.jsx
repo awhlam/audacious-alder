@@ -25,7 +25,7 @@ const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
       .then((res) => {
         alert(`You marked this review as ${type}`);
         fetchReviews(productId, reviewsSort)
-        .then((res) => { setReviews(res.data); });
+        .then((res) => { setReviews(res.data.results); });
       })
       .catch((err) => { console.log(err) });
   }

@@ -30,6 +30,10 @@ app.get('/reviews', api.reviews.reviewsGET);
 app.get('/reviews/meta', api.reviews.reviewsMetaGET);
 app.post('/reviews', api.reviews.reviewsPOST);
 
+// Cart
+app.get('/cart', api.cart.cartGET);
+app.post('/cart', api.cart.cartPOST);
+
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`listening at http://localhost:${port}`);

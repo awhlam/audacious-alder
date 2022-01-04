@@ -6,7 +6,6 @@ const Cart = function ({ skus }) {
   const skusArray = [];
   const hash = {};
   const selectSize = 'Select Size';
-  const unknownSize = 'XXL';
 
   useEffect(() => {
     setSize(null)

@@ -7,7 +7,7 @@ import RelatedModal from './RelatedModal.jsx';
 
 // Color styling for category words
 const GrayCategoryTitle = styled.a`
-color: gray
+  color: gray;
 `;
 
 const RelatedProductsCard = (props) => {
@@ -79,10 +79,10 @@ const RelatedProductsCard = (props) => {
       <div>
         <img onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200' height='250'/>
       </div>
-      <button onClick={handleModalOpenClick} className='modal-button'>♡</button>
       <div>
       <GrayCategoryTitle>
         {props.related.details.category}
+      <div></div>
       </GrayCategoryTitle>
       </div>
       <div>
@@ -93,6 +93,8 @@ const RelatedProductsCard = (props) => {
       </div>
       <div>
         {calcStarImg(backupStarRender(averageReview))}
+        <button
+        onClick={handleModalOpenClick} className='modal-button'>♡</button>
       </div>
       {!modalOpen ? '' : <RelatedModal
           handleModalClose={handleModalClose}

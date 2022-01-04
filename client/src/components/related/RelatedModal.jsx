@@ -20,7 +20,7 @@ const RelatedModal  = (props) => {
           <tr>
             <th scope="col">{props.currentProduct.name}</th>
             <th scope="col"> </th>
-            <th scope="col">Related</th>
+            <th scope="col">{props.relatedFeature.name}</th>
           </tr>
         </thead>
         {props.currentProduct.features.map((cur, idx) => {

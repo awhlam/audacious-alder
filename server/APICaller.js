@@ -118,14 +118,14 @@ const reviews = {
       .catch((err) => { console.log(err); });
   },
   reviewsHelpfulPUT: (req, res) => {
-    let { review_id } = req.query
-    axios.put(`${server}/reviews/${review_id}/helpful`, { headers: options })
+    const { review_id } = req.body;
+    axios.put(`${server}/reviews/${review_id}/helpful`, null, { headers: options })
       .then((api) => { res.send(api.data); })
       .catch((err) => { console.log(err); });
   },
   reviewsReportPUT: (req, res) => {
-    let { review_id } = req.query
-    axios.put(`${server}/reviews/${review_id}/report`, { headers: options })
+    const { review_id } = req.body;
+    axios.put(`${server}/reviews/${review_id}/report`, null, { headers: options })
       .then((api) => { res.send(api.data); })
       .catch((err) => { console.log(err); });
   },

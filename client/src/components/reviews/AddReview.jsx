@@ -16,7 +16,7 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
     characteristics: {}
   });
 
-  useEffect(() => {
+  const clearReview = () => {
     setReview((oldState) => ({
       ...oldState,
       product_id: productId,
@@ -25,7 +25,9 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
       name: '',
       email: ''
     }));
-  }, [productId]);
+  }
+
+  useEffect(() => { clearReview() }, [productId]);
   //******************************
   // HANDLERS
   //******************************
@@ -43,6 +45,7 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
       .then((res) => {
         alert('Your review has been submitted');
         openModal();
+        clearReview();
         fetchReviews(productId, reviewsSort)
           .then((res) => { setReviews(res.data); });
       })

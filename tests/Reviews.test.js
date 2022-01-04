@@ -14,7 +14,7 @@ import reviews from '../client/src/sample-data/reviews.js';
 describe('Reviews Component', function () {
   it('should have a title', function () {
     render(<Reviews
-      reviews={reviews}
+      reviews={reviews.results}
       reviewMetaData={reviewsMeta}
     />);
     expect(screen.getByText('Ratings & Reviews')).toBeDefined();
@@ -52,7 +52,7 @@ describe('SortingBar Component', function () {
 describe('ReviewList Component', function () {
   it('should have more reviews text', function () {
     render(<ReviewList
-      reviews={reviews}
+      reviews={reviews.results}
       reviewMetaData={reviewsMeta}
     />);
     expect(screen.getByText('More Reviews', {exact: false})).toBeDefined();

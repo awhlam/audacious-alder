@@ -47,7 +47,7 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
         openModal();
         clearReview();
         fetchReviews(productId, reviewsSort)
-          .then((res) => { setReviews(res.data); });
+          .then((res) => { setReviews(res.data.results); });
       })
       .catch((err) => {
         console.log(err)

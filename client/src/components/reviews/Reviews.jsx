@@ -11,12 +11,14 @@ const ReviewsContainer = styled.div`
   background: #45a679;
 `
 
-const Reviews = ({ productId, reviewMetaData, reviews, setReviews, reviewsSort, setReviewsSort }) => (
+const Reviews = ({ productId, reviewMetaData, reviewsFilter, setReviewsFilter, reviews, setReviews, reviewsSort, setReviewsSort }) => (
   <div>
     <h1>Ratings & Reviews</h1>
     <ReviewsContainer>
       <ReviewSummary
         reviewMetaData={reviewMetaData}
+        reviewsFilter={reviewsFilter}
+        setReviewsFilter={setReviewsFilter}
       />
       <ReviewList
         productId={productId}

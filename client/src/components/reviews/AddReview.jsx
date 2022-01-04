@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import fetchReviews from '../shared/fetchReviews.js';
 import {CloseButton, MODAL_STYLES, OVERLAY_STYLES} from './AddReview.styles.js';
 
-const AddReview = ({ productId, showModal, openModal }) => {
+const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews }) => {
   const [review, setReview] = useState({
     summary: '',
     body: '',
@@ -39,7 +39,8 @@ const AddReview = ({ productId, showModal, openModal }) => {
       .then((res) => {
         alert('Your review has been submitted');
         openModal();
-        fetchReviews(productId);
+        fetchReviews(productId, reviewsSort)
+          .then((res) => { setReviews(res.data); });
       })
       .catch((err) => {
         console.log(err)

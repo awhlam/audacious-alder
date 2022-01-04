@@ -14,7 +14,7 @@ const ReviewerNameDate = styled.span`
   float: right;
 `
 
-const ReviewEntry = ({ review, productId }) => {
+const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
   const date = moment(review.date);
 
   const handleClick = (e, review_id, type) => {
@@ -22,7 +22,8 @@ const ReviewEntry = ({ review, productId }) => {
     axios.put(`/reviews/${type}`, { review_id: review_id })
       .then((res) => {
         alert(`You marked this review as ${type}`);
-        fetchReviews(productId);
+        fetchReviews(productId, reviewsSort)
+        .then((res) => { setReviews(res.data); });
       })
       .catch((err) => {
         console.log(err)

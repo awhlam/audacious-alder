@@ -15,6 +15,7 @@ export const App = () => {
   const [productStyle, setProductStyle] = useState({})
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [reviews, setReviews] = useState({});
+  const [reviewsSort, setReviewsSort] = useState('helpful');
   const [isLoading, setIsLoading] = useState(true);
   //******************************
   // Data fetching
@@ -26,7 +27,7 @@ export const App = () => {
       .then((res) => { setProductStyle(res.data); } )
     const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
       .then((res) => { setReviewMetaData(res.data); })
-    const getReviews = fetchReviews(id, 'newest')
+    const getReviews = fetchReviews(id, reviewsSort)
       .then((res) => { setReviews(res.data); })
 
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
@@ -46,6 +47,11 @@ export const App = () => {
     }
     console.log('fetching data for product_id: ', productId);
   }, [productId])
+
+  useEffect(() => {
+    fetchReviews(productId, reviewsSort)
+      .then((res) => { setReviews(res.data); })
+  }, [reviewsSort])
   //******************************
   // Render
   //******************************
@@ -64,9 +70,11 @@ export const App = () => {
       />
       <Reviews
         productId={productId}
+        reviewMetaData={reviewMetaData}
         reviews={reviews}
         setReviews={setReviews}
-        reviewMetaData={reviewMetaData}
+        reviewsSort={reviewsSort}
+        setReviewsSort={setReviewsSort}
       />
       <Questions />
     </div>

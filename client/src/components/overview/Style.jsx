@@ -11,7 +11,7 @@ const Style = function ({ productStyle, getStyleInfo }) {
 
 
   return (
-    <div>
+    <div className="styleContainer">
       {rows.map((row, idx) => (
         <ul className="styleList">
           {row.map((style, idx) => (

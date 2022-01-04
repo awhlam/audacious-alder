@@ -3,17 +3,15 @@
 }
 
 .title {
-  padding: 0;
-  font-family: 'Gidugu', sans-serif;
+  font-family: 'Proza Libre', sans-serif;
   font-size: 100px;
+  background-color: white;
   text-align: center;
   line-height: 100px;
-  top: 0;
   width: 100%;
   height: 100px;
-  margin: auto;
-  background-color: white;
   z-index: 1;
+  margin-top: 40px;
 }
 
 .box {
@@ -27,13 +25,14 @@
 /* OVERVIEW */
 /******************************/
 
-.container {
+.overview {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 50px;
 }
 
-.column {
+.overviewRight {
   display: flex;
   flex-direction: column;
 }
@@ -42,30 +41,52 @@
 /* IMAGE GALLERY */
 /******************************/
 
+.imageGalleryContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-right: 30px;
+}
+
 .imageGallery {
-  top: 50px;
-  width: 600px;
+  margin-top: 0;
+  height: 1000px;
+  width: 700px;
+  object-fit: cover;
 }
 
 .imageGalleryList {
   display: flex;
   flex-direction: column;
   list-style: none;
+  margin-top: 0;
+  margin-right: 10px;
 }
 
 .imageGalleryThumbnail {
-  width: 50px;
+  height: 100px;
+  width: 70px;
+  object-fit: cover;
   cursor: pointer;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
+  margin-bottom: 10px;
 }
 
 /******************************/
 /* PRODUCT INFORMATION */
 /******************************/
+
+
+#productContainer {
+  margin-right: 100px;
+  font-size: 26px;
+  font-family: 'Lato', sans-serif;
+}
+
+
+#productName{
+  font-size: 32px;
+}
+
 
 .originalPrice {
   text-decoration: line-through;
@@ -95,6 +116,33 @@
   cursor: pointer;
 }
 
+/******************************/
+/* CART */
+/******************************/
+
+.cartContainer {
+  margin-top: 100px;
+}
+
+.cartButton {
+  position: relative;
+}
+
+.quantDrop, .sizeDrop, .cartButton{
+  padding: 12px 16px;
+  margin-right: 20px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+.quantDrop {
+  min-width: 50px;
+}
+
+.sizeDrop {
+  max-width: 100px;
+}
 
 /******************************/
 /* RELATED */

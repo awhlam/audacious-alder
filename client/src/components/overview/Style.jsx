@@ -5,7 +5,7 @@ import StyleEntry from './StyleEntry.jsx';
 
 const Style = function ({ productStyle, getStyleInfo }) {
   return (
-    <div className="box">
+    <div>
         <ul className="styleList">
           {productStyle.results.map((style, idx) => (
             <StyleEntry

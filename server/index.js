@@ -29,6 +29,8 @@ app.get('/related/products/reviews/meta', api.products.multiReviewsMetaGET);
 app.get('/reviews', api.reviews.reviewsGET);
 app.get('/reviews/meta', api.reviews.reviewsMetaGET);
 app.post('/reviews', api.reviews.reviewsPOST);
+app.put('/reviews/helpful', api.reviews.reviewsHelpfulPUT);
+app.put('/reviews/report', api.reviews.reviewsReportPUT);
 
 // Cart
 app.get('/cart', api.cart.cartGET);

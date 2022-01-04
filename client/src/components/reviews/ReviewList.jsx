@@ -23,7 +23,12 @@ const ReviewList = ({ productId, reviews, reviewMetaData, fetchData }) => {
     <ColumnContainer>
       <SortingBar reviewMetaData={reviewMetaData} />
       {reviews.results.slice(0, numReviews).map((review, index) => (
-        <ReviewEntry review={review} key={review.review_id} />
+        <ReviewEntry
+          review={review}
+          key={review.review_id}
+          productId={productId}
+          fetchData={fetchData}
+        />
       ))}
       <p>
         <button type="submit" onClick={handleMoreReviews}>More Reviews</button>

@@ -9,7 +9,7 @@ body {
 
 .title {
   font-family: 'Proza Libre', sans-serif;
-  font-size: 80px;
+  font-size: 8vh;
   text-align: center;
   line-height: 8vh;
   width: 100%;
@@ -101,18 +101,22 @@ body {
   margin-left: 1vw;
   margin-right: 2vw;
   margin-top: 2.5vh;
-  font-size: 26px;
+  font-size: 2.5vh;
 }
 
 .productInfoContainer {
-  font-size: 32px;
+  font-size: 3.5vh;
   display: flex;
   justify-content: space-between;
 }
 
+.productName {
+  letter-spacing: 0.05vw;
+}
+
 .productCategory {
-  font-size: 20px;
-  letter-spacing: 0.5px;
+  font-size: 2vh;
+  letter-spacing: 0.05vw;
 }
 
 .productDescription {
@@ -150,17 +154,18 @@ body {
   list-style: none;
   padding: 0;
   justify-content: left;
+  margin-left: 0.5vw;
 }
 
 .styleName {
   padding-top: 0.5vh;
-  font-size: 12px;
+  font-size: 1.25vh;
 }
 
 .thumbnail {
   object-fit: cover;
-  width: 70px;
-  height: 70px;
+  width: 3.5vw;
+  height: 3.5vw;
   border-radius: 50%;
   cursor: pointer;
   opacity: 0.3;
@@ -168,17 +173,20 @@ body {
 
 .thumbnailSelected {
   object-fit: cover;
-  width: 70px;
-  height: 70px;
+  width: 3.5vw;
+  height: 3.5vw;
   border-radius: 50%;
   cursor: pointer;
 }
 
+
 .thumbnailStyle {
-  height: 100px;
-  width: 130px;
-  margin-bottom: 15px;
+  height: 4.25vw;
+  width: 5vw;
+  margin-bottom: 1vw;
+  margin-right: 1.5vw;
   text-align: center;
+  align-items: center;
 }
 
 /******************************/
@@ -193,8 +201,8 @@ body {
 
 
 .quantDrop, .sizeDrop, .cartButton{
-  padding: 12px 16px;
-  margin-right: 20px;
+  padding: 0.75vw 1.5vw;
+  margin-right: 1.5vw;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
   text-align: center;
@@ -205,11 +213,11 @@ body {
 }
 
 .quantDrop {
-  min-width: 50px;
+  min-width: 4vw;
 }
 
 .sizeDrop {
-  max-width: 100px;
+  max-width: 5vw;
 }
 
 

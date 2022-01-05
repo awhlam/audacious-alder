@@ -202,8 +202,7 @@
 
 .modal {
   position: relative;
-  width: 50%;
-  min-height: 400px;
+  width: 30%;
   background-color: white;
   border: 1px solid gray;
   border-radius: 4px;
@@ -216,10 +215,11 @@
 .button-close {
   cursor: pointer;
   border: 1px solid gray;
-  border-radius: 50%;
+  background:none;
+  border: none;
   position: fixed;
-  right: 24%;
-  top: 12%;
+  right: 34%;
+  top: 30%;
   z-index: 1001;
 }
 
@@ -232,4 +232,43 @@
   color: rgb(173, 147, 0);
   left: 24%;
   bottom: 315px;
+}
+
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.inner-comparison {
+  grid-column-start: 1;
+  text-align: center;
+}
+
+.inner-comparison2 {
+  grid-column-start: 2;
+  text-align: center;
+}
+
+.current-comparison {
+  margin: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.current-comparison2 {
+  margin: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.individual-feature {
+  margin: 15px;
+}
+
+.left-button {
+  position: relative;
+}
+
+.right-button {
+  position: relative;
 }

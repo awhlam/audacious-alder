@@ -32,17 +32,6 @@ const RelatedProductsCard = (props) => {
   }
 
   // ***********
-  // Func for rendering back up image
-  // ***********
-  const backupStarRender = (avgReview) => {
-    if (isNaN(avgReview)) {
-      return 3.25;
-    } else {
-      return avgReview;
-    }
-  }
-
-  // ***********
   // Alter the product id at App level
   // ***********
   const relatedProductClick = (event) => {
@@ -92,7 +81,7 @@ const RelatedProductsCard = (props) => {
         <a href="#top" onClick={relatedProductClick}>${props.related.details.default_price}</a>
       </div>
       <div>
-        {calcStarImg(backupStarRender(averageReview))}
+        {calcStarImg(averageReview)}
         <button
         onClick={handleModalOpenClick} className='modal-button'>♡</button>
       </div>
@@ -106,5 +95,3 @@ const RelatedProductsCard = (props) => {
 };
 
 export default RelatedProductsCard;
-
-// <a>{props.relatedProductCategory}</a>

@@ -14,42 +14,39 @@ const RelatedModal  = (props) => {
 
   return (
     <div className='modal-wrapper'>
-      <button onClick={handleModalCloseClick} className='button-close'>X</button>
-      <table className='modal'>
-        <thead>
-          <tr>
-            <th scope="col">{props.currentProduct.name}</th>
-            <th scope="col"> </th>
-            <th scope="col">{props.relatedFeature.name}</th>
-          </tr>
-        </thead>
-        {props.currentProduct.features.map((cur, idx) => {
-          return (
-            <RelatedModalContent
-            key={idx}
-            currentFeature={cur}
-            />
-          )
-        })}
-      </table>
+      <button onClick={handleModalCloseClick} className='button-close'>&#10006;</button>
+      <div className='modal'>
+        <div className='comparison'>
+          <div className='inner-comparison'>
+            <div className='current-comparison'>{props.currentProduct.name}</div>
+            <div>
+              {props.currentProduct.features.map((cur, idx) => {
+                return (
+                  <RelatedModalContent
+                  key={idx}
+                  feature={cur}
+                  />
+                )
+              })}
+            </div>
+          </div>
+          <div className='inner-comparison2'>
+            <div className='current-comparison2'>{props.relatedFeature.name}</div>
+            <div>
+            {props.relatedFeature.features.map((rel, idx) => {
+                return (
+                  <RelatedModalContent
+                  key={idx}
+                  feature={rel}
+                  />
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default RelatedModal;
-
-
-    // <div className='modal-wrapper'>
-    //   <div className='modal'>
-    //     <button onClick={handleModalCloseClick} className='button-close'>X</button>
-    //     <strong>Comparison Modal</strong>
-    //     <div className='left-comparison'>
-    //       {props.currentProduct.features.map((comparison, idx) => {
-    //         return <RelatedModalLeftContent
-    //         key={idx}
-    //         comparison={comparison}
-    //         />
-    //       })}
-    //     </div>
-    //   </div>
-    // </div>

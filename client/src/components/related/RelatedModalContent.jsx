@@ -2,13 +2,9 @@ import React from 'react';
 
 const RelatedModalContent = (props) => {
   return (
-      <tbody>
-        <tr>
-          <th scope="col">{props.currentFeature.value}</th>
-          <th scope="col">{props.currentFeature.feature}</th>
-          <th scope="col"></th>
-        </tr>
-      </tbody>
+      <div className='individual-feature'>
+        {props.feature.feature}: {props.feature.value}
+      </div>
   )
 }
 

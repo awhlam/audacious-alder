@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Cart = function ({ skus }) {
+const Cart = function ({ skus, styleId }) {
   const [size, setSize] = useState(null);
   const [quant, setQuant] = useState(1);
   const [skuId, setSkuId] = useState(null);
+  const [hover, setHover] = useState(false);
 
   const skusArray = [];
   const hash = {};
@@ -78,6 +79,14 @@ const Cart = function ({ skus }) {
       .catch((err) => {console.log('Failed to add to card ):')})
   }
 
+  const handleMouseIn = () => {
+    setHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setHover(false);
+  };
+
 
   return (
     <div className="cartContainer">
@@ -104,8 +113,10 @@ const Cart = function ({ skus }) {
       </select>
       <button
         onClick={addToCart}
+        onMouseOver={handleMouseIn}
+        onMouseOut={handleMouseOut}
         className="cartButton">
-        Add to Cart
+        {hover && !styleId ? "Select a Style" : "Add to Cart"}
       </button>
     </div>
   );

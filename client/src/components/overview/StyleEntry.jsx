@@ -4,6 +4,13 @@ import React, {useState} from 'react';
 
 const StyleEntry = function ({ style, getStyleInfo, setStyleId, styleId }) {
 
+  const shortName = () => {
+    if (style.name.indexOf(' &') > -1) {
+      return style.name.slice(0, style.name.indexOf(' &'))
+    } else {
+      return style.name
+    }
+  }
 
   return (
     <div className="thumbnailStyle">
@@ -15,7 +22,7 @@ const StyleEntry = function ({ style, getStyleInfo, setStyleId, styleId }) {
         className={styleId === style.style_id ? "thumbnailSelected" : "thumbnail"}
         src={style.photos[0].thumbnail_url}
       />
-      <li className="styleName">{style.name}</li>
+      <li className="styleName">{shortName()}</li>
     </div>
   );
 };

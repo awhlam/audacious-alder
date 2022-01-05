@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ImageGalleryThumbnail = function ( { setImageGallery, photo } ) {
+const ImageGalleryThumbnail = function ( { setImageGallery, photo, currentImage } ) {
   return (
     <div>
       <li>
         <img
         onClick={(e) => {setImageGallery(photo.url)}}
-        className="imageGalleryThumbnail"
+        className={currentImage == photo.url ? "imageGalleryThumbnailCurrent" : "imageGalleryThumbnail"}
+        // className="imageGalleryThumbnail"
         src={photo.url}
         />
       </li>

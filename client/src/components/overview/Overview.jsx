@@ -8,6 +8,7 @@ import axios from 'axios';
 const Overview = function ({ product, productStyle, reviewMetaData }) {
 
   const [styleInfo, setStyleInfo] = useState(productStyle.results[0])
+  const [styleId, setStyleId] = useState(null)
 
   const getStyleInfo = (styleId) => {
     for (let i = 0; i < productStyle.results.length; i++) {
@@ -34,13 +35,18 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
           styleInfo={styleInfo}
           reviewMetaData={reviewMetaData}
         />
-        <Style
-          getStyleInfo={getStyleInfo}
-          productStyle={productStyle}
-        />
-        <Cart
-          skus={styleInfo.skus}
-        />
+        <div className="styleCart">
+          <Style
+            getStyleInfo={getStyleInfo}
+            productStyle={productStyle}
+            setStyleId={setStyleId}
+            styleId={styleId}
+          />
+          <Cart
+            skus={styleInfo.skus}
+            styleId={styleId}
+          />
+        </div>
       </div>
     </div>
   );

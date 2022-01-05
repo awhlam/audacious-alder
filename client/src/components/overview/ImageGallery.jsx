@@ -23,6 +23,7 @@ const ImageGallery = function ({ productPhoto }) {
               key={idx}
               photo={photo}
               setImageGallery={setImageGallery}
+              currentImage={image}
             />
           )
         })}

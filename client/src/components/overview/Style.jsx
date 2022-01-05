@@ -3,9 +3,7 @@ import StyleEntry from './StyleEntry.jsx';
 
 // style thumbnail bar that shows thumbnail url pics and on click will render product img url to overview
 
-const Style = function ({ productStyle, getStyleInfo }) {
-
-  const [styleId, setStyleId] = useState(null)
+const Style = function ({ productStyle, getStyleInfo, setStyleId, styleId }) {
 
   const rows = productStyle.results.reduce(function (rows, key, index) {
     return (index % 4 == 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) && rows;

@@ -9,6 +9,7 @@ const ImageGallery = function ({ productPhoto }) {
     setImage(newImage)
   }
 
+
   useEffect(() => {
     setImage(productPhoto.photos[0].url)
   }, [productPhoto])

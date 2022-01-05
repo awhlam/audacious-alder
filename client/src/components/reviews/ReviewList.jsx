@@ -34,6 +34,7 @@ const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSor
         setReviews={setReviews}
         reviewMetaData={reviewMetaData}
         productId={productId}
+        reviewsSort={reviewsSort}
         setReviewsSort={setReviewsSort}
         reviewsFilter={reviewsFilter}
       />

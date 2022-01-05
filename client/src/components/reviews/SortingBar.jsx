@@ -1,7 +1,7 @@
 import React from 'react';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 
-const SortingBar = ({ reviewMetaData, reviews, setReviewsSort, reviewsFilter }) => {
+const SortingBar = ({ reviewMetaData, reviews, reviewsSort, setReviewsSort, reviewsFilter }) => {
   let totalReviews = calcAvgTotalReviews(reviewMetaData).reviews;
   let excludedReviews = totalReviews - reviews.length;
   if (reviewsFilter !== 'none') {
@@ -11,7 +11,7 @@ const SortingBar = ({ reviewMetaData, reviews, setReviewsSort, reviewsFilter }) 
   return (
     <h2>
       {reviews.length} reviews (excluding {excludedReviews} reported reviews), sorted by &nbsp;
-      <select onChange={ (e) => setReviewsSort(e.target.value)}>
+      <select value={reviewsSort} onChange={ (e) => setReviewsSort(e.target.value)}>
         <option value="helpful">helpful</option>
         <option value="newest">newest</option>
         <option value="relevant">relevance</option>

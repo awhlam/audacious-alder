@@ -135,7 +135,7 @@ const questions = {
   questionsGET: (req, res) => {
     axios.get(
       'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
-      { headers: options, params: { product_id: req.query.id } },
+      { headers: options, params: { product_id: req.query.id, count: 99 } },
     )
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });
@@ -143,7 +143,7 @@ const questions = {
   answersGET: (req, res) => {
     axios.get(
       `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.query.id}/answers`,
-      { headers: options },
+      { headers: options, params: { count: 99 } },
     )
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });

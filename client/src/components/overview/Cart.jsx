@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Cart = function ({ skus }) {
+const Cart = function ({ skus, styleId }) {
   const [size, setSize] = useState(null);
   const [quant, setQuant] = useState(1);
   const [skuId, setSkuId] = useState(null);
+  const [hover, setHover] = useState(false);
 
   const skusArray = [];
   const hash = {};
@@ -35,13 +36,15 @@ const Cart = function ({ skus }) {
     if (!size) {
       return (
         <option
+          key="disabled"
           disabled>
           -
         </option>
       );
     } else if (!hash) {
       return (
-        <option>
+        <option
+          key="out of stock">
           OUT OF STOCK
         </option>
       )
@@ -72,9 +75,17 @@ const Cart = function ({ skus }) {
       count: quant
     }
     axios.post('/cart', params)
-      .then((res) => {console.log('Add to cart (:')})
+      .then((res) => {console.log('Add to cart success (:')})
       .catch((err) => {console.log('Failed to add to card ):')})
   }
+
+  const handleMouseIn = () => {
+    setHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setHover(false);
+  };
 
 
   return (
@@ -95,13 +106,17 @@ const Cart = function ({ skus }) {
         </option>
         {skusArray.map((sku, idx) => (
           <option
-            key={sku.sku_id}>
+            key={idx}>
             {sku.key.size}
           </option>
         ))}
       </select>
-      <button className="cartButton">
-        Add to Cart
+      <button
+        onClick={addToCart}
+        onMouseOver={handleMouseIn}
+        onMouseOut={handleMouseOut}
+        className="cartButton">
+        {hover && !styleId ? "Select a Style" : "Add to Cart"}
       </button>
     </div>
   );

@@ -23,9 +23,15 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
+                <span class="strong">93.24% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>69/74</span>
+=======
                 <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>65/70</span>
+>>>>>>> main
             </div>
         
             
@@ -44,9 +50,15 @@
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
+                <span class="strong">93.24% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>69/74</span>
+=======
                 <span class="strong">92.85% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>65/70</span>
+>>>>>>> main
             </div>
         
             
@@ -133,7 +145,15 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
+<<<<<<< HEAD
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+=======
 <a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+>>>>>>> main
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -190,6 +210,13 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+=======
+>>>>>>> main
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -204,7 +231,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+<<<<<<< HEAD
+import { ColumnContainer, TableStyle, TableRowStyle } from './ReviewSummary.styles.js';
+=======
 import { ColumnContainer, TableStyle, RowStyle, CellStyle } from './ReviewSummary.styles.js';
+>>>>>>> main
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import calcPctRecommend from '../shared/calcPctRecommend.js';
@@ -234,6 +265,32 @@ const ReviewSummary = ({ reviewMetaData, reviewsFilter, setReviewsFilter }) =&gt
         &lt;/p&gt;
         &lt;TableStyle&gt;
           &lt;tbody&gt;
+<<<<<<< HEAD
+            &lt;TableRowStyle&gt;
+              &lt;td&gt;&lt;a href='#' onClick={handleClick}&gt;5 stars&lt;/a&gt;&lt;/td&gt;
+              &lt;td&gt;{<span class="branch-0 cbranch-no" title="branch not covered" >reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews&lt;/td&gt;</span>
+            &lt;/TableRowStyle&gt;
+            &lt;TableRowStyle&gt;
+              &lt;td&gt;&lt;a href='#' onClick={handleClick}&gt;4 stars&lt;/a&gt;&lt;/td&gt;
+              &lt;td&gt;{<span class="branch-0 cbranch-no" title="branch not covered" >reviewMetaData.ratings['4'] ? reviewMetaData.ratings['4'] : '0'} reviews&lt;/td&gt;</span>
+            &lt;/TableRowStyle&gt;
+            &lt;TableRowStyle&gt;
+              &lt;td&gt;&lt;a href='#' onClick={handleClick}&gt;3 stars&lt;/a&gt;&lt;/td&gt;
+              &lt;td&gt;{<span class="branch-0 cbranch-no" title="branch not covered" >reviewMetaData.ratings['3'] ? reviewMetaData.</span>ratings['3'] : '0'} reviews&lt;/td&gt;
+            &lt;/TableRowStyle&gt;
+            &lt;TableRowStyle&gt;
+              &lt;td&gt;&lt;a href='#' onClick={handleClick}&gt;2 stars&lt;/a&gt;&lt;/td&gt;
+              &lt;td&gt;{<span class="branch-0 cbranch-no" title="branch not covered" >reviewMetaData.ratings['2'] ? reviewMetaData.</span>ratings['2'] : '0'} reviews&lt;/td&gt;
+            &lt;/TableRowStyle&gt;
+            &lt;TableRowStyle&gt;
+              &lt;td&gt;&lt;a href='#' onClick={handleClick}&gt;1 star&lt;/a&gt;&lt;/td&gt;
+              &lt;td&gt;{<span class="branch-0 cbranch-no" title="branch not covered" >reviewMetaData.ratings['1'] ? reviewMetaData.</span>ratings['1'] : '0'} reviews&lt;/td&gt;
+            &lt;/TableRowStyle&gt;
+            &lt;TableRowStyle&gt;
+              &lt;td&gt;Current Filter&lt;/td&gt;
+              &lt;td&gt;{reviewsFilter}&lt;/td&gt;
+            &lt;/TableRowStyle&gt;
+=======
             &lt;RowStyle active={reviewsFilter === 5}&gt;
               &lt;CellStyle&gt;&lt;a href='#' onClick={handleClick}&gt;5 stars&lt;/a&gt;&lt;/CellStyle&gt;
               &lt;CellStyle&gt;{<span class="branch-0 cbranch-no" title="branch not covered" >reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews&lt;/CellStyle&gt;</span>
@@ -254,6 +311,7 @@ const ReviewSummary = ({ reviewMetaData, reviewsFilter, setReviewsFilter }) =&gt
               &lt;CellStyle&gt;&lt;a href='#' onClick={handleClick}&gt;1 star&lt;/a&gt;&lt;/CellStyle&gt;
               &lt;CellStyle&gt;{<span class="branch-0 cbranch-no" title="branch not covered" >reviewMetaData.ratings['1'] ? reviewMetaData.</span>ratings['1'] : '0'} reviews&lt;/CellStyle&gt;
             &lt;/RowStyle&gt;
+>>>>>>> main
           &lt;/tbody&gt;
         &lt;/TableStyle&gt;
       &lt;/div&gt;
@@ -280,7 +338,11 @@ export default ReviewSummary;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
+<<<<<<< HEAD
+                at Tue Jan 04 2022 16:59:49 GMT-0800 (Pacific Standard Time)
+=======
                 at Tue Jan 04 2022 20:45:19 GMT-0800 (Pacific Standard Time)
+>>>>>>> main
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

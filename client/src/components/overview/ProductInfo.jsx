@@ -35,25 +35,28 @@ const ProductInfo = function ({ product, styleInfo, reviewMetaData }) {
     }
   }
   return (
-    <div id="productContainer">
-      <span id="productName">
-        {product.name}
-      </span>
-      <span id="productPrice">
-        {salePrice()}
-      </span>
-      <span id="productStar">
-        {calcStarImg(calcAvgTotalReviews(reviewMetaData).avgStars)}
-      </span>
-      <p id="productDescription">
+    <div className="productContainer">
+      <div className="productInfoContainer">
+        <div className="productInfoLeft">
+          <div className="productName">
+            {product.name}
+          </div>
+          <div className="productCategory">
+            {product.category}
+          </div>
+          <div className="productStar">
+            {calcStarImg(calcAvgTotalReviews(reviewMetaData).avgStars)}
+          </div>
+        </div>
+        <div className="productInfoRight">
+          <div className="productPrice">
+            {salePrice()}
+          </div>
+        </div>
+      </div>
+      <p className="productDescription">
         {product.description}
       </p>
-      <span id="productCategory">
-        {product.category}
-      </span>
-      <span id="productSocial">
-        Social Media
-      </span>
     </div>
   );
 };

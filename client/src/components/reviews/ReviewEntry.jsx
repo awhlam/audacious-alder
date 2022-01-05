@@ -38,7 +38,7 @@ const ReviewEntry = ({ review, productId, reviewsSort, setReviews }) => {
       <p>{review.body}</p>
       <p>{review.recommend ? '✔ I recommend this product' : ''}</p>
       <p>{review.response ? review.response : ''}</p>
-      Helpful? <a href='#' onClick={ (e) => handleClick(e, review.review_id, 'helpful') }>Yes</a> ({review.helpfulness})&nbsp;
+      Helpful? <a href='#' onClick={ (e) => handleClick(e, review.review_id, 'helpful') }>Yes</a> ({review.helpfulness})
       | <a href="#" onClick={ (e) => handleClick(e, review.review_id, 'report') }>Report</a>
     </ReviewEntryStyle>
   );

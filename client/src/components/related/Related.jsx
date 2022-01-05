@@ -12,10 +12,6 @@ const Related = (props) => {
   let [relatedProducts, setDetail] = useState([]);
 
   // *************
-  // Functions
-  //**************
-
-  // *************
   // Initial Renders of Data
   // *************
   useEffect(() => {
@@ -61,10 +57,12 @@ const Related = (props) => {
           currentProduct={props.currentProduct}
           relatedProducts={relatedProducts}
           setProductId={props.setProductId}
-          // handleModalOpen={handleModalOpen}
         />
       </div>
     )
 };
 
 export default Related;
+
+// <button className='right-button'>&#5125;</button>
+// <button className='left-button'>&#5130;</button>

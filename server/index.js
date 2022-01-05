@@ -18,6 +18,8 @@ app.get('/questions', api.questions.questionsGET);
 app.get('/questions/answers', api.questions.answersGET);
 app.post('/questions', api.questions.questionPOST);
 app.post('/questions/answers', api.questions.answersPOST);
+app.put('/questions', api.questions.questionsHelpfulPUT);
+app.put('/questions/answers', api.questions.answersHelpfulPUT);
 
 // Related
 app.get('/related', api.products.productRelatedGET);

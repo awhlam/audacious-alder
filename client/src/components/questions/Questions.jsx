@@ -1,19 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import QuestionRender from './QuestionRender.jsx'
-import SubmitQuestionForm from './SubmitQuestionForm.jsx'
+import {SubmitQuestionForm} from './SubmitQuestionForm.jsx'
 
-const Questions = () => {
+const Questions = ({productId}) => {
 
-  const [product_id, updateID] = useState(63609)
   const [questions, updateQuestions] = useState({results: []})
   const [questionDisplay, updateQuestionDisplay] = useState(false)
 
   useEffect(() => {
-    axios.get('/questions', {params: {id: product_id}})
+    axios.get('/questions', {params: {id: productId}})
       .then((response) => {updateQuestions(response.data)})
       .catch((error) => {console.log(error)})
-  }, [product_id])
+  }, [productId])
 
   if (questionDisplay) {
     return (
@@ -24,9 +23,7 @@ const Questions = () => {
         <div>
           {questions.results.map((question) => <QuestionRender question={question}/>)}
         </div>
-        <div className='box'>
-          <SubmitQuestionForm id={product_id}/>
-        </div>
+        <SubmitQuestionForm id={productId}/>
       </div>
     )
   } else {
@@ -41,12 +38,8 @@ const Questions = () => {
           <QuestionRender question={questions.results[2]}/>
           <QuestionRender question={questions.results[3]}/>
         </div>
-        <div>
         <button onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</button>
-        </div>
-        <div className='box'>
-          <SubmitQuestionForm id={product_id}/>
-        </div>
+        <SubmitQuestionForm id={productId}/>
       </div>
     )
   }

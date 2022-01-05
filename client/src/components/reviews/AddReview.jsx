@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import fetchReviews from '../shared/fetchReviews.js';
 import {CloseButton, MODAL_STYLES, OVERLAY_STYLES} from './AddReview.styles.js';
 
@@ -17,7 +16,7 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
     characteristics: {}
   });
 
-  useEffect(() => {
+  const clearReview = () => {
     setReview((oldState) => ({
       ...oldState,
       product_id: productId,
@@ -26,7 +25,9 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
       name: '',
       email: ''
     }));
-  }, [productId]);
+  }
+
+  useEffect(() => { clearReview() }, [productId]);
   //******************************
   // HANDLERS
   //******************************
@@ -44,8 +45,9 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
       .then((res) => {
         alert('Your review has been submitted');
         openModal();
+        clearReview();
         fetchReviews(productId, reviewsSort)
-          .then((res) => { setReviews(res.data); });
+          .then((res) => { setReviews(res.data.results); });
       })
       .catch((err) => {
         console.log(err)

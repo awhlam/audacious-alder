@@ -135,7 +135,7 @@ const questions = {
   questionsGET: (req, res) => {
     axios.get(
       'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
-      { headers: options, params: { product_id: req.query.id } },
+      { headers: options, params: { product_id: req.query.id, count: 99 } },
     )
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });
@@ -143,7 +143,7 @@ const questions = {
   answersGET: (req, res) => {
     axios.get(
       `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.query.id}/answers`,
-      { headers: options },
+      { headers: options, params: { count: 99 } },
     )
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });
@@ -170,20 +170,22 @@ const questions = {
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });
   },
-  questionsHelpfulPUT: (question_id) => {
-    axios.put(`/qa/questions/${question_id}/helpful`, { headers: options })
-      .then()
-      .catch();
+  questionsHelpfulPUT: (req, res) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.body.id}/helpful`,
+    {}, { headers: options })
+      .then((response) => { res.send(response.data); })
+      .catch((error) => { console.log(error); });
   },
   questionsReportPUT: (question_id) => {
     axios.put(`/qa/questions/${question_id}/report`, { headers: options })
       .then()
       .catch();
   },
-  answersHelpfulPUT: (answer_id) => {
-    axios.put(`/qa/answers/${answer_id}/helpful`, { headers: options })
-      .then()
-      .catch();
+  answersHelpfulPUT: (req, res) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/answers/${req.body.id}/helpful`,
+    {}, { headers: options })
+      .then((response) => { res.send(response.data); })
+      .catch((error) => { console.log(error); });
   },
   answersReportPUT: (answer_id) => {
     axios.put(`/qa/answers/${answer_id}/report`, { headers: options })

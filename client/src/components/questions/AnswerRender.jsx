@@ -1,9 +1,16 @@
 import React from 'react'
+import axios from 'axios'
 import moment from 'moment'
 
 const AnswerRender = ({answer}) => {
   if (answer) {
     let date = moment(answer.date);
+
+    const markHelpful = () => {
+      axios.put('/questions/answers', {id: answer.answer_id})
+        .then((response) => {alert('Marked as helpful')})
+        .catch((error) => {console.log(error)})
+    }
 
     return (
       <div className="box">
@@ -15,6 +22,11 @@ const AnswerRender = ({answer}) => {
         </div>
         <div>
           {answer.body}
+        </div>
+        <div>
+          <span>Helpful:</span>
+          <span onClick={markHelpful}>  Yes  </span>
+          <span>({answer.helpfulness})</span>
         </div>
       </div>
     )

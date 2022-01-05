@@ -1,6 +1,5 @@
 import React from 'react';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
-import fetchReviews from '../shared/fetchReviews.js';
 
 const SortingBar = ({ reviewMetaData, setReviews, setReviewsSort }) => {
   return (

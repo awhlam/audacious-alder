@@ -3,7 +3,15 @@ import styled from 'styled-components'
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import AddReview from './AddReview.jsx';
-import { ColumnContainer } from './Reviews.jsx';
+
+const ColumnContainer = styled.div`
+  border: 2px solid;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 15px;
+  flex: 4;
+  background: white;
+`
 
 const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSort, setReviewsSort }) => {
   //******************************
@@ -27,7 +35,7 @@ const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSor
         productId={productId}
         setReviewsSort={setReviewsSort}
       />
-      {reviews.results.slice(0, numReviews).map((review, index) => (
+      {reviews.slice(0, numReviews).map((review, index) => (
         <ReviewEntry
           review={review}
           key={review.review_id}

@@ -2,4 +2,4 @@ node_modules
 .DS_Store
 config.js
 .vscode/settings.json
-./client/dist/bundle.js
+client/dist/bundle.js

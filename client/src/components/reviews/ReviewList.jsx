@@ -9,11 +9,11 @@ const ColumnContainer = styled.div`
   border-radius: 15px;
   padding: 25px;
   margin: 15px;
-  flex: 4;
+  flex: 3;
   background: white;
 `
 
-const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSort, setReviewsSort }) => {
+const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSort, setReviewsSort, reviewsFilter }) => {
   //******************************
   // STATE
   //******************************
@@ -30,10 +30,12 @@ const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSor
   return (
     <ColumnContainer>
       <SortingBar
+        reviews={reviews}
         setReviews={setReviews}
         reviewMetaData={reviewMetaData}
         productId={productId}
         setReviewsSort={setReviewsSort}
+        reviewsFilter={reviewsFilter}
       />
       {reviews.slice(0, numReviews).map((review, index) => (
         <ReviewEntry

@@ -9,8 +9,10 @@ const ReviewsContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   background: #45a679;
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 15px;
+  margin: 15px;
+  padding: 15px;
 `
 
 const Reviews = ({ productId, reviewMetaData, reviewsFilter, setReviewsFilter, reviews, setReviews, reviewsSort, setReviewsSort }) => (

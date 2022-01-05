@@ -12,7 +12,7 @@ export const ColumnContainer = styled.div`
 export const TableStyle = styled.table`
   padding: 15px;
   margin: 10px;
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 15px;
 `
 

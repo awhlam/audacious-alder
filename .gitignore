@@ -1,6 +1,5 @@
 node_modules
 .DS_Store
 config.js
-coverage
 .vscode/settings.json
 client/dist/bundle.js

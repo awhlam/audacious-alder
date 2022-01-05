@@ -5,7 +5,7 @@ export const ReviewerNameDate = styled.span`
 `
 
 export const ReviewEntryStyle = styled.div`
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 15px;
   padding: 15px;
   margin: 5px;

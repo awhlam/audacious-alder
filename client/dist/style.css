@@ -1,17 +1,21 @@
 #app {
   font-family: 'Lato', sans-serif;
+  background-color: #f7f7f7;
+}
+
+body {
+  margin: 0;
 }
 
 .title {
   font-family: 'Proza Libre', sans-serif;
   font-size: 100px;
-  background-color: white;
   text-align: center;
   line-height: 10vh;
   width: 100%;
-  height: 10vh;
   z-index: 1;
-  margin-top: 5vh;
+  margin: 0;
+  padding-top: 5vh;
 }
 
 .box {
@@ -36,7 +40,7 @@
 }
 
 .overviewLeft {
-  margin-left: 100px;
+  margin-left: 2vw;
 }
 
 .overviewRight {
@@ -44,8 +48,8 @@
   flex-direction: column;
   height: calc(100vh - 10px);
   width: 30vw;
-  margin-left: 80px;
-  justify-content: center;
+  margin-left: 2vw;
+  justify-content: space-between;
 }
 
 /******************************/
@@ -56,7 +60,6 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  margin-right: 30px;
 }
 
 .imageGallery {
@@ -90,14 +93,26 @@
 /******************************/
 
 
-#productContainer {
-  margin-right: 100px;
+.productContainer {
+  margin-left: 1vw;
+  margin-right: 2vw;
+  margin-top: 10vh;
   font-size: 26px;
 }
 
-
-#productName{
+.productInfoContainer {
   font-size: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.productCategory{
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.productDescription {
+  margin-top: 5vh;
 }
 
 
@@ -115,18 +130,18 @@
 /******************************/
 
 .styleContainer {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 0;
 }
 
 .styleList {
   display: flex;
   list-style: none;
   padding: 0;
+  justify-content: left;
 }
 
 .styleName {
-  padding-bottom: 20px;
+  padding-bottom: 2vh;
 }
 
 .thumbnail {
@@ -150,7 +165,10 @@
 /******************************/
 
 .cartContainer {
-  height: 200px;
+  height: 5vh;
+  margin-top: 5vh;
+  margin-left: 1vw;
+  margin-bottom: 5vh;
 }
 
 
@@ -160,7 +178,6 @@
   font-size: 16px;
   font-family: 'Lato', sans-serif;
   text-align: center;
-
 }
 
 .quantDrop {
@@ -170,6 +187,7 @@
 .sizeDrop {
   max-width: 100px;
 }
+
 
 /******************************/
 /* RELATED */

@@ -13,14 +13,16 @@ const Style = function ({ productStyle, getStyleInfo }) {
   return (
     <div className="styleContainer">
       {rows.map((row, idx) => (
-        <ul className="styleList">
-          {row.map((style, idx) => (
-            <StyleEntry
-              key={idx}
-              style={style}
-              getStyleInfo={getStyleInfo}
-            />
-          ))}
+        <ul
+          key={idx}
+          className="styleList">
+            {row.map((style, idx) => (
+              <StyleEntry
+                key={idx}
+                style={style}
+                getStyleInfo={getStyleInfo}
+              />
+            ))}
         </ul>
       ))}
     </div>

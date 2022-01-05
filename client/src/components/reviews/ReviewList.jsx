@@ -9,7 +9,7 @@ const ColumnContainer = styled.div`
   border-radius: 15px;
   padding: 25px;
   margin: 15px;
-  flex: 4;
+  flex: 3;
   background: white;
 `
 

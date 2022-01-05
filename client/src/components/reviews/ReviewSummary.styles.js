@@ -16,10 +16,17 @@ export const TableStyle = styled.table`
   border-radius: 15px;
 `
 
-export const TableRowStyle = styled.tr`
-  padding: 5px;
+export const RowStyle = styled.tr`
+  background: ${props => props.active ? '#d0535f' : 'white'};
+  color: ${props => props.active ? 'white' : 'black'};
+  font-weight: ${props => props.active ? 'bold' : 'normal'};
   &:hover {
     background: #ffd966;
     font-weight: bold;
   }
+`
+
+export const CellStyle = styled.td`
+  padding-left: 15px;
+  padding-right: 15px;
 `

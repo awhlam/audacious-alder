@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColumnContainer, TableStyle, TableRowStyle } from './ReviewSummary.styles.js';
+import { ColumnContainer, TableStyle, RowStyle, CellStyle } from './ReviewSummary.styles.js';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import calcPctRecommend from '../shared/calcPctRecommend.js';
@@ -29,30 +29,26 @@ const ReviewSummary = ({ reviewMetaData, reviewsFilter, setReviewsFilter }) => {
         </p>
         <TableStyle>
           <tbody>
-            <TableRowStyle>
-              <td><a href='#' onClick={handleClick}>5 stars</a></td>
-              <td>{reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews</td>
-            </TableRowStyle>
-            <TableRowStyle>
-              <td><a href='#' onClick={handleClick}>4 stars</a></td>
-              <td>{reviewMetaData.ratings['4'] ? reviewMetaData.ratings['4'] : '0'} reviews</td>
-            </TableRowStyle>
-            <TableRowStyle>
-              <td><a href='#' onClick={handleClick}>3 stars</a></td>
-              <td>{reviewMetaData.ratings['3'] ? reviewMetaData.ratings['3'] : '0'} reviews</td>
-            </TableRowStyle>
-            <TableRowStyle>
-              <td><a href='#' onClick={handleClick}>2 stars</a></td>
-              <td>{reviewMetaData.ratings['2'] ? reviewMetaData.ratings['2'] : '0'} reviews</td>
-            </TableRowStyle>
-            <TableRowStyle>
-              <td><a href='#' onClick={handleClick}>1 star</a></td>
-              <td>{reviewMetaData.ratings['1'] ? reviewMetaData.ratings['1'] : '0'} reviews</td>
-            </TableRowStyle>
-            <TableRowStyle>
-              <td>Current Filter</td>
-              <td>{reviewsFilter}</td>
-            </TableRowStyle>
+            <RowStyle active={reviewsFilter === 5}>
+              <CellStyle><a href='#' onClick={handleClick}>5 stars</a></CellStyle>
+              <CellStyle>{reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews</CellStyle>
+            </RowStyle>
+            <RowStyle active={reviewsFilter === 4}>
+              <CellStyle><a href='#' onClick={handleClick}>4 stars</a></CellStyle>
+              <CellStyle>{reviewMetaData.ratings['4'] ? reviewMetaData.ratings['4'] : '0'} reviews</CellStyle>
+            </RowStyle>
+            <RowStyle active={reviewsFilter === 3}>
+              <CellStyle><a href='#' onClick={handleClick}>3 stars</a></CellStyle>
+              <CellStyle>{reviewMetaData.ratings['3'] ? reviewMetaData.ratings['3'] : '0'} reviews</CellStyle>
+            </RowStyle>
+            <RowStyle active={reviewsFilter === 2}>
+              <CellStyle><a href='#' onClick={handleClick}>2 stars</a></CellStyle>
+              <CellStyle>{reviewMetaData.ratings['2'] ? reviewMetaData.ratings['2'] : '0'} reviews</CellStyle>
+            </RowStyle>
+            <RowStyle active={reviewsFilter === 1}>
+              <CellStyle><a href='#' onClick={handleClick}>1 star</a></CellStyle>
+              <CellStyle>{reviewMetaData.ratings['1'] ? reviewMetaData.ratings['1'] : '0'} reviews</CellStyle>
+            </RowStyle>
           </tbody>
         </TableStyle>
       </div>

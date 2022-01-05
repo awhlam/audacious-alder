@@ -23,7 +23,7 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
 
   return (
     <div className="overview">
-      <div className="overLeft">
+      <div className="overviewLeft">
         <ImageGallery
           productPhoto={styleInfo}
         />

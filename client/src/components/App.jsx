@@ -38,6 +38,7 @@ export const App = () => {
       .then(() => { setProductId(id); })
       .catch((err) => { console.log(err) });
   }
+
   // If productId changes, fetch all data for new product
   useEffect(() => {
     const url = new URL (document.URL)
@@ -47,8 +48,11 @@ export const App = () => {
     } else {
       fetchData(productId);
     }
-    console.log('fetching data for product_id: ', productId);
+    // reset reviews sorting and filtering
+    setReviewsSort('helpful');
+    setReviewsFilter('none');
   }, [productId])
+
   // If review sorting/filtering method changes, fetch reviews
   useEffect(() => {
     fetchReviews(productId, reviewsSort)

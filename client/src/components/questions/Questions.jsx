@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import QuestionRender from './QuestionRender.jsx'
 import {SubmitQuestionForm} from './SubmitQuestionForm.jsx'
+import {mainBox} from './StyleModule.jsx'
 
 const Questions = ({productId}) => {
 
@@ -16,7 +17,7 @@ const Questions = ({productId}) => {
 
   if (questionDisplay) {
     return (
-      <div className="box">
+      <div style={mainBox}>
         <h1>
           Questions
         </h1>
@@ -28,7 +29,7 @@ const Questions = ({productId}) => {
     )
   } else {
     return (
-      <div className="box">
+      <div style={mainBox}>
         <h1>
           Questions
         </h1>

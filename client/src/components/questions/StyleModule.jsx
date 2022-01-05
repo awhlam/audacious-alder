@@ -25,3 +25,27 @@ export const close = {
   float: 'right',
   color: 'red'
 }
+
+export const mainBox = {
+  border: '1px solid',
+  borderRadius: '50px',
+  padding: '5%',
+  margin: '5px',
+  backgroundColor: '#45a679'
+}
+
+export const questionBox = {
+  border: '1px solid',
+  borderRadius: '50px',
+  padding: '5%',
+  margin: '5px',
+  backgroundColor: '#25b3a0'
+}
+
+export const answerBox = {
+  border: '1px solid',
+  borderRadius: '50px',
+  padding: '5%',
+  margin: '5px',
+  backgroundColor: '#0facba'
+}

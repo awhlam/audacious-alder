@@ -35,7 +35,7 @@ body {
   align-items: center;
   margin-top: 5vh;
   justify-content: center;
-  height: calc(100vh - 10px);
+  height: 70vh;
 
 }
 
@@ -46,7 +46,7 @@ body {
 .overviewRight {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 10px);
+  height: 70vh;
   width: 30vw;
   margin-left: 2vw;
   justify-content: space-between;
@@ -64,8 +64,8 @@ body {
 
 .imageGallery {
   margin-top: 0;
-  height: calc(100vh - 10px);
-  width: 35vw;
+  height: 70vh;
+  width: 50vw;
   object-fit: cover;
 }
 
@@ -76,7 +76,7 @@ body {
   margin-top: 0;
   margin-right: calc(0.5vw + 5px);
   overflow-y: auto;
-  height: calc(100vh - 10px);
+  height: 70vh;
 }
 
 
@@ -96,7 +96,7 @@ body {
 .productContainer {
   margin-left: 1vw;
   margin-right: 2vw;
-  margin-top: 10vh;
+  margin-top: 5vh;
   font-size: 26px;
 }
 
@@ -106,7 +106,7 @@ body {
   justify-content: space-between;
 }
 
-.productCategory{
+.productCategory {
   font-size: 20px;
   letter-spacing: 0.5px;
 }
@@ -130,7 +130,9 @@ body {
 /******************************/
 
 .styleContainer {
+  height: 20vh;
   margin-bottom: 0;
+  overflow-y: auto;
 }
 
 .styleList {
@@ -141,10 +143,20 @@ body {
 }
 
 .styleName {
-  padding-bottom: 2vh;
+  padding-bottom: 0.5vh;
+  font-size: 12px;
 }
 
 .thumbnail {
+  object-fit: cover;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.3;
+}
+
+.thumbnailSelected {
   object-fit: cover;
   width: 70px;
   height: 70px;
@@ -166,7 +178,7 @@ body {
 
 .cartContainer {
   height: 5vh;
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   margin-left: 1vw;
   margin-bottom: 5vh;
 }

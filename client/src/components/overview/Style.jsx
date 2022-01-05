@@ -5,9 +5,12 @@ import StyleEntry from './StyleEntry.jsx';
 
 const Style = function ({ productStyle, getStyleInfo }) {
 
+  const [styleId, setStyleId] = useState(null)
+
   const rows = productStyle.results.reduce(function (rows, key, index) {
     return (index % 4 == 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) && rows;
   }, [])
+
 
 
   return (
@@ -21,6 +24,8 @@ const Style = function ({ productStyle, getStyleInfo }) {
                 key={idx}
                 style={style}
                 getStyleInfo={getStyleInfo}
+                setStyleId={setStyleId}
+                styleId={styleId}
               />
             ))}
         </ul>

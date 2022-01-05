@@ -31,6 +31,28 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
+describe('Overview Component', () => {
+  it('should have an overview class', async () => {
+    render(<Overview
+      product={products[0]}
+      productStyle={productStyle}
+      reviewMetaData={reviewsMeta}
+    />);
+    await waitFor(() => {screen.getByClassId('overview')})
+    expect(getByClassId(screen.documentElement, 'overview')).toBeInTheDocument()
+  });
+});
+
+describe('ImageGallery Component', () => {
+  it('should have correct number of photos in image gallery thumbnail', async () => {
+    render(<ImageGallery
+      productStyle={productStyle}
+    />);
+    await waitFor(() => {screen.getByTestId('overview')})
+    expect(getByTestId(screen.documentElement, 'overview')).toBeInTheDocument()
+  });
+});
+
 describe('ProductInfo Component', () => {
   it('should have a product name', async () => {
     render(<ProductInfo
@@ -45,17 +67,6 @@ describe('ProductInfo Component', () => {
   });
 });
 
-describe('ImageGallery Component', () => {
-  it('should have an overview class', async () => {
-    render(<Overview
-      product={products[0]}
-      productStyle={productStyle}
-      reviewMetaData={reviewsMeta}
-    />);
-    await waitFor(() => {screen.getByTestId('overview')})
-    expect(getByTestId(screen.documentElement, 'overview')).toBeInTheDocument()
-  });
-});
 
 describe('Cart Component', () => {
   it('should render select size in dropdown by default', async () => {

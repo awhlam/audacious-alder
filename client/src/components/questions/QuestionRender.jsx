@@ -3,6 +3,7 @@ import axios from 'axios'
 import moment from 'moment'
 import AnswerRender from './AnswerRender.jsx'
 import {SubmitAnswerForm} from './SubmitAnswerForm.jsx'
+import {questionBox} from './StyleModule.jsx'
 
 const QuestionRender = ({question}) => {
   if (question) {
@@ -25,7 +26,7 @@ const QuestionRender = ({question}) => {
 
     if (answerDisplay) {
       return (
-        <div className="box">
+        <div style={questionBox}>
           <div>
             {date.format('MMMM Do, YYYY')}
           </div>
@@ -48,7 +49,7 @@ const QuestionRender = ({question}) => {
       )
     } else {
       return (
-        <div className="box">
+        <div style={questionBox}>
           <div>
             {date.format('MMMM Do, YYYY')}
           </div>

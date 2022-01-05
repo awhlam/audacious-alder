@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import moment from 'moment'
+import {answerBox} from './StyleModule.jsx'
 
 const AnswerRender = ({answer}) => {
   if (answer) {
@@ -13,7 +14,7 @@ const AnswerRender = ({answer}) => {
     }
 
     return (
-      <div className="box">
+      <div style={answerBox}>
         <div>
           {date.format('MMMM Do, YYYY')}
         </div>

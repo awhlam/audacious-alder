@@ -20,6 +20,7 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
 
   useEffect(() => {
     setStyleInfo(productStyle.results[0])
+    setStyleId(null)
   }, [productStyle])
 
   return (

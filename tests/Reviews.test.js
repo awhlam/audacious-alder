@@ -44,8 +44,8 @@ describe('Review Summary Component', function () {
 
 describe('SortingBar Component', function () {
   it('should have reviews sorted by text', function () {
-    render(<SortingBar reviewMetaData={reviewsMeta}/>);
-    expect(screen.getByText('reviews, sorted by', {exact: false})).toBeDefined();
+    render(<SortingBar reviewMetaData={reviewsMeta} reviews={reviews.results}/>);
+    expect(screen.getByText('reported reviews), sorted by', {exact: false})).toBeDefined();
   });
 });
 

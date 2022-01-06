@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for client/src/components/reviews/SortingBar.jsx</title>
+    <title>Code coverage report for client/src/components/related/RelatedProductsList.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">client/src/components/reviews</a> SortingBar.jsx</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">client/src/components/related</a> RelatedProductsList.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">29.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>7/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">29.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>7/24</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,52 +86,55 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable */
+import React from 'react';
+import RelatedProductsCard from './RelatedProductsCard.jsx';
 &nbsp;
-const SortingBar = ({ reviewMetaData, reviews, reviewsSort, setReviewsSort, reviewsFilter }) =&gt; {
-  let totalReviews = calcAvgTotalReviews(reviewMetaData).reviews;
-  let excludedReviews = totalReviews - reviews.length;
-  if (reviewsFilter !== 'none') {
-    excludedReviews = reviewMetaData.ratings[reviewsFilter] - reviews.length || 0;
-  }
+const RelatedProductsList = <span class="fstat-no" title="function not covered" >(props) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div className='carousel-wrapper'&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;div className='related'&gt;</span>
+<span class="cstat-no" title="statement not covered" >          {props.relatedProducts.map((product) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            return &lt;RelatedProductsCard</span>
+<span class="cstat-no" title="statement not covered" >              key={product.details.id}</span>
+<span class="cstat-no" title="statement not covered" >              currentProduct={props.currentProduct}</span>
+<span class="cstat-no" title="statement not covered" >              related={product}</span>
+<span class="cstat-no" title="statement not covered" >              relatedId={product.details.id}</span>
+<span class="cstat-no" title="statement not covered" >              setProductId={props.setProductId}</span>
+<span class="cstat-no" title="statement not covered" >              /&gt;</span>
+<span class="cstat-no" title="statement not covered" >          })}</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >  )</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-  return (
-    &lt;h2&gt;
-      {reviews.length} reviews (excluding {excludedReviews} reported reviews), sorted by &amp;nbsp;
-      &lt;select value={reviewsSort} onChange={ <span class="fstat-no" title="function not covered" >(e</span>) =&gt; setReviewsSort(e.target.value)}&gt;
-        &lt;option value="helpful"&gt;helpful&lt;/option&gt;
-        &lt;option value="newest"&gt;newest&lt;/option&gt;
-        &lt;option value="relevant"&gt;relevance&lt;/option&gt;
-      &lt;/select&gt; ↓
-    &lt;/h2&gt;
-  );
-}
-&nbsp;
-export default SortingBar;
+export default RelatedProductsList;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

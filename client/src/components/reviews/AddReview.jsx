@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import fetchReviews from '../shared/fetchReviews.js';
-import {CloseButton, MODAL_STYLES, OVERLAY_STYLES} from './AddReview.styles.js';
+import { FormContainer, CloseButton, ModalContainer, OverlayContainer } from './AddReview.styles.js';
+import { ButtonContainer } from './ReviewList.styles.js';
 
 const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews }) => {
   //******************************
@@ -60,14 +61,14 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
   if (!showModal) { return null; }
   return (
     <div>
-      <div style={OVERLAY_STYLES} />
-      <div style={MODAL_STYLES}>
+      <div style={OverlayContainer} />
+      <div style={ModalContainer}>
         <h1>Write Your Review
           <CloseButton onClick={openModal}>
             Close ❌
           </CloseButton>
         </h1>
-        <form onSubmit={handleSubmit}>
+        <FormContainer onSubmit={handleSubmit}>
           <p>Overall Rating*</p>
           <select name="rating" onChange={handleChange}>
             <option>Select a Rating</option>
@@ -92,8 +93,8 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
           <p>Your email*</p>
           <p><input type="email" name="email" required placeholder="Example: jackson11@email.com" value={review.email} onChange={handleChange} /></p>
           <p>For authentication reasons, you will not be emailed</p>
-          <button type="submit">Submit Review</button>
-        </form>
+          <ButtonContainer type="submit">Submit Review</ButtonContainer>
+        </FormContainer>
       </div>
     </div>
   );

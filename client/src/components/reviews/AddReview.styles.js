@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import { ButtonContainer } from './ReviewList.styles.js';
 
-export const CloseButton = styled.button`
-  float: right;
+export const FormContainer = styled.form`
+  padding: '15px';
 `
 
-export const MODAL_STYLES = {
+export const CloseButton = styled(ButtonContainer)`
+  float: right;
+  width: 6vw;
+`
+
+export const ModalContainer = {
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -14,7 +20,7 @@ export const MODAL_STYLES = {
   zIndex: 1000,
 };
 
-export const OVERLAY_STYLES = {
+export const OverlayContainer = {
   position: 'fixed',
   top: 0,
   left: 0,

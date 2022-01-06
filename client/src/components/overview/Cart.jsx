@@ -116,7 +116,7 @@ const Cart = function ({ skus, styleId }) {
         onMouseOver={handleMouseIn}
         onMouseOut={handleMouseOut}
         className="cartButton">
-        {hover && !styleId ? "Select a Style" : "Add to Cart"}
+        {hover && !size ? "Select a Size" : "Add to Cart"}
       </button>
     </div>
   );

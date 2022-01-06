@@ -9,6 +9,9 @@ const RelatedProductsList = (props) => {
       <div className='left-box'></div>
       <div className='right-box'></div>
       <div className='related'>
+        <div>
+        <button onClick={props.leftButton} className='left-button'>&#5130;</button>
+        </div>
         {props.relatedProducts.map((product) => {
           return <RelatedProductsCard
             key={product.details.id}
@@ -18,6 +21,9 @@ const RelatedProductsList = (props) => {
             setProductId={props.setProductId}
             />
           })}
+          <div>
+            <button onClick={props.rightButton} className='right-button'>&#5125;</button>
+          </div>
         </div>
       </div>
   )

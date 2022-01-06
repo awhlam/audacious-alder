@@ -17,18 +17,18 @@ const Related = (props) => {
   const rightButton = (event) => {
     event.preventDefault();
     const relatedLength = relatedProducts.length;
-    let chunkArr = relatedProducts.slice(0, relatedLength - 1);
-    let singleArr = relatedProducts.slice(relatedLength - 1, relatedLength);
-    let reOrdered = singleArr.concat(chunkArr);
+    let chunkArr = relatedProducts.slice(1);
+    let singleArr = relatedProducts.slice(0, 1);
+    let reOrdered = chunkArr.concat(singleArr);
     setDetail(reOrdered);
   }
 
   const leftButton = (event) => {
     event.preventDefault();
     const relatedLength = relatedProducts.length;
-    let chunkArr = relatedProducts.slice(1);
-    let singleArr = relatedProducts.slice(0, 1);
-    let reOrdered = chunkArr.concat(singleArr);
+    let chunkArr = relatedProducts.slice(0, relatedLength - 1);
+    let singleArr = relatedProducts.slice(relatedLength - 1, relatedLength);
+    let reOrdered = singleArr.concat(chunkArr);
     setDetail(reOrdered);
   }
 
@@ -79,9 +79,9 @@ const Related = (props) => {
           currentProduct={props.currentProduct}
           relatedProducts={relatedProducts}
           setProductId={props.setProductId}
+          leftButton={leftButton}
+          rightButton={rightButton}
         />
-        <button onClick={leftButton} className='left-button'>&#5130;</button>
-        <button onClick={rightButton} className='right-button'>&#5125;</button>
       </div>
     )
 };

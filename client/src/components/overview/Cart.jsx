@@ -15,7 +15,6 @@ const Cart = function ({ skus, styleId }) {
     setSize(null)
   }, [skus])
 
-
   for (const key in skus) {
     if (key == 2275494) {
       skusArray.push({ key: {quantity: skus[key].quantity, size: 'XXL', sku_id: key}})
@@ -60,10 +59,9 @@ const Cart = function ({ skus, styleId }) {
     return quantArray;
   };
 
-  //need to fix efficiency, can't set sku_id properly in time
-  const getSkuId = () => {
+  const getSkuId = (newSize) => {
     for (let i = 0; i < skusArray.length; i++) {
-      if (skusArray[i].key.size === size) {
+      if (skusArray[i].key.size === newSize) {
         return skusArray[i].key.sku_id
       }
     }
@@ -96,8 +94,9 @@ const Cart = function ({ skus, styleId }) {
       <select className="sizeDrop"
         value={size ? size : selectSize}
         onChange={(e) => {
+          var newSize = e.target.value
           setSize(e.target.value);
-          setSkuId(getSkuId(size));
+          setSkuId(getSkuId(newSize));
         }}>
         <option
           key={selectSize}

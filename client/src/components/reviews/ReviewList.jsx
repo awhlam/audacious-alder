@@ -39,9 +39,9 @@ const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSor
         />
       ))}
       <p>
-        <ButtonContainer type="submit" onClick={handleMoreReviews}>More Reviews</ButtonContainer>
+        <ButtonContainer type="submit" onClick={handleMoreReviews}>↓ More Reviews</ButtonContainer>
         &nbsp;
-        <ButtonContainer type="submit" onClick={openModal}>Add a Review</ButtonContainer>
+        <ButtonContainer type="submit" onClick={openModal}>+ Add a Review</ButtonContainer>
       </p>
       <AddReview
         productId={productId}

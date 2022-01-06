@@ -12,7 +12,7 @@ export const ColumnContainer = styled.div`
 `
 
 export const FilterButton = styled(ButtonContainer)`
-  width: 6vw;
+  width: 5vw;
 `
 
 export const TableStyle = styled.table`

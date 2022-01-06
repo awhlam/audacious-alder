@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import QuestionRender from './QuestionRender.jsx'
 import {SubmitQuestionForm} from './SubmitQuestionForm.jsx'
-import {mainBox} from './StyleModule.jsx'
+import {flexSetup, mainBox} from './StyleModule.jsx'
 
 const Questions = ({productId}) => {
 
@@ -17,30 +17,34 @@ const Questions = ({productId}) => {
 
   if (questionDisplay) {
     return (
-      <div style={mainBox}>
-        <h1>
-          Questions
-        </h1>
-        <div>
-          {questions.results.map((question) => <QuestionRender question={question}/>)}
+      <div style={flexSetup}>
+        <div style={mainBox}>
+          <h1>
+            Questions
+          </h1>
+          <div>
+            {questions.results.map((question) => <QuestionRender question={question}/>)}
+          </div>
+          <SubmitQuestionForm id={productId}/>
         </div>
-        <SubmitQuestionForm id={productId}/>
       </div>
     )
   } else {
     return (
-      <div style={mainBox}>
-        <h1>
-          Questions
-        </h1>
-        <div>
-          <QuestionRender question={questions.results[0]}/>
-          <QuestionRender question={questions.results[1]}/>
-          <QuestionRender question={questions.results[2]}/>
-          <QuestionRender question={questions.results[3]}/>
+      <div style={flexSetup}>
+        <div style={mainBox}>
+          <h1>
+            Questions
+          </h1>
+          <div>
+            <QuestionRender question={questions.results[0]}/>
+            <QuestionRender question={questions.results[1]}/>
+            <QuestionRender question={questions.results[2]}/>
+            <QuestionRender question={questions.results[3]}/>
+          </div>
+          <button onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</button>
+          <SubmitQuestionForm id={productId}/>
         </div>
-        <button onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</button>
-        <SubmitQuestionForm id={productId}/>
       </div>
     )
   }

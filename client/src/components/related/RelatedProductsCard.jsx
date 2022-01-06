@@ -65,7 +65,7 @@ const RelatedProductsCard = (props) => {
   return (
     <div className='card'>
       <div>
-        <img className='thumbnail-img' onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200' height='250'/>
+        <img className='thumbnail-img' onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200px' height='250px'/>
       </div>
       <div>
       <GrayCategoryTitle>

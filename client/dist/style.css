@@ -230,7 +230,11 @@ body {
   flex-direction: row;
   justify-content: center;
   white-space: nowrap;
-  transform: translateX(-0%);
+  overflow-x: hidden;
+}
+
+.hiding-div {
+  color: white;
 }
 
 .card {
@@ -240,11 +244,28 @@ body {
   margin: 10px;
   align-items: center;
   box-shadow: 2px 2px gray;
+  cursor: pointer;
 }
 
-.card:hover{
-  text-shadow: 2px;
+.left-box {
+  position: absolute;
+  background-color: #f7f7f7;
+  left: 0%;
+  width: 16%;
+  height: 55%;
+  z-index: 10;
 }
+
+.right-box {
+  position: absolute;
+  background-color: #f7f7f7;
+  right: 0%;
+  width: 16%;
+  height: 55%;
+  z-index: 10;
+}
+
+/* #f7f7f7 */
 
 .thumbnail-img {
   border-radius: 5%;
@@ -272,7 +293,7 @@ body {
 
 .modal {
   position: relative;
-  width: 30%;
+  width: 32%;
   background-color: white;
   border: 1px solid gray;
   border-radius: 4px;
@@ -285,11 +306,11 @@ body {
 .button-close {
   cursor: pointer;
   border: 1px solid gray;
-  background:none;
+  background: none;
   border: none;
   position: fixed;
-  right: 34%;
-  top: 30%;
+  right: 33%;
+  top: 15%;
   z-index: 1001;
 }
 
@@ -341,9 +362,23 @@ body {
 }
 
 .left-button {
-  position: relative;
+  position: absolute;
+  left: 9.5%;
+  top: 130%;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border-radius: 50%;
+  z-index: 11;
 }
 
 .right-button {
-  position: relative;
+  position: absolute;
+  left: 87%;
+  top: 130%;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border-radius: 50%;
+  z-index: 11;
 }

@@ -28,10 +28,7 @@ const QuestionRender = ({question}) => {
       return (
         <div style={questionBox}>
           <div>
-            {date.format('MMMM Do, YYYY')}
-          </div>
-          <div>
-            {question.asker_name}:
+            By {question.asker_name} on {date.format('MMMM Do, YYYY')}
           </div>
           <div>
             Q: {question.question_body}
@@ -51,10 +48,7 @@ const QuestionRender = ({question}) => {
       return (
         <div style={questionBox}>
           <div>
-            {date.format('MMMM Do, YYYY')}
-          </div>
-          <div>
-            {question.asker_name}:
+            By {question.asker_name} on {date.format('MMMM Do, YYYY')}
           </div>
           <div>
             Q: {question.question_body}

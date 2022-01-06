@@ -8,7 +8,7 @@ import axios from 'axios';
 const Overview = function ({ product, productStyle, reviewMetaData }) {
 
   const [styleInfo, setStyleInfo] = useState(productStyle.results[0])
-  const [styleId, setStyleId] = useState(null)
+  const [styleId, setStyleId] = useState(productStyle.results[0].style_id)
 
   const getStyleInfo = (styleId) => {
     for (let i = 0; i < productStyle.results.length; i++) {
@@ -20,7 +20,7 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
 
   useEffect(() => {
     setStyleInfo(productStyle.results[0])
-    setStyleId(null)
+    setStyleId(productStyle.results[0].style_id)
   }, [productStyle])
 
   return (

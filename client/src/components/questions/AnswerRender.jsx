@@ -3,7 +3,7 @@ import axios from 'axios'
 import moment from 'moment'
 import {answerBox} from './StyleModule.jsx'
 
-const AnswerRender = ({answer}) => {
+export const AnswerRender = ({answer}) => {
   if (answer) {
     let date = moment(answer.date);
 
@@ -34,5 +34,3 @@ const AnswerRender = ({answer}) => {
     )
   }
 }
-
-export default AnswerRender

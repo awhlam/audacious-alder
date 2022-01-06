@@ -3,7 +3,7 @@ import axios from 'axios';
 import Overview from './overview/Overview.jsx';
 import Related from './related/Related.jsx';
 import Reviews from './reviews/Reviews.jsx';
-import Questions from './questions/Questions.jsx';
+import {Questions} from './questions/Questions.jsx';
 import fetchReviews from './shared/fetchReviews.js';
 import filterReviews from './shared/filterReviews.js';
 

@@ -4,9 +4,9 @@ import {rest} from 'msw'
 import '@testing-library/jest-dom'
 import {setupServer} from 'msw/node'
 
-import Questions from '../client/src/components/questions/Questions.jsx';
-import QuestionRender from '../client/src/components/questions/QuestionRender.jsx'
-import AnswerRender from '../client/src/components/questions/AnswerRender.jsx'
+import {Questions} from '../client/src/components/questions/Questions.jsx';
+import {QuestionRender} from '../client/src/components/questions/QuestionRender.jsx'
+import {AnswerRender} from '../client/src/components/questions/AnswerRender.jsx'
 import {SubmitQuestionForm} from '../client/src/components/questions/SubmitQuestionForm.jsx'
 import {SubmitAnswerForm} from '../client/src/components/questions/SubmitAnswerForm.jsx'
 

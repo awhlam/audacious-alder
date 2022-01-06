@@ -1,19 +1,26 @@
 import styled from 'styled-components';
+import { ButtonContainer } from './ReviewList.styles.js';
 
 export const ColumnContainer = styled.div`
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 15px;
   padding: 25px;
   margin: 15px;
   flex: 1;
   background: white;
+  box-shadow: 2px 2px grey;
+`
+
+export const FilterButton = styled(ButtonContainer)`
+  width: 5vw;
 `
 
 export const TableStyle = styled.table`
   padding: 15px;
   margin: 10px;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 15px;
+  box-shadow: 2px 2px grey;
 `
 
 export const RowStyle = styled.tr`

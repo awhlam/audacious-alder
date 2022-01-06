@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
-import styled from 'styled-components'
+import { ColumnContainer, ButtonContainer } from './ReviewList.styles.js';
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import AddReview from './AddReview.jsx';
-
-const ColumnContainer = styled.div`
-  border: 2px solid;
-  border-radius: 15px;
-  padding: 25px;
-  margin: 15px;
-  flex: 3;
-  background: white;
-`
 
 const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSort, setReviewsSort, reviewsFilter }) => {
   //******************************
@@ -48,9 +39,9 @@ const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSor
         />
       ))}
       <p>
-        <button type="submit" onClick={handleMoreReviews}>More Reviews</button>
+        <ButtonContainer type="submit" onClick={handleMoreReviews}>↓ More Reviews</ButtonContainer>
         &nbsp;
-        <button type="submit" onClick={openModal}>Add A Review +</button>
+        <ButtonContainer type="submit" onClick={openModal}>+ Add a Review</ButtonContainer>
       </p>
       <AddReview
         productId={productId}

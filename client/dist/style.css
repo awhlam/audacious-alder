@@ -236,8 +236,10 @@ body {
 
 .carousel-wrapper {
   display: flex;
+  flex-direction: row;
   width: 100vw;
   justify-content: center;
+  padding: 5px;
 }
 
 .card {
@@ -345,23 +347,32 @@ body {
 }
 
 .left-button {
-  position: absolute;
-  left: 9.5%;
-  top: 130%;
+  justify-content: center;
   width: 50px;
   height: 50px;
   background: none;
   border-radius: 50%;
   z-index: 11;
+  margin-right: 12px;
 }
 
 .right-button {
-  position: absolute;
-  left: 87%;
-  top: 130%;
+  justify-content: center;
+  line-height: 50px;
   width: 50px;
   height: 50px;
   background: none;
   border-radius: 50%;
   z-index: 11;
+  margin-left: 12px;
+}
+
+.left-button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.right-button-wrapper {
+  display: flex;
+  align-items: center;
 }

@@ -6,12 +6,10 @@ const RelatedProductsList = (props) => {
 
   return (
     <div className='carousel-wrapper'>
-      <div className='left-box'></div>
-      <div className='right-box'></div>
-      <div className='related'>
-        <div>
+      <div className='left-button-wrapper'>
         <button onClick={props.leftButton} className='left-button'>&#5130;</button>
-        </div>
+      </div>
+      <div className='related'>
         {props.relatedProducts.map((product) => {
           return <RelatedProductsCard
             key={product.details.id}
@@ -21,10 +19,10 @@ const RelatedProductsList = (props) => {
             setProductId={props.setProductId}
             />
           })}
-          <div>
+        </div>
+        <div className='right-button-wrapper'>
             <button onClick={props.rightButton} className='right-button'>&#5125;</button>
           </div>
-        </div>
       </div>
   )
 };

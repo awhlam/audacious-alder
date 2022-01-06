@@ -24,7 +24,9 @@ const Overview = function ({ product, productStyle, reviewMetaData }) {
   }, [productStyle])
 
   return (
-    <div className="overview">
+    <div
+      className="overview"
+      data-testid="overview">
       <div className="overviewLeft">
         <ImageGallery
           productPhoto={styleInfo}

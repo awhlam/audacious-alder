@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for client/src/components/related/Related.jsx</title>
+    <title>Code coverage report for components/reviews/ReviewSummary.jsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">client/src/components/related</a> Related.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/reviews</a> ReviewSummary.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.64% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/68</span>
+                <span class='fraction'>14/70</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.64% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/68</span>
+                <span class='fraction'>14/70</span>
             </div>
         
             
@@ -130,13 +130,21 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -195,93 +203,94 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable */
-import React, { useState, useEffect } from 'react';
-import RelatedProductsList from './RelatedProductsList.jsx';
-import products from '../../sample-data/products.js';
-import axios from 'axios';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { ColumnContainer, TableStyle, RowStyle, CellStyle } from './ReviewSummary.styles.js';
+import calcStarImg from '../shared/calcStarImg.jsx';
+import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
+import calcPctRecommend from '../shared/calcPctRecommend.js';
 &nbsp;
-const Related = <span class="fstat-no" title="function not covered" >(props) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  // *************</span>
-<span class="cstat-no" title="statement not covered" >  // State</span>
-<span class="cstat-no" title="statement not covered" >  //**************</span>
-<span class="cstat-no" title="statement not covered" >  let [relatedProductsId, setProductsId] = useState([]);</span>
-<span class="cstat-no" title="statement not covered" >  let [relatedProducts, setDetail] = useState([]);</span>
+/**
+ * Style star bars (5 stars, 4 stars, ... 1 star)
+ * Style characteristic bars (e.g., "Too small / Perfect / Too large")
+ */
+&nbsp;
+const ReviewSummary = <span class="fstat-no" title="function not covered" >({ reviewMetaData, reviewsFilter, setReviewsFilter }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const handleClick = (e) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >    let clickedFilter = parseInt(e.target.innerHTML[0]);</span>
+<span class="cstat-no" title="statement not covered" >    if (reviewsFilter === clickedFilter) { clickedFilter = 'none'; }</span>
+<span class="cstat-no" title="statement not covered" >    setReviewsFilter(clickedFilter);</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  // *************</span>
-<span class="cstat-no" title="statement not covered" >  // Initial Renders of Data</span>
-<span class="cstat-no" title="statement not covered" >  // *************</span>
-<span class="cstat-no" title="statement not covered" >  useEffect(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    axios.get('/related', {params: {</span>
-<span class="cstat-no" title="statement not covered" >        product_id: props.productId</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    })</span>
-<span class="cstat-no" title="statement not covered" >    .then((res) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      setProductsId(relatedProductsId = res.data);</span>
-<span class="cstat-no" title="statement not covered" >      const axiosParam = {</span>
-<span class="cstat-no" title="statement not covered" >        params: {</span>
-<span class="cstat-no" title="statement not covered" >          product_id: relatedProductsId</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >      const axiosProduct = axios.get('/related/products', axiosParam);</span>
-<span class="cstat-no" title="statement not covered" >      const axiosStyles = axios.get('/related/products/styles', axiosParam);</span>
-<span class="cstat-no" title="statement not covered" >      const axiosReviews = axios.get('/related/products/reviews/meta', axiosParam);</span>
-<span class="cstat-no" title="statement not covered" >      Promise.all([axiosProduct, axiosStyles, axiosReviews])</span>
-<span class="cstat-no" title="statement not covered" >      .then((results) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        const apiDetail = results[0].data;</span>
-<span class="cstat-no" title="statement not covered" >        const apiStyles = results[1].data;</span>
-<span class="cstat-no" title="statement not covered" >        const apiReviewMeta = results[2].data;</span>
-<span class="cstat-no" title="statement not covered" >        const productData = [];</span>
-<span class="cstat-no" title="statement not covered" >        for (let i = 0; i &lt; apiDetail.length; i+=1) {</span>
-<span class="cstat-no" title="statement not covered" >          let hash = {};</span>
-<span class="cstat-no" title="statement not covered" >          hash.details = apiDetail[i];</span>
-<span class="cstat-no" title="statement not covered" >          hash.styles = apiStyles[i];</span>
-<span class="cstat-no" title="statement not covered" >          hash.reviewsMeta = apiReviewMeta[i];</span>
-<span class="cstat-no" title="statement not covered" >          productData.push(hash);</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        setDetail(productData);</span>
-<span class="cstat-no" title="statement not covered" >      })</span>
-<span class="cstat-no" title="statement not covered" >      .catch((error) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        console.log('This is an error: ', error);</span>
-<span class="cstat-no" title="statement not covered" >      })</span>
-<span class="cstat-no" title="statement not covered" >    })</span>
-<span class="cstat-no" title="statement not covered" >  }, [props.productId])</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;ColumnContainer&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;div&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;h1&gt;Related Products&lt;/h1&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;RelatedProductsList</span>
-<span class="cstat-no" title="statement not covered" >          currentProduct={props.currentProduct}</span>
-<span class="cstat-no" title="statement not covered" >          relatedProducts={relatedProducts}</span>
-<span class="cstat-no" title="statement not covered" >          setProductId={props.setProductId}</span>
-<span class="cstat-no" title="statement not covered" >        /&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;h1&gt;</span>
+<span class="cstat-no" title="statement not covered" >          {calcAvgTotalReviews(reviewMetaData).avgStars} &amp;nbsp;</span>
+<span class="cstat-no" title="statement not covered" >          {calcStarImg(calcAvgTotalReviews(reviewMetaData).avgStars)}</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/h1&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;p&gt;</span>
+<span class="cstat-no" title="statement not covered" >          {calcPctRecommend(reviewMetaData)}% of reviews recommend this product</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;TableStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;tbody&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;RowStyle active={reviewsFilter === 5}&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;&lt;a href='#' onClick={handleClick}&gt;5 stars&lt;/a&gt;&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;{reviewMetaData.ratings['5'] ? reviewMetaData.ratings['5'] : '0'} reviews&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/RowStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;RowStyle active={reviewsFilter === 4}&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;&lt;a href='#' onClick={handleClick}&gt;4 stars&lt;/a&gt;&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;{reviewMetaData.ratings['4'] ? reviewMetaData.ratings['4'] : '0'} reviews&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/RowStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;RowStyle active={reviewsFilter === 3}&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;&lt;a href='#' onClick={handleClick}&gt;3 stars&lt;/a&gt;&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;{reviewMetaData.ratings['3'] ? reviewMetaData.ratings['3'] : '0'} reviews&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/RowStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;RowStyle active={reviewsFilter === 2}&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;&lt;a href='#' onClick={handleClick}&gt;2 stars&lt;/a&gt;&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;{reviewMetaData.ratings['2'] ? reviewMetaData.ratings['2'] : '0'} reviews&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/RowStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;RowStyle active={reviewsFilter === 1}&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;&lt;a href='#' onClick={handleClick}&gt;1 star&lt;/a&gt;&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;CellStyle&gt;{reviewMetaData.ratings['1'] ? reviewMetaData.ratings['1'] : '0'} reviews&lt;/CellStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/RowStyle&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/tbody&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/TableStyle&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >    )</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >      &lt;div&gt;</span>
+<span class="cstat-no" title="statement not covered" >        {Object.keys(reviewMetaData.characteristics).map((key) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          return (</span>
+<span class="cstat-no" title="statement not covered" >            &lt;div key={reviewMetaData.characteristics[key].id}&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;h3&gt;{key}&lt;/h3&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;span&gt;{calcStarImg(reviewMetaData.characteristics[key].value)}&lt;/span&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >          )</span>
+<span class="cstat-no" title="statement not covered" >        })}</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/ColumnContainer&gt;</span>
+<span class="cstat-no" title="statement not covered" >  )</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-export default Related;
-&nbsp;
-// &lt;button className='right-button'&gt;&amp;#5125;&lt;/button&gt;
-// &lt;button className='left-button'&gt;&amp;#5130;&lt;/button&gt;</pre></td></tr></table></pre>
+export default ReviewSummary;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Wed Jan 05 2022 15:22:32 GMT-0800 (Pacific Standard Time)
+                at Wed Jan 05 2022 19:57:11 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

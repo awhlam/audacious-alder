@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for client/src/components/overview/Style.jsx</title>
+    <title>Code coverage report for tests/Fixtures/reviewsMeta.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">client/src/components/overview</a> Style.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">tests/Fixtures</a> reviewsMeta.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/35</span>
+                <span class='fraction'>31/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>35/35</span>
+                <span class='fraction'>31/31</span>
             </div>
         
             
@@ -93,20 +93,7 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -133,59 +120,57 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useRef } from 'react';
-import StyleEntry from './StyleEntry.jsx';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">var reviewsMeta = {
+  "product_id": "63609",
+  "ratings": {
+      "4": "1",
+      "5": "8"
+  },
+  "recommended": {
+      "false": "1",
+      "true": "8"
+  },
+  "characteristics": {
+      "Fit": {
+          "id": 213423,
+          "value": "4.0000000000000000"
+      },
+      "Length": {
+          "id": 213424,
+          "value": "3.5000000000000000"
+      },
+      "Comfort": {
+          "id": 213425,
+          "value": "5.0000000000000000"
+      },
+      "Quality": {
+          "id": 213426,
+          "value": "4.0000000000000000"
+      }
+  }
+}
 &nbsp;
-// style thumbnail bar that shows thumbnail url pics and on click will render product img url to overview
-&nbsp;
-const Style = function ({ productStyle, getStyleInfo, setStyleId, styleId }) {
-&nbsp;
-  const rows = productStyle.results.reduce(function (rows, key, index) {
-    return (index % 4 == 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) &amp;&amp; rows;
-  }, [])
-&nbsp;
-&nbsp;
-&nbsp;
-  return (
-    &lt;div className="styleContainer"&gt;
-      {rows.map((row, idx) =&gt; (
-        &lt;ul
-          key={idx}
-          className="styleList"&gt;
-            {row.map((style, idx) =&gt; (
-              &lt;StyleEntry
-                key={idx}
-                style={style}
-                getStyleInfo={getStyleInfo}
-                setStyleId={setStyleId}
-                styleId={styleId}
-              /&gt;
-            ))}
-        &lt;/ul&gt;
-      ))}
-    &lt;/div&gt;
-  );
-};
-&nbsp;
-export default Style;
-&nbsp;</pre></td></tr></table></pre>
+export default reviewsMeta;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Wed Jan 05 2022 15:22:32 GMT-0800 (Pacific Standard Time)
+                at Wed Jan 05 2022 20:02:25 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

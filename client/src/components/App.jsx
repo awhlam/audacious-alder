@@ -62,6 +62,7 @@ export const App = () => {
   // Render
   //******************************
   if (isLoading) { return 'Loading' }
+  console.log(reviewMetaData)
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>

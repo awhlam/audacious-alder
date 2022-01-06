@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ButtonContainer } from './ReviewList.styles.js';
 
 export const ColumnContainer = styled.div`
   border: 1px solid;
@@ -8,6 +9,10 @@ export const ColumnContainer = styled.div`
   flex: 1;
   background: white;
   box-shadow: 2px 2px grey;
+`
+
+export const FilterButton = styled(ButtonContainer)`
+  width: 6vw;
 `
 
 export const TableStyle = styled.table`

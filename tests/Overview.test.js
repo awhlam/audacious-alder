@@ -94,18 +94,15 @@ describe('Cart Component', () => {
   });
 });
 
-//need to ask Rob
-//want to test if on /cart get data length increment on fireEvent add to cart click
 
-// describe('Cart Component', () => {
-//   it('should send a post request on add to cart button click', async () => {
-//     render(<Cart
-//       skus={productStyle.results[0].skus}
-//     />);
-//     await waitFor(() => {screen.getByText(
-//       'Select Size'
-//     )})
-//     fireEvent.click(screen.getByText('Add to Cart'))
-//     expect()
-//   });
-// });
+describe('Cart Component', () => {
+  it('"Add to Cart" button should show "Select a Size" on mouse hover when no size is select', async () => {
+    const { container } = render(<Cart
+      skus={productStyle.results[0].skus}
+    />);
+    const btn = container.querySelector('[data-testid="cart"]')
+    await waitFor(() => {screen.getByText('Add to Cart')})
+    fireEvent.mouseOver(btn)
+    expect(screen.getByText('Select a Size')).toBeTruthy();
+  });
+});

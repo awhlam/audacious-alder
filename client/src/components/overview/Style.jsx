@@ -12,7 +12,9 @@ const Style = function ({ productStyle, getStyleInfo, setStyleId, styleId }) {
 
 
   return (
-    <div className="styleContainer">
+    <div
+    data-testid="styleContainer"
+    className="styleContainer">
       {rows.map((row, idx) => (
         <ul
           key={idx}

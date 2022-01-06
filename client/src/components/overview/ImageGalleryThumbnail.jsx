@@ -7,7 +7,6 @@ const ImageGalleryThumbnail = function ( { setImageGallery, photo, currentImage 
         <img
         onClick={(e) => {setImageGallery(photo.url)}}
         className={currentImage == photo.url ? "imageGalleryThumbnailCurrent" : "imageGalleryThumbnail"}
-        // className="imageGalleryThumbnail"
         src={photo.url}
         />
       </li>

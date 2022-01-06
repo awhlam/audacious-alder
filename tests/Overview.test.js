@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
 // components
@@ -33,23 +33,24 @@ afterAll(() => server.close())
 
 describe('Overview Component', () => {
   it('should have an overview class', async () => {
-    render(<Overview
+    const {container} = render(<Overview
       product={products[0]}
       productStyle={productStyle}
       reviewMetaData={reviewsMeta}
     />);
-    await waitFor(() => {screen.getByClassId('overview')})
-    expect(getByClassId(screen.documentElement, 'overview')).toBeInTheDocument()
+    await waitFor(() => {screen.getByText('Camo Onesie')})
+    expect(container.querySelector('[data-testid="overview"]'))
   });
 });
 
 describe('ImageGallery Component', () => {
   it('should have correct number of photos in image gallery thumbnail', async () => {
-    render(<ImageGallery
-      productStyle={productStyle}
+    const imageGalleryThumbnailLength = productStyle.results[0].photos
+    const container = render(<ImageGallery
+      productPhoto={productStyle.results[0]}
     />);
-    await waitFor(() => {screen.getByTestId('overview')})
-    expect(getByTestId(screen.documentElement, 'overview')).toBeInTheDocument()
+    await waitFor(() => {screen.getByAltText('imageGallery')})
+    expect(imageGalleryThumbnailLength).toHaveLength(productStyle.results[0].photos.length)
   });
 });
 
@@ -68,6 +69,19 @@ describe('ProductInfo Component', () => {
 });
 
 
+
+describe('Style Component', () => {
+  it('should have correct number of photos in style thumbnail list', async () => {
+    const styleThumbnailList = productStyle.results
+    const container = render(<Style
+      productStyle={productStyle}
+      />);
+    await waitFor(() => {screen.getByTestId('styleContainer')})
+    expect(styleThumbnailList).toHaveLength(productStyle.results.length)
+  });
+});
+
+
 describe('Cart Component', () => {
   it('should render select size in dropdown by default', async () => {
     render(<Cart
@@ -79,3 +93,19 @@ describe('Cart Component', () => {
     expect(screen.getByText('Select Size')).toBeDefined();
   });
 });
+
+//need to ask Rob
+//want to test if on /cart get data length increment on fireEvent add to cart click
+
+// describe('Cart Component', () => {
+//   it('should send a post request on add to cart button click', async () => {
+//     render(<Cart
+//       skus={productStyle.results[0].skus}
+//     />);
+//     await waitFor(() => {screen.getByText(
+//       'Select Size'
+//     )})
+//     fireEvent.click(screen.getByText('Add to Cart'))
+//     expect()
+//   });
+// });

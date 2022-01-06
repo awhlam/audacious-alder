@@ -29,6 +29,7 @@ const ImageGallery = function ({ productPhoto }) {
         })}
       </ul>
       <img
+        alt="imageGallery"
         className="imageGallery"
         src={image}
       />

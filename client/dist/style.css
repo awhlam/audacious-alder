@@ -237,8 +237,27 @@ body {
   border: 1px solid;
   border-radius: 5%;
   padding: 10px;
-  margin: 1px;
+  margin: 10px;
   align-items: center;
+  box-shadow: 2px 2px gray;
+}
+
+.card:hover{
+  text-shadow: 2px;
+}
+
+.thumbnail-img {
+  border-radius: 5%;
+}
+
+.clickableName:hover{
+  color: rgb(197, 169, 8);
+  cursor: pointer;
+}
+
+.clickablePrice:hover{
+  color: rgb(197, 169, 8);
+  cursor: pointer;
 }
 
 .modal-wrapper {
@@ -279,10 +298,15 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 20px;
-  color: rgb(173, 147, 0);
-  left: 24%;
-  bottom: 315px;
+  font-size: 27px;
+  color: rgb(197, 169, 8);
+  left: 23%;
+  bottom: 312px;
+}
+
+.modal-button:hover {
+  transition-duration: 1s;
+  transform: rotate(360deg);
 }
 
 .comparison {

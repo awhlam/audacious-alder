@@ -230,11 +230,14 @@ body {
   flex-direction: row;
   justify-content: center;
   white-space: nowrap;
-  overflow-x: hidden;
+  overflow-x: auto;
+  width: 70vw;
 }
 
-.hiding-div {
-  color: white;
+.carousel-wrapper {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
 }
 
 .card {
@@ -244,31 +247,11 @@ body {
   margin: 10px;
   align-items: center;
   box-shadow: 2px 2px gray;
-  cursor: pointer;
 }
-
-.left-box {
-  position: absolute;
-  background-color: #f7f7f7;
-  left: 0%;
-  width: 16%;
-  height: 55%;
-  z-index: 10;
-}
-
-.right-box {
-  position: absolute;
-  background-color: #f7f7f7;
-  right: 0%;
-  width: 16%;
-  height: 55%;
-  z-index: 10;
-}
-
-/* #f7f7f7 */
 
 .thumbnail-img {
   border-radius: 5%;
+  object-fit: cover;
 }
 
 .clickableName:hover{
@@ -293,7 +276,7 @@ body {
 
 .modal {
   position: relative;
-  width: 32%;
+  width: 38vw;
   background-color: white;
   border: 1px solid gray;
   border-radius: 4px;
@@ -309,7 +292,7 @@ body {
   background: none;
   border: none;
   position: fixed;
-  right: 33%;
+  right: 29.5%;
   top: 15%;
   z-index: 1001;
 }

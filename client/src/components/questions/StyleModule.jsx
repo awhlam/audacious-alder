@@ -54,6 +54,5 @@ export const popup_data = {
 }
 
 export const close = {
-  float: 'right',
-  color: 'red'
+  float: 'right'
 }

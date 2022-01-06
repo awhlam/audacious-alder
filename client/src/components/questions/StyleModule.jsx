@@ -1,5 +1,31 @@
 import react from 'react'
 
+export const flexSetup = {
+  display: 'flex',
+  justifyContent: 'center'
+}
+
+export const mainBox = {
+  borderTop: '.75px solid',
+  padding: '5px',
+  margin: '5px',
+  backgroundColor: '#f7f7f7'
+}
+
+export const questionBox = {
+  borderTop: '1px solid',
+  padding: '5px',
+  margin: 0,
+  backgroundColor: '#ebebed'
+}
+
+export const answerBox = {
+  borderTop: '1px solid',
+  padding: '5px',
+  margin: 0,
+  backgroundColor: '#dcdcde'
+}
+
 export const popup_box = {
   position: 'fixed',
   top: 0,
@@ -24,28 +50,4 @@ export const popup_data = {
 export const close = {
   float: 'right',
   color: 'red'
-}
-
-export const mainBox = {
-  border: '1px solid',
-  borderRadius: '50px',
-  padding: '5%',
-  margin: '5px',
-  backgroundColor: '#45a679'
-}
-
-export const questionBox = {
-  border: '1px solid',
-  borderRadius: '50px',
-  padding: '5%',
-  margin: '5px',
-  backgroundColor: '#25b3a0'
-}
-
-export const answerBox = {
-  border: '1px solid',
-  borderRadius: '50px',
-  padding: '5%',
-  margin: '5px',
-  backgroundColor: '#0facba'
 }

@@ -12,6 +12,28 @@ const Related = (props) => {
   let [relatedProducts, setDetail] = useState([]);
 
   // *************
+  // Function
+  //**************
+  const rightButton = (event) => {
+    event.preventDefault();
+    const relatedLength = relatedProducts.length;
+    let chunkArr = relatedProducts.slice(0, relatedLength - 1);
+    let singleArr = relatedProducts.slice(relatedLength - 1, relatedLength);
+    let reOrdered = singleArr.concat(chunkArr);
+    setDetail(reOrdered);
+  }
+
+  const leftButton = (event) => {
+    event.preventDefault();
+    const relatedLength = relatedProducts.length;
+    let chunkArr = relatedProducts.slice(1);
+    let singleArr = relatedProducts.slice(0, 1);
+    let reOrdered = chunkArr.concat(singleArr);
+    setDetail(reOrdered);
+  }
+
+
+  // *************
   // Initial Renders of Data
   // *************
   useEffect(() => {
@@ -58,11 +80,10 @@ const Related = (props) => {
           relatedProducts={relatedProducts}
           setProductId={props.setProductId}
         />
+        <button onClick={leftButton} className='left-button'>&#5130;</button>
+        <button onClick={rightButton} className='right-button'>&#5125;</button>
       </div>
     )
 };
 
 export default Related;
-
-// <button className='right-button'>&#5125;</button>
-// <button className='left-button'>&#5130;</button>

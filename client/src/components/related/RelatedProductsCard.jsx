@@ -45,7 +45,6 @@ const RelatedProductsCard = (props) => {
   const handleModalOpen = () => {
     if (!modalOpen) {
       setModal(true);
-      console.log(modalOpen);
     }
   };
 
@@ -66,7 +65,7 @@ const RelatedProductsCard = (props) => {
   return (
     <div className='card'>
       <div>
-        <img onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200' height='250'/>
+        <img className='thumbnail-img' onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200px' height='250px'/>
       </div>
       <div>
       <GrayCategoryTitle>
@@ -75,15 +74,15 @@ const RelatedProductsCard = (props) => {
       </GrayCategoryTitle>
       </div>
       <div>
-        <a href="#top" onClick={relatedProductClick} >{props.related.details.name}</a>
+        <a className='clickableName' onClick={relatedProductClick} >{props.related.details.name}</a>
       </div>
       <div>
-        <a href="#top" onClick={relatedProductClick}>${props.related.details.default_price}</a>
+        <a className='clickablePrice' onClick={relatedProductClick}>${props.related.details.default_price}</a>
       </div>
       <div>
         {calcStarImg(averageReview)}
         <button
-        onClick={handleModalOpenClick} className='modal-button'>♡</button>
+        onClick={handleModalOpenClick} className='modal-button'>♥</button>
       </div>
       {!modalOpen ? '' : <RelatedModal
           handleModalClose={handleModalClose}

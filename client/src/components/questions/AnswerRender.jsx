@@ -16,10 +16,7 @@ const AnswerRender = ({answer}) => {
     return (
       <div style={answerBox}>
         <div>
-          {date.format('MMMM Do, YYYY')}
-        </div>
-        <div>
-          {answer.answerer_name}:
+          By {answer.answerer_name} on {date.format('MMMM Do, YYYY')}
         </div>
         <div>
           {answer.body}

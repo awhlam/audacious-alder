@@ -80,7 +80,7 @@ body {
 
 
 .imageGalleryThumbnail {
-  height: 18vh;
+  height: 8vw;
   width: 5vw;
   object-fit: cover;
   cursor: pointer;

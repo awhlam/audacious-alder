@@ -112,6 +112,7 @@ const Cart = function ({ skus, styleId }) {
         ))}
       </select>
       <button
+        data-testid="cart"
         onClick={addToCart}
         onMouseOver={handleMouseIn}
         onMouseOut={handleMouseOut}

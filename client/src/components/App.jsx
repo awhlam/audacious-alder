@@ -69,7 +69,7 @@ const App = () => {
   // Render
   // ******************************
   if (isError) { return <span>❌ Error - Too many requests or invalid product. Please try again.</span>; }
-  if (isLoading) { return <img src="./images/loading.gif" alt="Loading" />; }
+  if (isLoading) { return <span><img src="./images/loading.gif" alt="Loading" /> Loading</span>; }
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>

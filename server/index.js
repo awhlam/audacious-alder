@@ -1,11 +1,14 @@
 const express = require('express');
+const expressStaticGzip = require('express-static-gzip');
 const path = require('path');
 const api = require('./APICaller');
 
 const app = express();
 const port = 3000;
 const publicPath = path.join(__dirname, '../client/dist');
-app.use(express.static(publicPath));
+
+// Middleware
+app.use('/', expressStaticGzip(publicPath));
 app.use(express.json());
 
 // Overview

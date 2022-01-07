@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import QuestionRender from './QuestionRender.jsx'
+import {QuestionRender} from './QuestionRender.jsx'
 import {SubmitQuestionForm} from './SubmitQuestionForm.jsx'
 import {flexSetup, mainBox} from './StyleModule.jsx'
 
-const Questions = ({productId}) => {
+export const Questions = ({productId}) => {
 
   const [questions, updateQuestions] = useState({results: []})
   const [questionDisplay, updateQuestionDisplay] = useState(false)
@@ -49,5 +49,3 @@ const Questions = ({productId}) => {
     )
   }
 }
-
-export default Questions;

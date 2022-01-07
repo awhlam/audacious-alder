@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import moment from 'moment'
-import AnswerRender from './AnswerRender.jsx'
+import {AnswerRender} from './AnswerRender.jsx'
 import {SubmitAnswerForm} from './SubmitAnswerForm.jsx'
 import {questionBox} from './StyleModule.jsx'
 
-const QuestionRender = ({question}) => {
+export const QuestionRender = ({question}) => {
   if (question) {
     const [answers, updateAnswers] = useState({results: []})
     const [answerDisplay, updateAnswerDisplay] = useState(false)
@@ -74,5 +74,3 @@ const QuestionRender = ({question}) => {
     )
   }
 }
-
-export default QuestionRender

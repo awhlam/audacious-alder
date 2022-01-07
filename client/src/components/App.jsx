@@ -3,46 +3,46 @@ import axios from 'axios';
 import Overview from './overview/Overview.jsx';
 import Related from './related/Related.jsx';
 import Reviews from './reviews/Reviews.jsx';
-import {Questions} from './questions/Questions.jsx';
-import fetchReviews from './shared/fetchReviews.js';
-import filterReviews from './shared/filterReviews.js';
+import { Questions } from './questions/Questions.jsx';
+import fetchReviews from './shared/fetchReviews';
+import filterReviews from './shared/filterReviews';
 
-export const App = () => {
-  //******************************
+const App = () => {
+  // ******************************
   // STATE
-  //******************************
+  // ******************************
   const [productId, setProductId] = useState(63609);
   const [product, setProduct] = useState({});
-  const [productStyle, setProductStyle] = useState({})
+  const [productStyle, setProductStyle] = useState({});
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [reviews, setReviews] = useState({});
   const [reviewsSort, setReviewsSort] = useState('helpful');
   const [reviewsFilter, setReviewsFilter] = useState('none');
   const [isLoading, setIsLoading] = useState(true);
-  //******************************
+  // ******************************
   // Data fetching
-  //******************************
+  // ******************************
   const fetchData = (id = 63609) => {
-    const getProducts = axios.get('/products', {params: {product_id: id}})
-      .then((res) => { setProduct(res.data); })
-    const getStyles = axios.get('/products/styles', { params: { product_id: id}})
-      .then((res) => { setProductStyle(res.data); } )
-    const getReviewsMeta = axios.get('/reviews/meta', {params: { product_id: id }})
-      .then((res) => { setReviewMetaData(res.data); })
+    const getProducts = axios.get('/products', { params: { product_id: id } })
+      .then((res) => { setProduct(res.data); });
+    const getStyles = axios.get('/products/styles', { params: { product_id: id } })
+      .then((res) => { setProductStyle(res.data); });
+    const getReviewsMeta = axios.get('/reviews/meta', { params: { product_id: id } })
+      .then((res) => { setReviewMetaData(res.data); });
     const getReviews = fetchReviews(id, reviewsSort)
-      .then((res) => { setReviews(res.data.results); })
+      .then((res) => { setReviews(res.data.results); });
 
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
       .then(() => { setIsLoading(false); })
       .then(() => { setProductId(id); })
-      .catch((err) => { console.log(err) });
-  }
+      .catch((err) => { console.log(err); });
+  };
 
   // If productId changes, fetch all data for new product
   useEffect(() => {
-    const url = new URL (document.URL)
-    const id = parseInt(url.search.split('=')[1]);
+    const url = new URL(document.URL);
+    const id = parseInt(url.search.split('=')[1], 10);
     if (id) {
       fetchData(id);
     } else {
@@ -51,22 +51,22 @@ export const App = () => {
     // reset reviews sorting and filtering
     setReviewsSort('helpful');
     setReviewsFilter('none');
-  }, [productId])
+  }, [productId]);
 
   // If review sorting/filtering method changes, fetch reviews
   useEffect(() => {
     fetchReviews(productId, reviewsSort)
-      .then((res) => { setReviews(filterReviews(res.data.results, reviewsFilter)) });
-  }, [reviewsSort, reviewsFilter])
-  //******************************
+      .then((res) => { setReviews(filterReviews(res.data.results, reviewsFilter)); });
+  }, [reviewsSort, reviewsFilter]);
+  // ******************************
   // Render
-  //******************************
-  if (isLoading) { return 'Loading' }
+  // ******************************
+  if (isLoading) { return 'Loading'; }
 
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>
-      <a name="top"></a>
+      <a name="top" />
       <Overview
         product={product}
         productStyle={productStyle}
@@ -91,7 +91,7 @@ export const App = () => {
         productId={productId}
       />
     </div>
-  )
-}
+  );
+};
 
 export default App;

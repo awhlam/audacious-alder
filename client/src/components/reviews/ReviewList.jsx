@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
-import { ColumnContainer, ButtonContainer } from './ReviewList.styles.js';
+import { ColumnContainer, ButtonContainer } from './ReviewList.styles';
 import SortingBar from './SortingBar.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import AddReview from './AddReview.jsx';
 
-const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSort, setReviewsSort, reviewsFilter }) => {
-  //******************************
+const ReviewList = ({
+  productId,
+  reviews,
+  reviewMetaData,
+  setReviews,
+  reviewsSort,
+  setReviewsSort,
+  reviewsFilter,
+}) => {
+  // ******************************
   // STATE
-  //******************************
+  // ******************************
   const [numReviews, setNumReviews] = useState(2);
   const [showModal, setShowModal] = useState(false);
-  //******************************
+  // ******************************
   // HANDLERS
-  //******************************
+  // ******************************
   const openModal = () => { setShowModal((prev) => !prev); };
   const handleMoreReviews = () => { setNumReviews((prevNum) => prevNum + 2); };
-  //******************************
+  // ******************************
   // RENDER
-  //******************************
+  // ******************************
   return (
     <ColumnContainer>
       <SortingBar
@@ -29,7 +37,7 @@ const ReviewList = ({ productId, reviews, reviewMetaData, setReviews, reviewsSor
         setReviewsSort={setReviewsSort}
         reviewsFilter={reviewsFilter}
       />
-      {reviews.slice(0, numReviews).map((review, index) => (
+      {reviews.slice(0, numReviews).map((review) => (
         <ReviewEntry
           review={review}
           key={review.review_id}

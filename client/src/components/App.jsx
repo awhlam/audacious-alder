@@ -11,14 +11,17 @@ const App = () => {
   // ******************************
   // STATE
   // ******************************
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [productId, setProductId] = useState(63609);
+
   const [product, setProduct] = useState({});
   const [productStyle, setProductStyle] = useState({});
+
   const [reviewMetaData, setReviewMetaData] = useState({});
   const [reviews, setReviews] = useState({});
   const [reviewsSort, setReviewsSort] = useState('helpful');
   const [reviewsFilter, setReviewsFilter] = useState('none');
-  const [isLoading, setIsLoading] = useState(true);
   // ******************************
   // Data fetching
   // ******************************
@@ -34,9 +37,13 @@ const App = () => {
 
     const promises = [getProducts, getStyles, getReviewsMeta, getReviews];
     Promise.all(promises)
+      .then(() => { setIsError(false); })
       .then(() => { setIsLoading(false); })
       .then(() => { setProductId(id); })
-      .catch((err) => { console.log(err); });
+      .catch((err) => {
+        setIsError(true);
+        console.log(err);
+      });
   };
 
   // If productId changes, fetch all data for new product
@@ -61,8 +68,8 @@ const App = () => {
   // ******************************
   // Render
   // ******************************
-  if (isLoading) { return 'Loading'; }
-
+  if (isError) { return <span>❌ Error - Too many requests or invalid product. Please try again.</span>; }
+  if (isLoading) { return <img src="./images/loading.gif" alt="Loading" />; }
   return (
     <div>
       <h1 className="title">Audacious Alder</h1>

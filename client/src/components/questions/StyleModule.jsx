@@ -1,4 +1,5 @@
 import react from 'react'
+import styled from 'styled-components';
 
 export const flexSetup = {
   display: 'flex',
@@ -56,3 +57,15 @@ export const popup_data = {
 export const close = {
   float: 'right'
 }
+
+export const ButtonContainer = styled.button`
+  padding: 0.5vw 1vw;
+  margin-right: 1.5vw;
+  font-size: 1.5vh;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  width: 10vw;
+  &:hover {
+    background-color: #ffd966
+  }
+`

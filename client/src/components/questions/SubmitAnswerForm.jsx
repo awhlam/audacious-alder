@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import {popup_box, popup_data, close} from './StyleModule.jsx'
+import {popup_box, popup_data, close, ButtonContainer} from './StyleModule.jsx'
 
 export const SubmitAnswerForm = ({id}) => {
   const [addAnswerState, updateAddAnswer] = useState(false)
@@ -63,9 +63,9 @@ export const SubmitAnswerForm = ({id}) => {
     }
   } else {
     return (
-      <button onClick={() => {updateAddAnswer(true)}}>
+      <ButtonContainer onClick={() => {updateAddAnswer(true)}}>
         Add Answer
-      </button>
+      </ButtonContainer>
     )
   }
 }

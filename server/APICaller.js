@@ -158,7 +158,7 @@ const questions = {
   },
   answersPOST: (req, res) => {
     axios.post(
-      `${server}/qa/questions/${req.query.id}/answers`,
+      `${server}/qa/questions/${req.body.id}/answers`,
       {
         body: req.body.body, name: req.body.name, email: req.body.email, photos: req.body.photos,
       },

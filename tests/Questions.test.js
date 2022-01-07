@@ -35,7 +35,7 @@ describe('Questions', () => {
     await waitFor(() => {screen.getByText(
       "Q: Hello I spilled milk on this product and I can't believe it doesn't clean itself"
       )})
-    await waitFor(() => {screen.getByText('nevermind I gave it to my cat he loves it')})
+    await waitFor(() => {screen.getAllByText('nevermind I gave it to my cat he loves it')})
     expect(screen.getByText('Questions')).toBeDefined();
     expect(screen.getByText('Q: Can I wash it?')).toBeDefined();
     expect(screen.queryAllByText('nevermind I gave it to my cat he loves it')).toBeDefined();

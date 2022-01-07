@@ -8,7 +8,7 @@ export const ColumnContainer = styled.div`
   flex: 3;
   background: white;
   box-shadow: 2px 2px grey;
-`
+`;
 
 export const ButtonContainer = styled.button`
   padding: 0.5vw 1vw;
@@ -20,4 +20,4 @@ export const ButtonContainer = styled.button`
   &:hover {
     background-color: #ffd966
   }
-`
+`;

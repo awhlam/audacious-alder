@@ -3,7 +3,7 @@ import axios from 'axios'
 import moment from 'moment'
 import {AnswerRender} from './AnswerRender.jsx'
 import {SubmitAnswerForm} from './SubmitAnswerForm.jsx'
-import {questionBox} from './StyleModule.jsx'
+import {questionBox, ButtonContainer} from './StyleModule.jsx'
 
 export const QuestionRender = ({question}) => {
   if (question) {
@@ -63,7 +63,7 @@ export const QuestionRender = ({question}) => {
             <span onClick={markHelpful}>  Yes  </span>
             <span>({question.question_helpfulness})</span>
           </div>
-            <button onClick={(event) => {updateAnswerDisplay(true)}}>Show more answers</button>
+            <ButtonContainer onClick={(event) => {updateAnswerDisplay(true)}}>Show more answers</ButtonContainer>
             <SubmitAnswerForm id={question.question_id}/>
         </div>
       )

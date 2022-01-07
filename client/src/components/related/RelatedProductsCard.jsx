@@ -25,7 +25,7 @@ const RelatedProductsCard = (props) => {
   // ***********
   const backupImgRender = (img) => {
     if (!img) {
-      return '../../../images/small/placeHolder.png';
+      return '../../../images/placeHolder.png';
     } else {
       return img;
     }

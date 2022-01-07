@@ -9,21 +9,21 @@ const calcStarImg = (numStars = 0) => {
 
   // whole stars
   for(let i = 1; i <= wholeStars; i++) {
-    starImg.push('./images/small/fullstar.png');
+    starImg.push('./images/fullstar.png');
   }
 
   // fractional stars
   if (fractionStar >= 0.75) {
-    starImg.push('./images/small/threequarterstar.png');
+    starImg.push('./images/threequarterstar.png');
   } else if (fractionStar >= 0.5) {
-    starImg.push('./images/small/halfstar.png');
+    starImg.push('./images/halfstar.png');
   } else if (fractionStar >= 0.25) {
-    starImg.push('./images/small/quarterstar.png');
+    starImg.push('./images/quarterstar.png');
   }
 
   // empty stars
   for(let i = 1; i <= emptyStars; i++) {
-    starImg.push('./images/small/emptystar.png');
+    starImg.push('./images/emptystar.png');
   }
 
   return (

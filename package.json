@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "webpack --config webpack.config.js -w",
     "live-server": "nodemon ./server/index.js",
-    "forever": "forever start ./server/index.js"
+    "forever": "forever start ./server/index.js -w"
   },
   "repository": {
     "type": "git",

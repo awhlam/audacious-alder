@@ -1,8 +1,8 @@
 import React from 'react';
-import { ColumnContainer, FilterButton, TableStyle, RowStyle, CellStyle } from './ReviewSummary.styles.js';
+import { ColumnContainer, FilterButton, TableStyle, RowStyle, CellStyle } from './ReviewSummary.styles';
 import calcStarImg from '../shared/calcStarImg.jsx';
-import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
-import calcPctRecommend from '../shared/calcPctRecommend.js';
+import calcAvgTotalReviews from '../shared/calcAvgTotalReviews';
+import calcPctRecommend from '../shared/calcPctRecommend';
 
 /**
  * Style star bars (5 stars, 4 stars, ... 1 star)
@@ -12,7 +12,7 @@ import calcPctRecommend from '../shared/calcPctRecommend.js';
 const ReviewSummary = ({ reviewMetaData, reviewsFilter, setReviewsFilter }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    let clickedFilter = parseInt(e.target.innerHTML[0]);
+    let clickedFilter = parseInt(e.target.innerHTML[0], 10);
     if (reviewsFilter === clickedFilter) { clickedFilter = 'none'; }
     setReviewsFilter(clickedFilter);
   };
@@ -54,17 +54,15 @@ const ReviewSummary = ({ reviewMetaData, reviewsFilter, setReviewsFilter }) => {
       </div>
 
       <div>
-        {Object.keys(reviewMetaData.characteristics).map((key) => {
-          return (
-            <div key={reviewMetaData.characteristics[key].id}>
-              <h3>{key}</h3>
-              <span>{calcStarImg(reviewMetaData.characteristics[key].value)}</span>
-            </div>
-          )
-        })}
+        {Object.keys(reviewMetaData.characteristics).map((key) => (
+          <div key={reviewMetaData.characteristics[key].id}>
+            <h3>{key}</h3>
+            <span>{calcStarImg(reviewMetaData.characteristics[key].value)}</span>
+          </div>
+        ))}
       </div>
     </ColumnContainer>
-  )
-}
+  );
+};
 
 export default ReviewSummary;

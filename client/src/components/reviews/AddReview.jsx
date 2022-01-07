@@ -4,17 +4,23 @@ import fetchReviews from '../shared/fetchReviews.js';
 import { FormContainer, CloseButton, ModalContainer, OverlayContainer } from './AddReview.styles.js';
 import { ButtonContainer } from './ReviewList.styles.js';
 
-const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews }) => {
-  //******************************
+const AddReview = ({
+  productId,
+  showModal,
+  openModal,
+  reviewsSort,
+  setReviews,
+}) => {
+  // ******************************
   // STATE
-  //******************************
+  // ******************************
   const [review, setReview] = useState({
     summary: '',
     body: '',
     name: '',
     email: '',
     photos: [],
-    characteristics: {}
+    characteristics: {},
   });
 
   const clearReview = () => {
@@ -24,21 +30,20 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
       summary: '',
       body: '',
       name: '',
-      email: ''
+      email: '',
     }));
-  }
+  };
 
-  useEffect(() => { clearReview() }, [productId]);
-  //******************************
+  useEffect(() => { clearReview(); }, [productId]);
+  // ******************************
   // HANDLERS
-  //******************************
+  // ******************************
   const handleChange = (e) => {
-    let field = e.target.name;
-    let value = e.target.value;
-    if (field === 'rating') { value = parseInt(value); }
+    let { field, value } = e.target;
+    if (field === 'rating') { value = parseInt(value, 10); }
     else if (field === 'recommend') { value = value === 'true'; }
     setReview((oldState) => ({ ...oldState, [field]: value }));
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,19 +56,20 @@ const AddReview = ({ productId, showModal, openModal, reviewsSort, setReviews })
           .then((res) => { setReviews(res.data.results); });
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         alert('Your review is incomplete. Please complete all required form fields.');
       });
-  }
-  //******************************
+  };
+  // ******************************
   // RENDER
-  //******************************
+  // ******************************
   if (!showModal) { return null; }
   return (
     <div>
       <div style={OverlayContainer} />
       <div style={ModalContainer}>
-        <h1>Write Your Review
+        <h1>
+          Write Your Review
           <CloseButton onClick={openModal}>
             Close ❌
           </CloseButton>

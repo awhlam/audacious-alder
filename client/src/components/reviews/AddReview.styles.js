@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { ButtonContainer } from './ReviewList.styles.js';
+import { ButtonContainer } from './ReviewList.styles';
 
 export const FormContainer = styled.form`
   padding: '15px';
-`
+`;
 
 export const CloseButton = styled(ButtonContainer)`
   float: right;
   width: 6vw;
-`
+`;
 
 export const ModalContainer = {
   position: 'fixed',

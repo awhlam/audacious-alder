@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ReviewerNameDate = styled.span`
   float: right;
-`
+`;
 
 export const ReviewEntryStyle = styled.div`
   border: 1px solid;
@@ -14,4 +14,4 @@ export const ReviewEntryStyle = styled.div`
   &:hover {
     background-color: #ffd966
   }
-`
+`;

@@ -4,14 +4,13 @@ const config = require('../config');
 
 const options = { Authorization: config.token };
 const server = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
-// sample product_id: 63617
 
 // Data fetching function
 const fetchURL = (url) => axios.get(url, { headers: options });
 
 const products = {
   productsGET: () => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products', { headers: options })
+    axios.get(`${server}/products`, { headers: options })
       .then((testData) => { console.log(testData.data); })
       .catch((error) => { console.log(error, 'ERROR'); });
   },
@@ -99,8 +98,6 @@ const products = {
   },
 };
 
-// `${server}/reviews/meta/?product_id=${req.query.product_id[i]}`
-
 const reviews = {
   reviewsGET: (req, res) => {
     axios.get(`${server}/reviews`, { headers: options, params: req.query })
@@ -134,7 +131,7 @@ const reviews = {
 const questions = {
   questionsGET: (req, res) => {
     axios.get(
-      'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
+      `${server}/qa/questions`,
       { headers: options, params: { product_id: req.query.id, count: 99 } },
     )
       .then((response) => { res.send(response.data); })
@@ -142,7 +139,7 @@ const questions = {
   },
   answersGET: (req, res) => {
     axios.get(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.query.id}/answers`,
+      `${server}/qa/questions/${req.query.id}/answers`,
       { headers: options, params: { count: 99 } },
     )
       .then((response) => { res.send(response.data); })
@@ -150,7 +147,7 @@ const questions = {
   },
   questionPOST: (req, res) => {
     axios.post(
-      'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
+      `${server}/qa/questions`,
       {
         body: req.body.body, name: req.body.name, email: req.body.email, product_id: req.body.id,
       },
@@ -161,7 +158,7 @@ const questions = {
   },
   answersPOST: (req, res) => {
     axios.post(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.query.id}/answers`,
+      `${server}/qa/questions/${req.query.id}/answers`,
       {
         body: req.body.body, name: req.body.name, email: req.body.email, photos: req.body.photos,
       },
@@ -171,8 +168,8 @@ const questions = {
       .catch((error) => { console.log(error); });
   },
   questionsHelpfulPUT: (req, res) => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${req.body.id}/helpful`,
-    {}, { headers: options })
+    axios.put(`${server}/qa/questions/${req.body.id}/helpful`,
+      {}, { headers: options })
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });
   },
@@ -182,8 +179,8 @@ const questions = {
       .catch();
   },
   answersHelpfulPUT: (req, res) => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/answers/${req.body.id}/helpful`,
-    {}, { headers: options })
+    axios.put(`${server}/qa/answers/${req.body.id}/helpful`,
+      {}, { headers: options })
       .then((response) => { res.send(response.data); })
       .catch((error) => { console.log(error); });
   },
@@ -215,18 +212,9 @@ const cart = {
   },
 };
 
-const interaction = {
-  logInteractionPOST: (interaction) => {
-    axios.post('/interactions', { headers: options })
-      .then()
-      .catch();
-  },
-};
-
 module.exports = {
   products,
   reviews,
   questions,
   cart,
-  interaction,
 };

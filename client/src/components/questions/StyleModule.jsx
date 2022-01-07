@@ -8,6 +8,8 @@ export const flexSetup = {
 export const mainBox = {
   borderTop: '.75px solid',
   padding: '5px',
+  paddingLeft: '50px',
+  paddingRight: '50px',
   margin: '5px',
   backgroundColor: '#f7f7f7'
 }
@@ -15,6 +17,8 @@ export const mainBox = {
 export const questionBox = {
   borderTop: '1px solid',
   padding: '5px',
+  paddingLeft: '50px',
+  paddingRight: '50px',
   margin: 0,
   backgroundColor: '#ebebed'
 }
@@ -22,6 +26,8 @@ export const questionBox = {
 export const answerBox = {
   borderTop: '1px solid',
   padding: '5px',
+  paddingLeft: '50px',
+  paddingRight: '50px',
   margin: 0,
   backgroundColor: '#dcdcde'
 }
@@ -48,6 +54,5 @@ export const popup_data = {
 }
 
 export const close = {
-  float: 'right',
-  color: 'red'
+  float: 'right'
 }

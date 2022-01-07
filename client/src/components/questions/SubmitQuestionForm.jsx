@@ -26,7 +26,7 @@ export const SubmitQuestionForm = ({id}) => {
       return (
         <div style={popup_box}>
           <div style={popup_data}>
-          <span style={close} onClick={() => {updateAddQuestion(false)}}>X</span>
+          <span style={close} onClick={() => {updateAddQuestion(false)}}>❌</span>
             <h2>Ask Your Question</h2>
             <form onSubmit={addQuestion}>
               <div>

@@ -3,5 +3,8 @@ node_modules
 config.js
 .vscode/settings.json
 client/dist/bundle.js
+client/dist/bundle.js.gz
+client/dist/bundle.js.LICENSE.txt
+client/dist/bundle.js.LICENSE.txt.gz
 coverage
 aws

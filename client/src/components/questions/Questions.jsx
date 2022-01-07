@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import {QuestionRender} from './QuestionRender.jsx'
 import {SubmitQuestionForm} from './SubmitQuestionForm.jsx'
-import {flexSetup, mainBox} from './StyleModule.jsx'
+import {flexSetup, mainBox, ButtonContainer} from './StyleModule.jsx'
 
 export const Questions = ({productId}) => {
 
@@ -42,7 +42,7 @@ export const Questions = ({productId}) => {
             <QuestionRender question={questions.results[2]}/>
             <QuestionRender question={questions.results[3]}/>
           </div>
-          <button onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</button>
+          <ButtonContainer onClick={(event) => {updateQuestionDisplay(true)}}>Show more questions</ButtonContainer>
           <SubmitQuestionForm id={productId}/>
         </div>
       </div>

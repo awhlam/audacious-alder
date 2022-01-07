@@ -5,7 +5,7 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 ## Setup
 1. Run `npm install` to install dependencies
 2. Copy `configExample.js`, rename it to `config.js`, and enter your Github API token
-3. Run `npm run live-server` to start Node
+3. Run `npm run live-server` or `npm run forever` to start Node
 4. Run `npm run build` to start Webpack
 
 ## Tech Stack
@@ -15,5 +15,7 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 * Styled-Components
 * Webpack / Babel
 * Node / Express
+* forever.js
+* compression-webpack-plugin / express-static-gzip
 * Jest / React Testing Library
 * circleCI

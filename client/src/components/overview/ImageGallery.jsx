@@ -73,6 +73,7 @@ const ImageGallery = function ({ productPhoto }) {
           offset={offset}
           onMouseMove={handleMouseMove}>
           <Image
+            alt="imageGallery"
             productPhoto={image}
             src={image}>
           </Image>

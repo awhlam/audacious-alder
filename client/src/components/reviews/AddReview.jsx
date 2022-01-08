@@ -39,7 +39,8 @@ const AddReview = ({
   // HANDLERS
   // ******************************
   const handleChange = (e) => {
-    let { field, value } = e.target;
+    let field = e.target.name;
+    let value = e.target.value;
     if (field === 'rating') { value = parseInt(value, 10); }
     else if (field === 'recommend') { value = value === 'true'; }
     setReview((oldState) => ({ ...oldState, [field]: value }));

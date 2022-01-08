@@ -250,6 +250,7 @@ body {
   margin: 10px;
   align-items: center;
   box-shadow: 2px 2px gray;
+  cursor: pointer;
 }
 
 .thumbnail-img {

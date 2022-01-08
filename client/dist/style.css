@@ -63,18 +63,17 @@ body {
 }
 
 .imageGallery {
-  margin-top: 0;
-  height: 72vh;
-  width: 52vw;
-  object-fit: cover;
+  display: block;
+  width: 100%;
+  pointer-events: none;
 }
+
 
 .imageGalleryList {
   display: flex;
   flex-direction: column;
   list-style: none;
   margin-top: 0;
-  margin-right: calc(0.5vw + 5px);
   overflow-y: auto;
   height: 72vh;
 }

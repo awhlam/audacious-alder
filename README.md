@@ -11,42 +11,36 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 [Will add more info]
 Project focused on front-end development for an e-commerce website.
 
-<details>
-  <summary>Overview</summary>
-  [Please add info]
-    <img
-      src="https://drive.google.com/uc?export=view&id=1Pxht56mOKOYg0n2CkogqbAI-hvt-n_f2"
-      style="width: auto; max-width: 100%; height: auto"/>
-      
-</details>
 
-<details>
+
+  <h4>Overview</h4>
+  Product information and photo thumbnail details.
+  <div>
+    <img
+      src="https://drive.google.com/uc?export=view&id=11nHFzbyEerHAef_boMr2PLzkGgEi5w2J"
+      style="width: auto; max-width: 100%; height: auto"/>
+  </div>
   
-  <summary>Related</summary>
-  [Please add info]
-    <img
-      src="https://drive.google.com/uc?export=view&id=1hn4d2VZsOe128Eupv3NZMUDjRp3uj1IF"
-      style="width: auto; max-width: 100%; height: auto"/>
-
-</details>
   
-<details>
-  <summary>Reviews</summary>
+  
+  <h4>Related</h4>
   [Please add info]
     <img
-      src="https://drive.google.com/uc?export=view&id=1UsnPTaz6OQK13esXxT6A-K90qAGIrv4P"
+      src="https://drive.google.com/uc?export=view&id=1n832Fes6RazZZghwF2LYlOxzSypAdMym"
       style="width: auto; max-width: 100%; height: auto"/>
 
-</details>
-
-<details>
-  <summary>Questions</summary>
+  <h4>Reviews</h4>
   [Please add info]
     <img
-      src="https://drive.google.com/uc?export=view&id=15pkUn6uUFMnl5RPRoeRYgyuOydSQhM4q"
+      src="https://drive.google.com/uc?export=view&id=1fohNZh8OFFL5R4Sf0RpwIBo6JSi89myy"
       style="width: auto; max-width: 100%; height: auto"/>
 
-</details>
+
+  <h4>Questions</h4>
+  [Please add info]
+    <img
+      src="https://drive.google.com/uc?export=view&id=1gIedKksqghH9hGAoblcL9BHQpux42f71"
+      style="width: auto; max-width: 100%; height: auto"/>
 
 ### Getting Started <a name="setup"></a>
 1. Get an API Key at [GitHub](https://github.com/)

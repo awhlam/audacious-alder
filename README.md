@@ -36,13 +36,13 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 5. Run `npm run build` to start Webpack.
 
 ## Tech Stack <a name="techStack"></a>
-* React
-* Axios
-* Moment.js
-* Styled-Components
-* Webpack / Babel
-* Node / Express
-* forever.js
-* compression-webpack-plugin / express-static-gzip
-* Jest / React Testing Library
-* circleCI
+* [React](https://reactjs.org/)
+* [Axios](https://axios-http.com/)
+* [Moment.js](https://momentjs.com/)
+* [styled-components](https://styled-components.com/)
+* [Webpack](https://webpack.js.org/) / [Babel](https://babeljs.io/)
+* [Node.js](https://nodejs.org/en/) / [Express](https://expressjs.com/)
+* [forever.js](https://github.com/foreversd/forever)
+* [compression-webpack-plugin](https://github.com/webpack-contrib/compression-webpack-plugin) / [express-static-gzip](https://github.com/tkoenig89/express-static-gzip)
+* [Jest](https://jestjs.io/) / [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+* [circleCI](https://circleci.com/)

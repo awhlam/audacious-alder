@@ -10,22 +10,22 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 ## Features <a name="features"></a>
   <span><b>Overview</b> - Product information, photo thumbnails, size and quantity selection.</span>
     <img
-      src="https://drive.google.com/uc?export=view&id=11nHFzbyEerHAef_boMr2PLzkGgEi5w2J"
+      src="https://user-images.githubusercontent.com/32132177/152846866-ae59cc29-9823-4339-b816-8d2413201eae.gif"
       style="width: auto; max-width: 100%; height: auto"/>
-  
+
   <span><b>Related</b> - Items associated with the current product and a comparison view.</span>
     <img
-      src="https://drive.google.com/uc?export=view&id=1n832Fes6RazZZghwF2LYlOxzSypAdMym"
+      src="https://user-images.githubusercontent.com/32132177/152847001-4c45af65-3428-4d04-a78f-3dc41797e6d4.gif"
       style="width: auto; max-width: 100%; height: auto"/>
 
   <span><b>Reviews</b> - User-submitted reviews which can be marked as helpful or reported.</span>
     <img
-      src="https://drive.google.com/uc?export=view&id=1fohNZh8OFFL5R4Sf0RpwIBo6JSi89myy"
+      src="https://user-images.githubusercontent.com/32132177/152846960-58bc5739-2666-47d2-8207-8ebccb2900e4.gif"
       style="width: auto; max-width: 100%; height: auto"/>
 
   <span><b>Questions</b> - User-submitted questions asked about the product and their correspondind answers.</span>
     <img
-      src="https://drive.google.com/uc?export=view&id=1gIedKksqghH9hGAoblcL9BHQpux42f71"
+      src="https://user-images.githubusercontent.com/32132177/152846908-58ec3cfa-fc21-41b4-9f84-553a4deeabea.gif"
       style="width: auto; max-width: 100%; height: auto"/>
 
 ## Getting Started <a name="setup"></a>

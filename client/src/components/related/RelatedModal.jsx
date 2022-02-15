@@ -8,7 +8,7 @@ const RelatedModal  = (props) => {
   //**************
   const handleModalCloseClick = (event) => {
     event.preventDefault();
-    props.handleModalClose();
+    props.handleModal();
   }
 
 

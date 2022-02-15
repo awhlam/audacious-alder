@@ -42,24 +42,20 @@ const RelatedProductsCard = (props) => {
   // ***********
   // Func for opening and closing modals
   // ***********
-  const handleModalOpen = () => {
+  const handleModal = () => {
     if (!modalOpen) {
       setModal(true);
-    }
-  };
-
-  const handleModalClose = () => {
-    if (modalOpen) {
+    } else {
       setModal(false);
     }
-  }
+  };
 
   // ***********
   // Handle modal open button click
   // ***********
   const handleModalOpenClick = (event) => {
     event.preventDefault();
-    handleModalOpen();
+    handleModal();
   }
 
   return (
@@ -85,7 +81,7 @@ const RelatedProductsCard = (props) => {
         onClick={handleModalOpenClick} className='modal-button'>♥</button>
       </div>
       {!modalOpen ? '' : <RelatedModal
-          handleModalClose={handleModalClose}
+          handleModal={handleModal}
           currentProduct={props.currentProduct}
           relatedFeature={props.related.details}
         />}

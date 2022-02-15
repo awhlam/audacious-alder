@@ -17,18 +17,18 @@ const Related = (props) => {
   const rightButton = (event) => {
     event.preventDefault();
     const relatedLength = relatedProducts.length;
-    let chunkArr = relatedProducts.slice(1);
-    let singleArr = relatedProducts.slice(0, 1);
-    let reOrdered = chunkArr.concat(singleArr);
+    const chunkArr = relatedProducts.slice(1);
+    const singleArr = relatedProducts.slice(0, 1);
+    const reOrdered = chunkArr.concat(singleArr);
     setDetail(reOrdered);
   }
 
   const leftButton = (event) => {
     event.preventDefault();
     const relatedLength = relatedProducts.length;
-    let chunkArr = relatedProducts.slice(0, relatedLength - 1);
-    let singleArr = relatedProducts.slice(relatedLength - 1, relatedLength);
-    let reOrdered = singleArr.concat(chunkArr);
+    const chunkArr = relatedProducts.slice(0, relatedLength - 1);
+    const singleArr = relatedProducts.slice(relatedLength - 1, relatedLength);
+    const reOrdered = singleArr.concat(chunkArr);
     setDetail(reOrdered);
   }
 
@@ -58,7 +58,7 @@ const Related = (props) => {
         const apiReviewMeta = results[2].data;
         const productData = [];
         for (let i = 0; i < apiDetail.length; i+=1) {
-          let hash = {};
+          const hash = {};
           hash.details = apiDetail[i];
           hash.styles = apiStyles[i];
           hash.reviewsMeta = apiReviewMeta[i];

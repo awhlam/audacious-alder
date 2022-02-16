@@ -1,14 +1,10 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import RelatedModal from './RelatedModal.jsx';
 
-// Color styling for category words
-const GrayCategoryTitle = styled.a`
-  color: gray;
-`;
+import { GrayCategoryTitle } from './RelatedProductsCard.styles.js'
 
 const RelatedProductsCard = (props) => {
   // ***********
@@ -42,24 +38,20 @@ const RelatedProductsCard = (props) => {
   // ***********
   // Func for opening and closing modals
   // ***********
-  const handleModalOpen = () => {
+  const handleModal = () => {
     if (!modalOpen) {
       setModal(true);
-    }
-  };
-
-  const handleModalClose = () => {
-    if (modalOpen) {
+    } else {
       setModal(false);
     }
-  }
+  };
 
   // ***********
   // Handle modal open button click
   // ***********
   const handleModalOpenClick = (event) => {
     event.preventDefault();
-    handleModalOpen();
+    handleModal();
   }
 
   return (
@@ -74,7 +66,7 @@ const RelatedProductsCard = (props) => {
       </GrayCategoryTitle>
       </div>
       <div>
-        <a className='clickableName' onClick={relatedProductClick} >{props.related.details.name}</a>
+        <a className='clickableName' onClick={relatedProductClick}>{props.related.details.name}</a>
       </div>
       <div>
         <a className='clickablePrice' onClick={relatedProductClick}>${props.related.details.default_price}</a>
@@ -85,7 +77,7 @@ const RelatedProductsCard = (props) => {
         onClick={handleModalOpenClick} className='modal-button'>♥</button>
       </div>
       {!modalOpen ? '' : <RelatedModal
-          handleModalClose={handleModalClose}
+          handleModal={handleModal}
           currentProduct={props.currentProduct}
           relatedFeature={props.related.details}
         />}

@@ -4,9 +4,9 @@ import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import RelatedModal from './RelatedModal.jsx';
 
-import styles from './RelatedProductsCard.styles.js'
+import { GrayCategoryTitle } from './RelatedProductsCard.styles.js'
 
-console.log(styles);
+console.log(import);
 
 const RelatedProductsCard = (props) => {
   // ***********
@@ -62,10 +62,10 @@ const RelatedProductsCard = (props) => {
         <img className='thumbnail-img' onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200px' height='250px'/>
       </div>
       <div>
-      <styles.GrayCategoryTitle>
+      <GrayCategoryTitle>
         {props.related.details.category}
       <div></div>
-      </styles.GrayCategoryTitle>
+      </GrayCategoryTitle>
       </div>
       <div>
         <a className='clickableName' onClick={relatedProductClick}>{props.related.details.name}</a>

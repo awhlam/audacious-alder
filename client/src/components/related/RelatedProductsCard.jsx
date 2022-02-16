@@ -6,8 +6,6 @@ import RelatedModal from './RelatedModal.jsx';
 
 import { GrayCategoryTitle } from './RelatedProductsCard.styles.js'
 
-console.log(import);
-
 const RelatedProductsCard = (props) => {
   // ***********
   // State

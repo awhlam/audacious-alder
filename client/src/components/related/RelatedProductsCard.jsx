@@ -1,14 +1,12 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import calcStarImg from '../shared/calcStarImg.jsx';
 import calcAvgTotalReviews from '../shared/calcAvgTotalReviews.js';
 import RelatedModal from './RelatedModal.jsx';
 
-// Color styling for category words
-const GrayCategoryTitle = styled.a`
-  color: gray;
-`;
+import styles from './RelatedProductsCard.styles.js'
+
+console.log(styles);
 
 const RelatedProductsCard = (props) => {
   // ***********
@@ -64,13 +62,13 @@ const RelatedProductsCard = (props) => {
         <img className='thumbnail-img' onClick={relatedProductClick} src={backupImgRender(props.related.styles.results[0].photos[0].thumbnail_url)} width='200px' height='250px'/>
       </div>
       <div>
-      <GrayCategoryTitle>
+      <styles.GrayCategoryTitle>
         {props.related.details.category}
       <div></div>
-      </GrayCategoryTitle>
+      </styles.GrayCategoryTitle>
       </div>
       <div>
-        <a className='clickableName' onClick={relatedProductClick} >{props.related.details.name}</a>
+        <a className='clickableName' onClick={relatedProductClick}>{props.related.details.name}</a>
       </div>
       <div>
         <a className='clickablePrice' onClick={relatedProductClick}>${props.related.details.default_price}</a>

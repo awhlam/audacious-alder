@@ -10,7 +10,7 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 ## Features <a name="features"></a>
   <span><b>Overview</b> - Product information, photo thumbnails, size and quantity selection.</span>
     <img
-      src="https://user-images.githubusercontent.com/32132177/152846866-ae59cc29-9823-4339-b816-8d2413201eae.gif"
+      src="https://user-images.githubusercontent.com/32132177/154197500-59602dd5-141f-4e0a-92ca-cfa14e1646c4.gif"
       style="width: auto; max-width: 100%; height: auto"/>
 
   <span><b>Related</b> - Items associated with the current product and a comparison view.</span>
